@@ -1,0 +1,37 @@
+custom_id,model_answer
+18305,"On the synchronization manifold x₁ = x₂ = x, define z₁ := x − y₁ and z₂ := x − y₂. Then the reduced (invariant) system in ℝ³ is:
+
+ẋ = 1,  
+ż₁ = z₁ − ν₁ (cos x − sin x),  
+ż₂ = z₂ + ν₂ (sin x − cos x),
+
+with mismatch parameter ν = ν₂ − ν₁ if needed."
+18391,"A suitable 95% Bayesian credible interval for the mean lifetime μ = 1/λ, based on the posterior λ ∣ data ∼ Gamma(12, 2300.01), is approximately [122 hours, 442 hours]."
+18365,"The probability that the 50‑unit sample contains at least 3 defective units, taking into account the 0.07/0.03 Markov effect, is about 0.20 (around 20%)."
+18636,"P(Y_new = 1 ∣ Y = y) =  
+  ∫₀¹ [ P(5 ∣ p ) · p¹ (1−p)¹ · (P(5 ∣ p))ʸ · (1−P(5 ∣ p))^(1−y ) ] dp  
+  ────────────────────────────────────────────────────────────────────────────  
+  ∫₀¹ [ p¹ (1−p)¹ · (P(5 ∣ p))ʸ · (1−P(5 ∣ p))^(1−y ) ] dp,  
+
+where P(5 ∣ p) = [ 1 − ((1−p)/p)⁵ ] / [ 1 − ((1−p)/p)¹⁰ ]."
+18664,"f_Y(y) =  
+  0,                                   for y < 0 or y > 4;  
+  (1 / (7√y)) + 2/7,                   for 0 < y < 1;  
+  (1 / (14√y)) + 1/7,                  for 1 ≤ y < 2;  
+  1 / (14√y),                          for 2 ≤ y < 3;  
+  (1 / (14√y)) + 1/7,                  for 3 ≤ y ≤ 4.  "
+18532,"1) By considering  
+   J(a) = ∫₀^∞ [ x^a e^(i x) / (1 + x² ) ] dx  
+   and analyzing it via a contour in the upper half‐plane, one finds that the sole contribution comes from the simple pole at z = i. Matching that to the integral on the real axis (and accounting carefully for the branch cut of z^a) leads, after taking imaginary parts, to I(a).
+
+2) As a → +∞, the integral is dominated by large x. One obtains the leading asymptotic form  
+   I(a) ∼ −cos((πa)/2) × [Γ(a)/a],  
+   and, more explicitly, using Stirling’s approximation,  
+   I(a) ∼ −√(2π) a^(a − 3/2) e^(−a) cos((πa)/2)."
+18670,"P(k, 0) = 1/N  
+P(k, T+1) = (1/N) + [(N−1)/N] × (1/2) [P(k−1, T) + P(k+1, T)]."
+18479,"The possible values of |z| are precisely those positive real numbers r for which r² + 1/r² = √(M² + N²) with M, N integers and M² + N² ≥ 4. Equivalently, let k = M² + N² be any integer ≥ 4 that is the sum of two squares. Then, setting a = √k ≥ 2, the corresponding r must satisfy:  
+r² + 1/r² = a,  
+which yields r = √((a ± √(a² - 4)) / 2).  
+In particular, there are infinitely many possible values of |z|, one (or two) for each integer k ≥ 4 that is a sum of two squares."
+18482,Mr. Taf has a winning strategy.

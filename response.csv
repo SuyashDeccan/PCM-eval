@@ -1,0 +1,927 @@
+custom_id,model_response
+18305,"First, let us restate the two given systems more systematically.  We have:
+
+• System (1):  
+  (1a)  ẋ₁ − ẏ₁ = (x₁ − y₁) − ν₁ (cos x₁ − sin x₁),  
+  (1b)  ẋ₁ = 1.
+
+• System (2):  
+  (2a)  ẋ₂ − ẏ₂ = (x₂ − y₂) − ν₂ (sin(−x₂) + cos(−x₂)),  
+  (2b)  ẋ₂ = 1.
+
+Because sin(−θ) = −sin θ and cos(−θ) = cos θ, we have  
+sin(−x₂) + cos(−x₂) = −sin x₂ + cos x₂ = (cos x₂ − sin x₂).  
+Hence,  
+−ν₂ (sin(−x₂) + cos(−x₂)) = −ν₂ (cos x₂ − sin x₂)  
+= ν₂ (sin x₂ − cos x₂).  
+
+Thus (2a) can be rewritten as  
+ẋ₂ − ẏ₂ = (x₂ − y₂) + ν₂( sin x₂ − cos x₂ ).  
+
+────────────────────────────────────────────────────────────────────────
+1.  Rewrite each system in (x, z) coordinates
+────────────────────────────────────────────────────────────────────────
+
+To isolate the dynamics of “(x − y)” in each system, let us define  
+z₁ := x₁ − y₁,    z₂ := x₂ − y₂.  
+
+Then from system (1),  
+ż₁ = ẋ₁ − ẏ₁.  
+But (1a) tells us that  
+ẋ₁ − ẏ₁ = (x₁ − y₁) − ν₁ (cos x₁ − sin x₁),  
+so  
+ż₁ = z₁ − ν₁ [cos x₁ − sin x₁].  
+
+Since ẋ₁ = 1, system (1) in the variables (x₁, z₁) becomes  
+(1′a)  ẋ₁ = 1,  
+(1′b)  ż₁ = z₁ − ν₁ [cos x₁ − sin x₁].  
+
+Similarly, for system (2) define z₂ = x₂ − y₂.  Then from (2a),  
+ż₂ = ẋ₂ − ẏ₂ = (x₂ − y₂) + ν₂ (sin x₂ − cos x₂).  
+
+Since ẋ₂ = 1, system (2) in the variables (x₂, z₂) becomes  
+(2′a)  ẋ₂ = 1,  
+(2′b)  ż₂ = z₂ + ν₂ [sin x₂ − cos x₂].  
+
+Hence each system is two-dimensional in (xᵢ, zᵢ).
+
+────────────────────────────────────────────────────────────────────────
+2.  The synchronization manifold
+────────────────────────────────────────────────────────────────────────
+
+The problem states that system (1) “sends signals” to system (2) so that x₁ and x₂ can synchronize.  In other words, we are interested in the manifold given by  
+x₁ = x₂  (call the common value x).  
+
+On this manifold, we also keep track of z₁ and z₂:  
+z₁ = x − y₁,   z₂ = x − y₂.  
+
+Consequently, the 4-dimensional phase space (x₁, y₁, x₂, y₂) is restricted to a 3-dimensional manifold where x₁ = x₂ = x.  We merely rename x := x₁ = x₂.  Then:
+
+• From (1′a) and (2′a), both give ẋ = 1 (consistently).  
+• From (1′b) on the manifold x₁ = x,  
+  ż₁ = z₁ − ν₁ [cos x − sin x].  
+• From (2′b) on the manifold x₂ = x,  
+  ż₂ = z₂ + ν₂ [sin x − cos x].  
+
+Hence restricted to the synchronization manifold x₁ = x₂, the overall dynamics reduce to a 3-dimensional system in the variables (x, z₁, z₂):
+
+────────────────────────────────────────────────────────────────────────
+3.  Final form of the invariant-manifold equations
+────────────────────────────────────────────────────────────────────────
+
+On the invariant manifold  
+  M = {(x₁, y₁, x₂, y₂) : x₁ = x₂ = x},  
+the reduced (or induced) flow in (x, z₁, z₂)-space is  
+(1)   ẋ   = 1,  
+(2)   ż₁ = z₁ − ν₁ [cos x − sin x],  
+(3)   ż₂ = z₂ + ν₂ [sin x − cos x].  
+
+Here one often denotes the mismatch parameter as  
+ν = ν₂ − ν₁,  
+and if desired one can rewrite ν₂ = ν₁ + ν in the last equation.
+
+These three equations,  
+  ( ẋ, ż₁, ż₂ ),  
+describe exactly the invariant 3-dimensional manifold in ℝ³ that captures the synchronized motion x₁ = x₂.  In summary:
+
+────────────────────────────────────────────────────────────────────────
+Answer (Invariant manifold in ℝ³)
+────────────────────────────────────────────────────────────────────────
+
+On the synchronization manifold x₁ = x₂ = x, define z₁ := x − y₁ and z₂ := x − y₂.  Then the reduced (invariant) system in ℝ³ is:  
+
+  ẋ = 1,  
+  ż₁ = z₁ − ν₁ (cos x − sin x),  
+  ż₂ = z₂ + ν₂ (sin x − cos x),  
+
+with mismatch parameter ν = ν₂ − ν₁ if needed.  "
+18391,"Solution Explanation:
+
+1) The prior, likelihood, and posterior for λ.  
+
+   • The light‐bulb lifetimes T₁,…,Tₙ are assumed i.i.d. exponential(λ).  
+   • The prior on λ is Gamma(α₀, β₀) with α₀ = 2 and β₀ = 0.01.  
+   • For an exponential(λ) likelihood, the joint density for (T₁,…,Tₙ) given λ is:  
+       L(λ ∣ data) = λⁿ exp(−λ ΣTᵢ).  
+   • Because the prior is Gamma(α₀, β₀), the posterior for λ, after observing T₁,…,Tₙ, remains in the Gamma family (conjugacy). Specifically,  
+       λ ∣ data ∼ Gamma(αₙ, βₙ),  
+     where  
+       αₙ = α₀ + n,    βₙ = β₀ + ΣTᵢ.  
+
+2) Plugging in the numbers.  
+
+   You have n = 10 observed lifetimes: 120, 150, 180, 200, 210, 220, 250, 300, 320, 350.  
+   First compute the sum of the observations:  
+       ΣTᵢ = 120 + 150 + 180 + 200 + 210 + 220 + 250 + 300 + 320 + 350 = 2300.  
+
+   Since α₀ = 2 and β₀ = 0.01, then  
+       αₙ = α₀ + n = 2 + 10 = 12,  
+       βₙ = β₀ + ΣTᵢ = 0.01 + 2300 = 2300.01.  
+
+   Hence the posterior distribution for λ is  
+       λ ∣ data ∼ Gamma(12, 2300.01).  
+   (Here the Gamma(α, β) is parameterized so that the density is  
+       f(λ) ∝ λ^(α−1) e^(−β λ),      λ ≥ 0.  
+   )
+
+3) Credible interval for the mean μ = 1/λ.  
+
+   We want a 95% Bayesian credible interval for μ = 1/λ under the posterior λ ∣ data ∼ Gamma(12, 2300.01). A straightforward way to get an equal‐tails interval for μ is:  
+   • Find the 2.5% and 97.5% quantiles of the posterior Gamma(12, 2300.01) for λ, call them λ₍0.025₎ and λ₍0.975₎.  
+   • Then an equal‐tail 95% credible interval for μ = 1/λ can be taken as  
+         [1/λ₍0.975₎,   1/λ₍0.025₎].  
+
+   In practice, one either uses software (e.g. qgamma in R) or a suitable approximation. A common large‐shape approximation is to note that for Gamma(α, β) with α = 12, the mean and variance of λ are  
+     E(λ)   = α/β   = 12 / 2300.01  ≈ 0.005217,  
+     Var(λ) = α/β².  
+   One may approximate the posterior by a normal distribution with the same mean and variance, then solve for the quantiles. This yields (roughly):  
+     95% CI for λ ≈ (0.00226, 0.00817).  
+   Inverting these endpoints gives  
+     95% CI for μ = (1/0.00817,  1/0.00226)  ≈ (122 hr, 442 hr).  
+
+   A more precise interval could be obtained by directly computing the Gamma quantiles numerically. But the normal‐approximation interval around (120 hr, 440+ hr) is typically quite close for α = 12.
+
+Answer:
+
+A suitable 95% Bayesian credible interval for the mean lifetime μ = 1/λ, based on the posterior λ ∣ data ∼ Gamma(12, 2300.01), is approximately  
+   [ 122 hours ,  442 hours ].  
+This is found by taking the 2.5% and 97.5% quantiles of the Gamma(12, 2300.01) posterior for λ, and inverting those quantiles."
+18365,"Solution Explanation:
+
+1) The problem setup (why this is not simply a Binomial):
+
+Ordinarily, if each unit were independently defective with probability p = 0.05, then the number of defectives X in an n = 50 sample would follow a Binomial distribution,  
+   X ∼ Binomial(n = 50, p = 0.05).  
+However, here the probability of a defective depends on the result of the previous draw (a “Markov” effect):  
+• If the current unit is defective, then the next is defective with probability 0.07.  
+• If the current unit is nondefective, then the next is defective with probability 0.03.  
+
+Moreover, the very first unit in the sample is defective with probability 0.05 (as stated). Thus we do not have i.i.d. trials but rather a 2‑state Markov chain: each unit is either Defective (D) or Not Defective (N), and the transition to the next unit depends on which state we are in.
+
+2) Setting up the Markov chain and its transition matrix:
+
+Label the two states as D = “defective” and N = “nondefective.”  The transition probabilities are:
+
+   P(D → D) = 0.07,    P(D → N) = 0.93,  
+   P(N → D) = 0.03,    P(N → N) = 0.97.  
+
+Because the first unit is defective with probability 0.05 (and hence nondefective with probability 0.95), the initial distribution is  
+   P₁(D) = 0.05,    P₁(N) = 0.95.  
+
+3) A direct (exact) method: dynamic programming for “number of defectives”
+
+One can track the probability of having k defectives after i draws, distinguishing whether the i‑th draw is defective or not.  In symbols, define
+
+   Pᵢ(k, D)  = P(“exactly k defectives in first i draws” and “the i‑th draw is D”),  
+   Pᵢ(k, N)  = P(“exactly k defectives in first i draws” and “the i‑th draw is N”).
+
+Initial conditions (for i = 1):
+• The probability that the very first unit is defective (k = 1, state = D) is 0.05.  
+• The probability that the very first unit is nondefective (k = 0, state = N) is 0.95.  
+Thus,
+   P₁(1, D) = 0.05,    P₁(0, N) = 0.95,  
+   and P₁(·, ·) = 0 in all other cases.
+
+Recurrence (for i ≥ 2):
+• To end in (k, D), we either were in (k−1, D) and transition D→D with prob. 0.07,  
+  or we were in (k−1, N) and transition N→D with prob. 0.03.  
+  So  
+     Pᵢ(k, D) = Pᵢ₋₁(k−1, D)×0.07  +  Pᵢ₋₁(k−1, N)×0.03.  
+• To end in (k, N), we either were in (k, D) and transition D→N with prob. 0.93,  
+  or we were in (k, N) and transition N→N with prob. 0.97.  
+  So  
+     Pᵢ(k, N) = Pᵢ₋₁(k, D)×0.93  +  Pᵢ₋₁(k, N)×0.97.
+
+One would iterate i from 1 up to 50 and k from 0 up to i, summing probabilities carefully.  At the end (i = 50), the probability that there are exactly k defectives in the entire sample is  
+   P(X = k) = P₅₀(k, D) + P₅₀(k, N).  
+
+Hence the desired probability that at least 3 units are defective is  
+   P(X ≥ 3) = ∑ (k=3 to 50)   [ P₅₀(k, D) + P₅₀(k, N) ].
+
+While perfectly doable by computer (or a systematic table), it is cumbersome by hand.
+
+4) Approximate shortcut: the stationary distribution
+
+Because each draw depends only on the previous one, for large samples the fraction of defectives will be close to the Markov chain’s long‑run (stationary) proportion.  One finds the stationary probability p* of being in state D by solving
+
+   p*  =  p* × 0.07   +  (1 − p*) × 0.03,  
+
+which rearranges to
+
+   p* − 0.07p* = 0.03 − 0.03p*,  
+   0.93 p*     = 0.03,  
+   p*          = 0.03 / 0.93  =  0.032258…  (approximately 3.125%).
+
+Hence, over many draws, the chain hovers around a 3.1% defective rate— less than 5%.  Because the sample is only 50 (but not too small), an approximate model is that each draw is “like” having probability ≈ 0.031 to be defective, with slight positive autocorrelation.
+
+5) Numerical estimate for P(X ≥ 3)
+
+If we (roughly) pretend the 50 draws are independent with p = 0.03125, then X ~ Binomial(50, 0.03125), and  
+
+   P(X ≥ 3) = 1 − [ P(X = 0) + P(X = 1) + P(X = 2) ].  
+
+In a Binomial(50, p),  
+• P(X = 0) = (1−p)⁵⁰,  
+• P(X = 1) = 50·p·(1−p)⁴⁹,  
+• P(X = 2) = 1225·p²·(1−p)⁴⁸  … (since 50 choose 2 = 1225).
+
+Plugging in p = 0.03125, one gets roughly  
+   P(X ≥ 3) ≈ 0.20–0.21.
+
+(Where that 20% figure is an approximation; the true Markov calculation will be close, because 50 draws is large enough that the chain is mostly near its 3.1% stationary level.)
+
+6) Conclusion
+
+Because the chain’s transition probabilities drive the long‑run defective rate down to about 3.1%, the probability of seeing at least three defectives in a 50‑unit sample is only around 20%.  A precise dynamic‑programming calculation (step 3, above) would give a very similar value.  
+
+Answer (approximately):  
+The probability that the 50‑unit sample contains at least 3 defective units, taking into account the 0.07/0.03 Markov effect, is about 0.20 (around 20%)."
+18636,"Solution Explanation
+
+1) The Classical “Gambler’s Ruin” Probability
+
+Recall that if a (fairly general) gambler starts with i dollars and either wins or loses 1 dollar in each round—winning with probability p and losing with probability q = 1 − p—then the probability that the gambler’s capital hits a target N > i before hitting 0 is given by the well‐known formula (for p ≠ q):
+
+P(i ∣ p) = [1 − (q/p)^i] / [1 − (q/p)^N].
+
+In your numerical setup, i = 5 and N = 10, so
+
+P(5 ∣ p) = [1 − ((1−p)/p)^5] / [1 − ((1−p)/p)^10].
+
+This quantity plays the role of the “success probability” of the event “the gambler reaches N before 0,” given the parameter p.
+
+2) A Bayesian Model for p
+
+Instead of treating p as known, we place a prior distribution on p.  You specify:
+
+p ∼ Beta(α, β),   with α = 2, β = 2.
+
+Hence the prior density for p (on the interval 0 < p < 1) is
+
+π₀(p) = p^(α−1) (1−p)^(β−1) / B(α, β) = p^(2−1) (1−p)^(2−1) / B(2,2),  
+
+where B(2,2) is the Beta function normalizing constant.
+
+3) Likelihood From One Observed Game
+
+You let the gambler play once (starting again at i = 5, target N = 10), and observe the outcome Y ∈ {0,1}, defined by
+
+• Y = 1  if the gambler reaches the target N,  
+• Y = 0  if the gambler goes bankrupt (hits 0 before N).
+
+Crucially, the “success probability” for that game, given p, is P(5 ∣ p).  Thus from a Bayesian standpoint, the likelihood of p after observing Y is
+
+L(p) = [P(5 ∣ p)]^Y × [1 − P(5 ∣ p)]^(1−Y).
+
+4) Posterior for p
+
+By Bayes’ theorem, the (unnormalized) posterior density for p after observing Y is
+
+π(p ∣ Y) ∝  π₀(p) × L(p)  
+           =  p^(2−1) (1−p)^(2−1) × [P(5 ∣ p)]^Y [1 − P(5 ∣ p)]^(1−Y).
+
+To get the normalized posterior, one divides by its integral over p ∈ (0,1):
+
+π(p ∣ Y) = 
+  p^(1) (1−p)^(1) [P(5 ∣ p)]^Y [1−P(5 ∣ p)]^(1−Y)
+  ----------------------------------------------------
+  ∫₀¹ p^(1) (1−p)^(1) [P(5 ∣ p)]^Y [1−P(5 ∣ p)]^(1−Y) dp.
+
+5) Posterior Predictive Probability
+
+Now suppose the gambler plays again (a “future game”), also starting at i = 5 with the same target N = 10.  The Bayesian posterior‐predictive probability that this new game will end in “success” (the gambler hits N before 0) is obtained by integrating over the posterior for p:
+
+P(Y_new = 1 ∣ Y) = ∫₀¹ P(5 ∣ p) × π(p ∣ Y) dp.
+
+Substituting the expression for π(p ∣ Y), one obtains the more explicit formula
+
+P(Y_new = 1 ∣ Y = y)  =  
+   ∫₀¹  P(5 ∣ p)·p^(1)(1−p)^(1) [P(5 ∣ p)]^y [1−P(5 ∣ p)]^(1−y)  dp
+  ──────────────────────────────────────────────────────────────────
+   ∫₀¹      p^(1)(1−p)^(1) [P(5 ∣ p)]^y [1−P(5 ∣ p)]^(1−y)        dp.
+
+Here,
+
+• P(5 ∣ p) = [1 − ((1−p)/p)^5] / [1 − ((1−p)/p)^10],  
+• y is the observed outcome of the first game (0 or 1),  
+• p^(1)(1−p)^(1) corresponds to the Beta(2,2) prior (up to a constant).
+
+Thus the answer to “Derive the posterior predictive probability that the gambler reaches the target in a future game by integrating over the uncertainty in p” is precisely this ratio of integrals.  It is the average of the gambler‐ruin success probability P(5 ∣ p) weighted by the posterior distribution of p.  In general, there is no closed‐form simplification of that integral, but this integral form is the exact Bayesian predictive probability."
+18664,"Solution Explanation:
+
+1) The random variable X and its density.  
+We are given that X is uniformly distributed on the interval (−4, 3).  
+Thus,  
+f_X(x) = 1/7,  for  −4 < x < 3,  
+and f_X(x) = 0 elsewhere.  
+
+2) Definition of Y in terms of X.  
+We define Y = g(X) by the following piecewise function:
+
+Y =  
+  X + 7,               if X ≤ −3,  
+  X² − 2|X| + 1,       if −3 < X < 0,  
+  1 − |X|,             if 0 ≤ X < 1,  
+  X − 1,               if X ≥ 1.
+
+Since X ∈ (−4, 3), we break X’s range into subintervals matching these pieces and find the corresponding ranges of Y.  In each subinterval, we solve for X in terms of Y (when possible) and use the usual formula for change of variables:
+
+f_Y(y) = ∑ [ f_X(xi) · 1 / |g′(xi)| ],
+
+where the sum is over all xi such that g(xi) = y.
+
+-------------------------------------------------------------------------------
+A)  Piece 1:  X ≤ −3  (but remembering X ≥ −4)
+
+On −4 ≤ X ≤ −3, we have  
+Y = X + 7.  
+
+• Range of Y.  
+  If X goes from −4 up to −3, then  
+    Y goes from (−4 + 7) = 3  up to (−3 + 7) = 4.  
+  So for y ∈ [3, 4], there is exactly one corresponding x = y − 7, where x ∈ [−4, −3].  
+
+• Jacobian / derivative.  
+  Y = x + 7 ⇒ dY/dx = 1.  
+
+Hence, for y ∈ [3, 4],  
+  x = y − 7,  
+  f_X(x) = 1/7,  
+  and  
+  f_Y^(piece 1)(y) = (1/7) * 1/|1| = 1/7.
+
+This covers y ∈ [3, 4] from piece 1.
+
+-------------------------------------------------------------------------------
+B)  Piece 2:  −3 < X < 0
+
+On this interval, |X| = −X (since X is negative).  Hence:
+
+Y = X² − 2|X| + 1 = X² + 2X + 1 = (X + 1)².
+
+• Range of Y.  
+  Let x ∈ (−3, 0). Then (x+1) ∈ (−2, 1). Squaring,
+
+  (x+1)² ∈ (0, 4).
+
+Indeed, as x goes from −3 (excluded) to 0 (excluded), (x+1) goes from −2 to 1, so Y ranges through (0, 4).  
+
+However, (x+1)² is not strictly monotonic on (−3, 0): it decreases from 4 down to 0 as x goes from −3 up to −1, and then increases from 0 up to 1 as x goes from −1 up to 0.  Consequently, for a given 0 < y < 1, there will be two x‑values in (−3, 0) that give the same y; for 1 < y < 4, there is exactly one x in (−3, −1).  
+
+In all cases,  
+  Y = (x+1)²,    dY/dx = 2(x+1).
+
+Hence,
+
+f_Y^(piece 2)(y) = ∑ over all x s.t. (x+1)² = y of [ f_X(x) * 1 / |2(x+1)| ].
+
+Since f_X(x) = 1/7 for x ∈ (−3, 3), we get:
+
+• For 0 < y < 1:  
+  Y = (x+1)² = y  ⇒ x+1 = ±√y.  
+  In (−3, 0), x+1 can be negative or positive, so both solutions are valid:  
+    x₁ = −1 − √y,   x₂ = −1 + √y.  
+  Each contributes 1 / |2(x+1)| = 1 / (2√y) (in absolute value).  
+  Summing the two contributions:
+
+  f_Y^(piece 2)(y) = (1/7) ⋅ [1/(2√y) + 1/(2√y)] = (1/7) ⋅ [1/√y].
+
+  Or more simply, for 0 < y < 1,  
+  f_Y^(piece 2)(y) = 1/(7 √y).
+
+• For 1 < y < 4:  
+  Then x+1 = −√y  (the “plus” solution would give x ≥ 0, which is outside (−3, 0)).  
+  Thus there is exactly one x in (−3, −1), giving
+
+  f_Y^(piece 2)(y) = (1/7) ⋅ 1 / [2√y] = 1 / (14 √y).
+
+So piece 2 contributes:  
+  0 < y < 1:   f_Y^(piece 2)(y) = 1/(7 √y),  
+  1 < y < 4:   f_Y^(piece 2)(y) = 1/(14 √y).  
+
+(At the single point y=1, effectively one solution remains, but single points do not affect integrals of the PDF.)
+
+-------------------------------------------------------------------------------
+C)  Piece 3:  0 ≤ X < 1
+
+Here |X| = X, so
+
+Y = 1 − |X| = 1 − X.
+
+• Range of Y.  
+  As x goes from 0 up to 1, Y = 1−x goes from 1 down to 0.  
+  So Y ∈ (0, 1], one-to-one with x = 1−y.  
+
+• Jacobian / derivative.  
+  dY/dx = −1, so dx/dy = −1 in absolute value is 1.  
+
+Hence, for y ∈ (0, 1], the corresponding x = 1−y ∈ [0, 1).  Therefore,
+
+f_Y^(piece 3)(y) = f_X(1−y) ⋅ 1/|−1| = f_X(1−y) = 1/7,
+
+provided 1−y ∈ (−4, 3).  For y in (0,1], indeed 1−y ∈ (0,1) ⊂ (−4,3).  
+
+Thus piece 3 contributes:
+
+  0 < y ≤ 1:   f_Y^(piece 3)(y) = 1/7.
+
+-------------------------------------------------------------------------------
+D)  Piece 4:  X ≥ 1  (but recalling X < 3)
+
+On x ∈ [1, 3), we have
+
+Y = X − 1.
+
+• Range of Y.  
+  As x goes from 1 to 3, Y goes from 0 to 2.  
+  So y ∈ [0, 2).  
+
+• Jacobian / derivative.  
+  dY/dx = 1, so dx/dy = 1.  
+
+Hence, for y ∈ [0, 2), the corresponding x = y+1 ∈ [1, 3). Therefore,
+
+f_Y^(piece 4)(y) = f_X(y+1) ⋅ 1/|1| = 1/7,
+
+for 0 ≤ y < 2 (since y+1 < 3).
+
+-------------------------------------------------------------------------------
+3) Summing contributions and final piecewise PDF.
+
+Because Y can arise from multiple pieces of X’s domain, we add up all contributions for each y in the appropriate range.  We now examine the intervals of y:
+
+• y < 0:  
+  No piece can produce y < 0 (check each form).  
+  ⇒ f_Y(y) = 0 for y < 0.
+
+• 0 ≤ y < 1:  
+  – From piece 2:  f_Y^(2)(y) = 1/(7 √y) for 0 < y < 1.  
+  – From piece 3:  f_Y^(3)(y) = 1/7 for 0 < y ≤ 1.  
+  – From piece 4:  f_Y^(4)(y) = 1/7 for 0 ≤ y < 2, so in particular for 0 ≤ y < 1.  
+
+Hence for 0 < y < 1, summing these:
+
+  f_Y(y) = 1/(7 √y) + 1/7 + 1/7 = 1/(7 √y) + 2/7.
+
+(At the endpoint y=0, one can check which pieces include x=1 or x=−1, but a single point does not change the integral.)
+
+• 1 ≤ y < 2:  
+  – From piece 2:  for y > 1, f_Y^(2)(y) = 1/(14 √y), valid up to y < 4.  
+  – From piece 3:  does not apply for y > 1.  
+  – From piece 4:  still 1/7 if 0 ≤ y < 2.  
+
+Hence for 1 ≤ y < 2,
+
+  f_Y(y) = 1/(14 √y) + 1/7.
+
+• 2 ≤ y < 3:  
+  – From piece 2:  still 1/(14 √y) for y < 4.  
+  – From piece 4:  does not apply for y ≥ 2.  
+
+Hence
+
+  f_Y(y) = 1/(14 √y) for 2 ≤ y < 3.
+
+• 3 ≤ y ≤ 4:  
+  – From piece 1:  contributes 1/7, valid for y ∈ [3, 4].  
+  – From piece 2:  contributes 1/(14 √y) for y < 4.  (At y=4 from piece 2, x=−3 is not strictly in (−3,0), but piece 1 includes X=−3 exactly.  In any case, single endpoints do not affect integrals for PDFs.)  
+
+Hence for 3 ≤ y ≤ 4,
+
+  f_Y(y) = 1/7 + 1/(14 √y).
+
+• y > 4:  
+  None of the pieces produce y > 4; so f_Y(y) = 0.
+
+-------------------------------------------------------------------------------
+4) Final piecewise form of fY.
+
+Putting it all together:
+
+f_Y(y) =  
+  0,                               for y < 0 or y > 4;  
+  (1 / (7√y)) + 2/7,               for 0 < y < 1;  
+  (1 / (14√y)) + 1/7,              for 1 ≤ y < 2;  
+  1 / (14√y),                      for 2 ≤ y < 3;  
+  (1 / (14√y)) + 1/7,              for 3 ≤ y ≤ 4.
+
+It is understood that at single boundary points (like y = 0, 1, 2, 3, 4), the exact value of f_Y does not affect integration, so one may specify open/closed intervals as desired.  
+
+This fully describes the PDF of Y.  
+
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––  
+
+Answer (concise):
+
+The support of Y is [0, 4].  Its density is most conveniently expressed in piecewise form as follows:
+
+f_Y(y) =  
+  0,  for y < 0 or y > 4;  
+
+  (1/(7√y)) + 2/7,            for 0 < y < 1;  
+
+  (1/(14√y)) + 1/7,           for 1 ≤ y < 2;  
+
+  1/(14√y),                   for 2 ≤ y < 3;  
+
+  (1/(14√y)) + 1/7,           for 3 ≤ y ≤ 4.
+
+All other values are zero."
+18532,"Solution Explanation
+
+We wish to study the improper integral
+
+$$
+I(a)\;=\;\int_{0}^{\infty}\!\frac{x^{a}\,\sin x}{1+x^{2}}\;dx,
+$$
+
+where \(a\) is a real parameter.  One can show that this integral converges (as an improper integral) at least for \(\mathrm{Re}(a) > -1\).  The problem asks for two things:
+
+1. A derivation of \(I(a)\) using methods of complex analysis (in particular, the residue theorem).  
+2. The asymptotic expansion of \(I(a)\) as \(a \to +\infty\).
+
+Below is an outline of how one can carry out these steps.
+
+────────────────────────────────────────────────────────
+1) Converting the real integral into a complex contour integral
+────────────────────────────────────────────────────────
+
+A standard way to handle integrals of the form  
+∫₀^∞ [x^a sin(x) / (1+x²)] dx  
+is to express sin(x) as the imaginary part of e^(i x).  Define the complex integral
+
+  J(a)  =  ∫₀^∞ x^a e^(i x) / (1 + x²)  dx.
+
+Then clearly  
+  I(a)  =  Im[ J(a) ].
+
+Hence, if we can evaluate J(a) in closed form (or at least understand its analytic continuation), taking the imaginary part will give us I(a).
+
+Next, to evaluate J(a) by residues, one considers the function
+
+  f(z)  =  z^a e^(i z) / (1 + z²),
+
+where z^a is defined on the principal branch of the logarithm (cut along the negative real axis).  Typically, one closes the contour in the upper half-plane (so that e^(i z) decays when Im(z) > 0), and accounts for the singularity at z = i (the only pole in the upper half-plane).  
+
+────────────────────────────────────────────────────────
+2) The pole at z = i and its residue
+────────────────────────────────────────────────────────
+
+The denominator 1 + z² has simple zeros at z = ± i.  Only z = i lies in the upper half-plane.  The residue of f(z) at z = i is
+
+  Res[ f, z = i ]
+  =  lim_(z→ i)  (z - i) * [ z^a e^(i z) / (1 + z² ) ]
+  =  lim_(z→ i)  [ z^a e^(i z) / (z + i) ]
+  =  i^a e^(i·i) / (2 i)
+  =  i^a e^(-1) / (2 i).
+
+Recall that  i^a  =  exp( a log i )  with log i = i (π/2).  So
+
+  i^a = e^(i (π/2) a).
+
+By the residue theorem, if the contour integral around the large semicircle vanishes for Re(a) > -1, then
+
+  ∮ f(z)\,dz  =  2 π i × [ residue at z = i ]  
+               =  2 π i × [ i^a e^(-1) / (2 i) ]
+               =  π e^(-1) i^a.
+
+However, one must take care with the branch of z^a and with how the integral along the real axis plus the integral around the negative real axis (branch cut) add up.  A more precise analysis shows that the relation
+
+  J(a)  -  e^(i π (a+1)) overline{J(a)}  =  π e^(-1) i^a
+
+(or a rearrangement of it) must hold.  From that one matches real and imaginary parts to solve for J(a).  In principle, this yields an expression for I(a) = Im[J(a)] in closed form.
+
+One finds ultimately that
+
+  I(a)  =  Im[J(a)]
+         =  some( a )  
+  ―――――――――――――――――――――――――――――――――――――――
+
+in terms of special functions or finite sums/residues.  For practical purposes (especially for large a), it is more illuminating to look directly at the integral and derive its asymptotics.
+
+────────────────────────────────────────────────────────
+3) Asymptotic expansion as a → +∞
+────────────────────────────────────────────────────────
+
+To find the behavior of
+
+  I(a)  =  ∫₀^∞  [ x^a sin(x) / (1 + x² ) ]  dx
+
+as  a → +∞,  notice that x^a grows very large for x > 1 but is small for 0 < x < 1.  One expects the main contribution to come from moderately large x, and one can exploit the fact that for large x,
+
+  1/(1 + x²)  ≈  1/x² - 1/x⁴ + 1/x⁶ - …   (an asymptotic series)
+
+Thus,
+
+  I(a)  ≈  ∫₀^∞  x^a sin(x) [1/x² - 1/x⁴ + 1/x⁶ - … ]  dx
+         =  ∑(m=0 to ∞)  (-1)^m  ∫₀^∞ x^(a - 2(m+1)) sin(x) dx.
+
+Each integral of the form
+
+  ∫₀^∞ x^ν sin(x) dx
+
+is known explicitly:
+
+  ∫₀^∞ x^ν sin(x) dx
+  =  Γ(ν+1)  sin[ π (ν+1)/2 ],
+  provided Re(ν) > -1.
+
+Hence (letting ν = a - 2(m+1)),
+
+  ∫₀^∞ x^(a - 2(m+1)) sin(x) dx
+  =  Γ( a - 2m - 1 )  sin[ π (a - 2m - 1)/2 ].
+
+Careful tracing of signs shows that
+
+  sin[ π (a - 2m - 1)/2 ]
+  =  (−1)^{m+1}  cos( π a / 2 ),    (up to sign factors),
+
+so that each term is proportional to  Γ(a - 2m - 1)  cos( (π a)/2 ).  Summing over m ≥ 0 then gives a formal asymptotic series
+
+  I(a)  ≈  − cos( π a / 2 )  ∑(m=0 to ∞)  (−1)^m  Γ(a - 2m - 1).
+
+For large a, one can use the idea that
+
+  Γ(a - 2m - 1)
+  ≈  Γ(a)
+      / [ a (a−1) (a−2) … (a−2m) ]
+  ≈  Γ(a) / a^(2m+1),
+  to leading order in 1/a.
+
+Hence the leading part of the sum behaves like
+
+  Γ(a)  ∑(m=0 to ∞)  (−1)^m  1 / a^(2m+1).
+
+One may recognize this as an alternating series in powers of 1/a², giving an overall factor ~ 1/a in the leading term.  In fact, the net leading contribution is
+
+  I(a)  ~  − cos( π a / 2 )  ( Γ(a) / a ).
+
+That is the simplest closed‐form statement of the main asymptotic term.  Often one then applies Stirling’s approximation to Γ(a):
+
+  Γ(a)  ~  √(2 π)  a^( a − 1/2 )  e^(−a),
+
+so
+
+  Γ(a)/a  ~  √(2π)  a^( a − 3/2 )  e^(−a ),
+
+and thus
+
+  I(a)  ~  − √(2π)  a^( a − 3/2 )  e^(−a )
+           cos( (π a)/2 )
+      as  a → +∞.
+
+Higher‐order corrections in 1/a can be systematically included by continuing the expansion of 1/(1 + x²) and expanding each Gamma‐function ratio in powers of 1/a.
+
+────────────────────────────────────────────────────────
+4) Final statement of the large‐a asymptotics
+────────────────────────────────────────────────────────
+
+Putting it succinctly:
+
+• A concise leading‐order form (before applying Stirling) is  
+  I(a)  ≈  − ( Γ(a)/a )  cos( (π a)/2 ),  
+  as  a → +∞.
+
+• After Stirling’s approximation on Γ(a), one obtains  
+  I(a)  ≈  − √(2π)\,a^(a − 3/2)\,e^(−a)\,\cos( (π a)/2 )  
+  ( 1 + O(1/a) ).
+
+Hence the integral oscillates (due to cos(π a / 2)) and its overall amplitude is governed by the large‐a behavior of the Gamma function times e^(−a).
+
+────────────────────────────────────────────────────────
+Answer Summary
+────────────────────────────────────────────────────────
+
+1) By considering  
+   J(a) = ∫₀^∞ [ x^a e^(i x) / (1 + x² ) ] dx  
+   and analyzing it via a contour in the upper half‐plane, one finds that the sole contribution comes from the simple pole at z = i.  Matching that to the integral on the real axis (and accounting carefully for the branch cut of z^a) leads, after taking imaginary parts, to I(a).
+
+2) As a → +∞, the integral is dominated by large x.  One obtains the leading asymptotic form
+
+   I(a)  ∼  − cos( (π a)/2 ) × Γ(a)/a,
+
+   and, more explicitly, using Stirling’s approximation,
+
+   I(a)
+   ∼  − √(2π)\,a^(a − 3/2)\, e^(−a)\,
+       cos( (π a)/2 ),
+   as  a → +∞.
+
+This exhibits both an exponentially small factor e^(−a) × a^(a−3/2) (the usual Gamma‐type growth/decay) and an oscillatory factor cos( (π a)/2 )."
+18670,"Below is one systematic way to arrive at a suitable recurrence.  We shall denote by P(k, T) the probability that the prisoner, starting in cell k (on an N‑cell circular dungeon) at time 0, manages to find a single randomly placed exit within T moves (steps).  In particular, the quantity of ultimate interest is P(1, T), since the prisoner starts in cell 1.
+
+────────────────────────────────────────────────────────
+1)  Setup and notation
+────────────────────────────────────────────────────────
+
+• There are N cells, labeled 1 through N in a circle.  
+• The exit is placed uniformly at random in exactly one of these N cells (probability 1/N for each cell).  
+• At each integer time t ≥ 1, the prisoner moves from its current cell k to one of the two adjacent cells (k−1 or k+1, modulo N) with probability 1/2 each.
+
+We want:  
+P(k, T) = Probability that, starting in cell k at t = 0, the prisoner finds the (randomly placed) exit in at most T steps.
+
+Note that “finding” the exit simply means that the walker lands in the cell that actually contains the exit, at or before time T.  Because the exit’s location is unknown but uniformly distributed among all cells, we must account for that randomness in deriving the probabilities P(k, T).
+
+────────────────────────────────────────────────────────
+2)  Base case at T = 0
+────────────────────────────────────────────────────────
+
+At time 0 (before any moves), the only chance to “find” the exit is if the exit happens to be in the very cell (k) where the prisoner starts.  Since the exit is equally likely to be in any of the N cells, the probability that it is in cell k is 1/N.  Hence,
+
+P(k, 0) = 1/N.
+
+That is, if the prisoner is allowed zero steps, they succeed only if the exit happens to be in their starting cell.
+
+────────────────────────────────────────────────────────
+3)  Deriving the recurrence for T ≥ 1
+────────────────────────────────────────────────────────
+
+Consider P(k, T+1).  At time 0 the prisoner is in cell k.  Two events can lead to success (finding the exit) within T+1 steps:
+
+(a) The exit is in cell k itself.  
+    In that case, the prisoner finds it immediately—at time 0, with probability 1/N.
+
+(b) The exit is not in cell k (probability (N−1)/N).  
+    Then the prisoner makes one step (at t = 1).  
+    – With probability 1/2 he goes to cell k−1 (modulo N).  
+    – With probability 1/2 he goes to cell k+1 (modulo N).  
+
+    Once in the new cell, say k−1, the probability that he eventually finds the exit in at most T more steps (so by the overall time T+1) is P(k−1, T).  
+    Likewise, going to k+1 yields probability P(k+1, T) of success in the remaining T steps.
+
+Putting it all together:
+
+1) With probability 1/N the exit is right where we start, so we succeed immediately.  
+2) Otherwise, with probability (N−1)/N we have not found it at time 0, and we then move.  
+
+Hence,
+
+P(k, T+1)
+  =  (1/N)
+     + ( (N−1)/N ) ×
+       [ (1/2) P(k−1, T) + (1/2) P(k+1, T) ].
+
+In a more compact form:
+
+P(k, T+1)
+  =  1/N
+     + (N−1)/N × ½ [ P(k−1, T) + P(k+1, T) ].
+
+Because the dungeon cells form a ring, the indices k−1 and k+1 are taken modulo N (so that if k = 1, then k−1 = N, etc.).
+
+────────────────────────────────────────────────────────
+4)  Final recurrence and boundary conditions
+────────────────────────────────────────────────────────
+
+Thus, for each k = 1, 2, …, N and integer T ≥ 0,
+
+(1)  P(k, 0) = 1/N,
+
+(2)  For T ≥ 0,
+     P(k, T+1)
+       =  1/N
+         + (N−1)/N × ½ [ P(k−1, T) + P(k+1, T) ].
+
+Since the prisoner actually starts in cell 1, the probability of interest is P(1, T), and it obeys exactly the same recurrence, supplemented by
+
+P(1, 0) = 1/N.
+
+One can then solve this system (there are N such equations for k = 1,…,N, reflecting the circular geometry), or at least iterate it numerically, to compute P(1, T).
+
+────────────────────────────────────────────────────────
+5)  Interpretation
+────────────────────────────────────────────────────────
+
+• The term 1/N captures the chance that “we have already succeeded on the spot” (i.e., the exit was in our current cell at the beginning of the time interval under consideration).  
+• The factor (N−1)/N then says “otherwise (the exit was not in our current cell), we proceed to move with probability 1/2 in each direction,” and from that new cell we have probability P(k−1, T) or P(k+1, T) of success in T remaining steps.  
+
+Thus the recurrence succinctly encodes both the uniform randomness of the exit’s location and the fact that the walk moves to adjacent cells with probability 1/2 each.  
+
+────────────────────────────────────────────────────────
+6)  Summary
+────────────────────────────────────────────────────────
+
+A natural recurrence relation for the probability that the prisoner (starting in cell k) finds a single uniformly placed exit in at most T steps on an N‑cell ring is:
+
+• Initial condition (T = 0):
+  P(k, 0) = 1/N.
+
+• Recurrence for T ≥ 0:
+  P(k, T+1)  =  (1/N)
+               + (N−1)/N × ½ [ P(k−1, T) + P(k+1, T) ].
+
+In particular, setting k = 1 gives the desired probability from the specific start cell 1."
+18479,"Solution Explanation:
+
+Let z be a nonzero complex number.  Write z in polar form as z = r e^(iθ), where r = |z| > 0 and θ is the argument of z.  
+Then  
+• z² = r² e^(2iθ),  
+• 1/z² = 1/(r² e^(2iθ)) = (1/r²) e^(-2iθ),  
+• z̅ = r e^(-iθ) ⇒ (z̅)² = r² e^(-2iθ).  
+
+Hence  
+( z̅ )² + 1/z² = r² e^(-2iθ) + (1/r²) e^(-2iθ)  
+= e^(-2iθ) ( r² + 1/r² ).  
+
+Set a := r² + 1/r².  Then  
+( z̅ )² + 1/z² = a e^(-2iθ).  
+
+In rectangular form, e^(-2iθ) = cos(-2θ) + i sin(-2θ) = cos(2θ) - i sin(2θ).  
+Thus  
+( z̅ )² + 1/z² = a [cos(2θ) - i sin(2θ)]  
+= a cos(2θ)  -  i [a sin(2θ)].  
+
+We are told that both the real and imaginary parts are integers.  Denote  
+M := a cos(2θ),    N := -a sin(2θ),  
+where M, N ∈ ℤ.  Observe then that  
+M² + N² = a² [cos²(2θ) + sin²(2θ)] = a².  
+
+Hence a² = M² + N², i.e. a² is the sum of the squares of two integers.  Since a = r² + 1/r² ≥ 2 for r > 0, it follows that  
+a = √(M² + N²) ≥ 2,  
+so M² + N² ≥ 4.
+
+Consequently, we require
+
+1) M, N ∈ ℤ,   M² + N² ≥ 4,  
+2) a = √(M² + N²) ≥ 2,  
+3) a = r² + 1/r².
+
+In other words, a² = M² + N² must be an integer ≥ 4 that can be represented as the sum of two integer squares.  
+
+Once one picks such an a ≥ 2, the condition r² + 1/r² = a determines r.  Indeed,
+
+r² + 1/r² = a  
+⟹ r⁴ - a r² + 1 = 0.  
+
+Solving the quadratic in r²:
+
+r² = [a ± √(a² - 4)] / 2.  
+
+Because a ≥ 2, one has a² - 4 ≥ 0, so both solutions for r² are nonnegative.  Both give positive values for r once we take the positive square root of r².  Thus for each admissible a = √(M² + N²) ≥ 2, there are two possible positive values of r (one greater than or equal to 1, the other less than or equal to 1).
+
+Conclusion on |z|:
+
+The possible values of |z| = r are precisely those positive real numbers r for which  
+r² + 1/r² = √(M² + N²)  
+with M, N ∈ ℤ and M² + N² ≥ 4.  
+
+Equivalently, let k = M² + N² be any integer ≥ 4 that is a sum of two squares.  Then  
+a = √k ≥ 2,  
+and the corresponding r must satisfy r² + 1/r² = a.  Hence the set of all possible moduli |z| is
+
+r = √[ (a ± √(a² - 4)) / 2 ],
+
+where a = √k and k = M² + N² ≥ 4.  In particular:  
+• If k = 4, then a = 2, and r² = (2 ± 0)/2 = 1 so r = 1.  
+• If k = 5, then a = √5, and r² = (√5 ± 1)/2, giving two distinct positive values for r, etc.
+
+Thus there are infinitely many possible values of r = |z|, one (or two) for each integer k ≥ 4 that is a sum of two squares."
+18482,"Solution Explanation:
+
+First, let us restate the problem carefully in “game” form:
+
+• Mr. Fat chooses three nonzero real numbers (call them a, b, c).  
+• Mr. Taf then chooses an arrangement of two of those numbers to serve as the coefficients b and c in the quadratic equation x² + b x + c = 0.  
+• Mr. Fat “wins” if (and only if) the resulting quadratic equation has two distinct rational solutions. Otherwise, Mr. Taf “wins.”
+
+Because Mr. Taf is allowed to pick which of the three numbers becomes b and which becomes c, Mr. Fat can only win if every possible way of choosing b and c from {a, b, c} yields two distinct rational solutions. In other words, Mr. Fat would need to pick a, b, c so that no matter how Mr. Taf arranges them as (b, c), the quadratic x² + b x + c has two distinct rational solutions.
+
+────────────────────────────────────────────────────────
+1.  WHEN DOES x² + b x + c HAVE TWO DISTINCT RATIONAL SOLUTIONS?
+────────────────────────────────────────────────────────
+
+A monic quadratic x² + b x + c = 0 has two distinct rational solutions precisely when its discriminant b² − 4c is:
+
+1) Positive (so that there are two distinct real solutions), and  
+2) A perfect square (so that the square root is rational, making the solutions rational).
+
+Hence Mr. Fat would need b² − 4c > 0 and b² − 4c to be a perfect square for every choice of (b, c) from his three numbers.
+
+─────────────────────────────────────────────────────────────────
+2.  WHY MR. FAT CANNOT FORCE ALL ARRANGEMENTS TO YIELD A PERFECT SQUARE
+─────────────────────────────────────────────────────────────────
+
+To see that Mr. Fat cannot guarantee this in all possible arrangements, consider:
+
+• Mr. Fat picks any three real numbers a, b, c.  
+• There are several ways Mr. Taf can form (b, c) out of {a, b, c}; in fact, he can choose any distinct pair of the three numbers, in either order, as (b, c).  
+
+For Mr. Fat to win no matter what, all those possible pairs (b, c) would have to make b² − 4c a positive perfect square. In practice, this is far too restrictive. In particular:
+
+• If the three numbers were equal (e.g., all 1), then b² − 4c = 1 − 4 = −3 (negative), so no real (hence no rational) solutions.  
+• If the three numbers differ, typically at least one choice of (b, c) among them will fail to make b² − 4c a positive perfect square (it might be negative or a non-square).  
+
+Hence it is impossible for Mr. Fat to pick three numbers that, under every possible pairing for (b, c), yield b² − 4c as a positive perfect square.
+
+Therefore, for whatever three numbers Mr. Fat chooses, Mr. Taf can always select an arrangement (b, c) that makes b² − 4c either nonpositive or a non-square, thus spoiling the chances of having two distinct rational solutions.
+
+────────────────────
+3.  CONCLUSION
+────────────────────
+
+Because Mr. Taf can always respond to Mr. Fat’s choice of three numbers with an arrangement (b, c) that does not yield two distinct rational solutions, Mr. Fat can never force a win. In other words:
+
+• Mr. Taf has a winning strategy. 
+
+No matter what three nonzero real numbers are chosen by Mr. Fat, Mr. Taf can arrange them so that the resulting quadratic x² + b x + c = 0 fails to have two distinct rational solutions."

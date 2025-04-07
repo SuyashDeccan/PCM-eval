@@ -1,0 +1,2362 @@
+Query Id,Domain,Sub Domain,User Query,User Response (Ground Truth),,Gemini 2.0 Flash Thinking Experimental,,gpt-4o Response,,o1-preview,,o3-mini-high,,DeepSeek V3,
+,,,,Response,Answer,Response,Answer,Response,Answer,Response,Answer,Response,Answer,Response,Answer
+18305,Calculus,"Differential equations , Dynamical systems","Consider the following systems $$ \dot{x_{1}} - \dot{y_{1}} = (x_{1} - y_{1}) - \nu_{1} (\cos{x_{1}} - \sin{x_{1}}), ~~~~\text{with} \quad \dot{x_{1}} = 1 \quad(1) $$ and $$ \dot{x_{2}} - \dot{y_{2}} = (x_{2} - y_{2}) - \nu_{2} (\sin{(-x_{2})} + \cos{(-x_{2})}), \text{with} \quad \dot{x_{2}} = 1 \quad(2) $$ Now consider a scenario where the $x_{1,2}$- components from both systems synchronize whenever system (1) sends signals to the system (2) through the linear coupling term in the form $f(x_{2} - x_{1})$ and coupling strength $\Psi$. If $\nu = \nu_2 - \nu_{1}$ measures the order of mismatch, then what are the equations of the invariant manifold for systems (1) and (2) in the ${R}^3$- plane?","By using constraints ${\dot{x}_{1,2}}=1$, the system can be reduced to $$ \dot{y_{1}} = 1 - (x_{1} - y_{1}) + \nu_{1} (\cos{x_{1}} - \sin{x_{1}}), \text{with} \quad \dot{x_{1}} = 1 \quad(1) $$ and $$ \dot{y_{2}} = 1 - (x_{2} - y_{2}) - \nu_{2} (-\sin{(-x_{2})} -\cos{(-x_{2})} ), \text{with} \quad \dot{x_{2}} = 1. \quad(2) $$Or rewrite system (1) and (2) as $$ \dot{x_{1}} = 1, \quad \dot{y_{1}} = 1 - (x_{1} - y_{1}) + \nu_{1} (\cos{x_{1}} - \sin{x_{1}}) \quad(3) $$ and $$ \dot{x_{2}} = 1 , \quad \dot{y_{2}} = 1 - (x_{2} - y_{2}) + \nu_{2} (\cos{x_{2}} - \sin{x_{2}}) \tag{4} $$ by using the odd and even property of $\sin$ and $\cos$ functions, i.e $\sin{(-x_{2})} = -\sin{x_{2}}$ and $\cos{(-x_{2})} = \cos(x_{2})$. Further, it is given that $x$-components from both systems synchronize whenever the system $(3)$ sends signals to the system $(4)$ through the linear coupling term $(x_{1} - x_{2})$ and coupling strength $\Psi$. Thus, the two-patch coupled system under this coupling scheme takes the form as $$ \begin{array}{ll} \dot{x_{1}} & = 1 \\ \dot{y_{1}} & = 1 - (x_{1} - y_{1}) + \nu_{1} (\cos{x_{1}} - \sin{x_{1}}) \\ \dot{x_{2}} & = 1 + \psi (x_{1}-x_{2}) \\ \dot{y_{2}} & = 1 - (x_{2} - y_{2}) + \nu_{2} (\cos{x_{2}} - \sin{x_{2}}) \tag{5} \end{array} $$ where $\psi$ is the coupling strength and $(x_{1} - x_{2})$ defines the linear function of coupling scheme. Since $$ \dot{x_{1,2}} = 1 \implies x_{1,2} = t + C_{1,2} $$ Given the context, we can consider $x_{1,2}$ components to synchronize identically for large enough $\Psi$. Therefore, $$ x_{1} \approx x_{2} \text( say ~x) $$ Next, synchronization of the $y_{1,2}$ component depends on the choice of $\nu_{1,2}$. Now, let's analyze the $y_{1}$ component first.
+To determine $y_{1} = \Phi_1(x)$, consider: $$ \begin{array}{ll} \dot{x} & = 1 \\ \dot{y_{1}} & = 1 - (x - y_{1}) + \nu_{1} (\cos{x} - \sin{x}) \quad(7) \end{array} $$ Rewriting the second equation of system $(7)$ as: $$ \Phi_1(x)'_x \cdot \dot{x} = 1 - (x - \Phi_1(x)) + \nu_{1} (\cos{x} - \sin{x}) $$ Since $\dot{x} = 1$: $$ \Phi_1(x)'_x = 1 - (x - \Phi_1(x)) + \nu_{1} (\cos{x} - \sin{x}) $$ By using the MATLAB code, we can find the solution to the equation $(7)$ as: $$ \Phi_1(x) = Ce^{x} + \nu_{1} \sin{x} + x $$ For the invariant manifold, set $C = 0$: $$ \Phi_1(x) = \nu_{1} \sin{x} + x $$ Similarly, for the second oscillator, we will have $y_{2} = \Phi_2(x)$: $$ \Phi_2(x) = \nu_{2} \sin{x} + x $$ Let us compare $y_{1}$ and $y_{2}$. From the two solutions: $$ \begin{array}{ll} y_1 = \nu_{1} \sin{x} + x \\ y_2 = \nu_{2} \sin{x} + x \end{array} $$ Subtracting $y_1$ from $y_2$: $$ y_2 - y_1 = \nu_{2} \sin{x} + x - \nu_{1} \sin{x} - x $$ Simplifying: $$ y_2 - y_1 = (\nu_{2} - \nu_{1}) \sin{x} $$ Thus: $$ y_2 = y_1 + \nu \sin{x}, \quad \text{where } \nu = \nu_{2} - \nu_{1}.$$ Thus, the equations of the invariant manifold $$ \begin{array}{ll} {x_{2}} & = x_{1} \\ {y_{2}} & = y_{1} + \nu \sin{x_{1}} \quad(8) \end{array} $$",$$ \begin{array}{ll} {x_{2}} & = x_{1} \\ {y_{2}} & = y_{1} + \nu \sin{x_{1}} \quad(8) \end{array} $$,"Let us assume that the synchronization of $x_{1,2}$- components implies that we consider the dynamics on the synchronized manifold $x_1 = x_2 = x$.
+Under this assumption, the systems become:
+$$ \dot{x} = 1 $$
+$$ \dot{x} - \dot{y_{1}} = (x - y_{1}) - \nu_{1} (\cos{x} - \sin{x}) $$
+$$ \dot{x} - \dot{y_{2}} = (x - y_{2}) - \nu_{2} (\sin{(-x)} + \cos{(-x)}) + \Psi (x - x) $$
+Let $z_1 = x - y_1$ and $z_2 = x - y_2$. Then $\dot{z_1} = \dot{x} - \dot{y_1}$ and $\dot{z_2} = \dot{x} - \dot{y_2}$.
+The system of equations in terms of $z_1, z_2, x$ becomes:
+$$ \dot{z_{1}} = z_{1} - \nu_{1} (\cos{x} - \sin{x}) \quad (3) $$
+$$ \dot{z_{2}} = z_{2} - \nu_{2} (\cos{x} - \sin{x}) \quad (4) $$
+$$ \dot{x} = 1 \quad (5) $$
+We are looking for an invariant manifold in the $R^3$ space of $(z_1, z_2, x)$.
+Let us consider the difference between $z_2$ and $z_1$, $w = z_2 - z_1$.
+$$ \dot{w} = \dot{z_2} - \dot{z_1} = [z_{2} - \nu_{2} (\cos{x} - \sin{x})] - [z_{1} - \nu_{1} (\cos{x} - \sin{x})] $$
+$$ \dot{w} = (z_2 - z_1) - (\nu_{2} - \nu_{1}) (\cos{x} - \sin{x}) $$
+$$ \dot{w} = w - \nu (\cos{x} - \sin{x}) \quad (6) $$
+where $\nu = \nu_2 - \nu_1$.
+For an invariant manifold, we require that if we start on the manifold, we remain on it. Let's assume the invariant manifold is given by the relation $G(z_1, z_2, x) = 0$.
+Let's test if a manifold of the form $z_2 - z_1 = f(x)$ is invariant, i.e., $w = f(x)$.
+If $w = f(x)$, then $\dot{w} = f'(x) \dot{x} = f'(x)$.
+From equation (6), $\dot{w} = w - \nu (\cos{x} - \sin{x}) = f(x) - \nu (\cos{x} - \sin{x})$.
+Equating the two expressions for $\dot{w}$, we get $f'(x) = f(x) - \nu (\cos{x} - \sin{x})$, or $f'(x) - f(x) = - \nu (\cos{x} - \sin{x})$.
+This is a first-order linear ODE for $f(x)$. We have already solved this type of equation when we found solutions for $w(t)$ and $z_1(t)$. The particular solution is $f_p(x) = -\nu \sin{x}$.
+So, $f(x) = C e^x - \nu \sin{x}$. For an invariant manifold, we are looking for a fixed relation, so we should consider the particular solution without the exponential term for long-term behavior in a bounded manifold context if it exists. However, here we consider the equation itself as the invariant manifold. If we take the condition $\dot{w} = 0$ for an equilibrium manifold, we would get $w - \nu (\cos{x} - \sin{x}) = 0$, so $w = \nu (\cos{x} - \sin{x})$. Thus, $z_2 - z_1 = \nu (\cos{x} - \sin{x})$.
+The equation of the invariant manifold in the $R^3$-plane $(z_1, z_2, x)$ is given by:
+$$ z_{2} - z_{1} = \nu (\cos{x} - \sin{x}) $$
+Replacing $z_1 = x - y_1, z_2 = x - y_2, x = x_1$ (since we assumed $x = x_1 = x_2$), we get
+$$ (x_2 - y_2) - (x_1 - y_1) = \nu (\cos{x_1} - \sin{x_1}) $$
+Since we assumed $x_1 = x_2 = x$, we have
+$$ (x - y_2) - (x - y_1) = \nu (\cos{x_1} - \sin{x_1}) $$
+$$ y_1 - y_2 = \nu (\cos{x_1} - \sin{x_1}) $$
+$$ y_2 = y_1 - \nu (\cos{x_1} - \sin{x_1}) $$
+Using variables $(z_1, z_2, x_1)$, the equation of the invariant manifold is $z_2 - z_1 = \nu (\cos x_1 - \sin x_1)$.
+Final Answer: The final answer is $\boxed{z_{2} - z_{1} = \nu (\cos{x_{1}} - \sin{x_{1}})}$",$\boxed{z_{2} - z_{1} = \nu (\cos{x_{1}} - \sin{x_{1}})}$,"To derive the equations of the invariant manifold in the $\mathbb{R}^3$ plane for the given systems, we first consider the dynamics and coupling effects between the two systems. The aim is to find a condition where $x_1$ and $x_2$ synchronize, which induces an invariant manifold in a higher-dimensional space.
+### Given Systems
+1. **System (1):**
+$$
+\dot{x}_{1} = 1
+$$
+$$
+\dot{x}_{1} - \dot{y}_{1} = (x_{1} - y_{1}) - \nu_{1} (\cos{x_{1}} - \sin{x_{1}}) $$
+2. **System (2):**
+$$
+\dot{x}_{2} = 1
+$$
+$$
+\dot{x}_{2} - \dot{y}_{2} = (x_{2} - y_{2}) - \nu_{2} (\sin{(-x_{2})} + \cos{(-x_{2})}) $$
+### Coupling Condition
+The systems are coupled by a linear term $f(x_2 - x_1)$ with coupling strength $\Psi$. When the $x_{1,2}$-components synchronize, we expect $x_2 = x_1 + \Phi$ for some phase difference $\Phi$. Substituting $x_2 = x_1 + \Phi$ into the coupling term yields $f(x_2 - x_1) = f(\Phi)$.
+### Invariant Manifold Derivation
+To find the invariant manifold, consider the mismatch $\nu = \nu_2 - \nu_1$. For synchronization and coupling implications, we look into aligning phases:
+#### Aligning the Systems:
+We have:
+- The dynamics of $y_1$ and $y_2$ must also align when $x_1$ and $x_2$ synchronize.
+- This imposes $\dot{y}_{2} = \dot{y}_{1}$ when $x_2 = x_1 + \Phi$.
+### Derivation Steps:
+- From the form $x_2 = x_1 + \Phi$, differentiate to coincide with $dot{x}_{1} = \dot{x}_{2} = 1$: $$ \frac{d}{dt}(x_2 - x_1) = \frac{d}{dt}(\Phi) = 0 $$ indicating $\Phi$ is constant.
+- Examine $\dot{y}_1 = \dot{y}_2$:
+$$
+\dot{x}_{1} - \dot{y}_{1} = (x_{1} - y_{1}) - \nu_{1} (\cos{x_{1}} - \sin{x_{1}}) $$
+$$
+\dot{x}_{2} - \dot{y}_{2} = (x_{2} - y_{2}) - \nu_{2} (\sin{(-x_{2})} + \cos{(-x_{2})}) $$
+- If we substitute $x_2 = x_1 + \Phi$ into system (2), we find:
+$$
+1 - \dot{y}_{2} = (x_{1} + \Phi - y_{2}) - \nu_{2} (\sin{(-x_{1} - \Phi)} + \cos{(-x_{1} - \Phi)})
+$$
+### Equations of the Invariant Manifold:
+The equations that represent the invariant manifold can be expressed in terms of $x_1$, $x_1 + \Phi$, and $y_1, y_2$ alignments under the influence of the coupling $\Psi$ and mismatch $\nu$:
+- $$x_2 = x_1 + \Phi$$
+- $$\Phi = f(x_2 - x_1)$$ regulated by $\Psi$.
+The invariance comes from the systems aligning driven by these mutual conditions with $\nu$: Thus, it results in a relationship involving:
+- $y_{2} = y_{1} + a\nu + b\Psi$
+where $a, b$ are coefficients intrinsic to the coupling and mismatch effects in realignment.
+The detailed values of $a, b$ depend on the specific nature of $f(\cdot)$ and coupling configurations not explicitly stated in your query.",$y_{2} = y_{1} + a\nu + b\Psi$,"To solve this problem, let's start by examining the given systems and identifying how the coupling affects their dynamics.
+**Given Systems:**
+System (1):
+\[
+\dot{x}_{1} - \dot{y}_{1} = (x_{1} - y_{1}) - \nu_{1} (\cos{x_{1}} - \sin{x_{1}}), \quad \dot{x}_{1} = 1
+\]
+System (2):
+\[
+\dot{x}_{2} - \dot{y}_{2} = (x_{2} - y_{2}) - \nu_{2} (\cos{x_{2}} - \sin{x_{2}}), \quad \dot{x}_{2} = 1
+\]
+**Incorporating Coupling:**
+The problem mentions that system (1) sends signals to system (2) through a coupling term \( f(x_{2} - x_{1}) \) with coupling strength \( \Psi \). This coupling affects system (2), modifying its dynamics. Since \( \dot{x}_{1} = \dot{x}_{2} = 1 \) without coupling, and because the coupling is based on \( x \) components, it makes sense that the coupling affects the \( \dot{x}_{2} \) equation.
+Therefore, system (2)'s equations, including the coupling, become:
+\[
+\dot{x}_{2} = 1 + \Psi f(x_{2} - x_{1})
+\]
+\[
+\dot{x}_{2} - \dot{y}_{2} = (x_{2} - y_{2}) - \nu_{2} (\cos{x_{2}} - \sin{x_{2}})
+\]
+**Difference Variables:**
+Define the differences between the systems:
+\[
+\delta x = x_{2} - x_{1}, \quad \delta y = y_{2} - y_{1}
+\]
+\[
+\delta \dot{x} = \dot{x}_{2} - \dot{x}_{1}
+\]
+Since \( \dot{x}_{1} = 1 \), we have:
+\[
+\delta \dot{x} = \Psi f(\delta x)
+\]
+**Synchronization Manifold:**
+On the synchronization manifold, \( \delta x = 0 \).
+**Dynamics on the Synchronization Manifold:**
+When \( x_{1} = x_{2} = x \), the equations simplify, and we focus on the difference in the \( y \) variables. Using the equations for \( \dot{y}_{1} \) and \( \dot{y}_{2} \) from both systems, we find:
+\[
+\delta \dot{y} = \delta y - \nu (\cos{x} - \sin{x}), \quad \nu = \nu_{2} - \nu_{1}
+\]
+**Solving for \( \delta y \):**
+This is a linear nonhomogeneous differential equation. We solve it using an integrating factor \( \mu(t) = e^{-t} \):
+\[
+e^{-t} \delta \dot{y} - e^{-t} \delta y = -\nu e^{-t} (\cos{x} - \sin{x})
+\]
+\[
+\frac{d}{dt} [ e^{-t} \delta y ] = -\nu e^{-t} (\cos{x} - \sin{x})
+\]
+\[
+e^{-t} \delta y = -\nu \int e^{-t} (\cos{x} - \sin{x}) dt + C
+\]
+Because \( x = t + x_{0} \), we compute the integral and find:
+\[
+\delta y = \nu \sin{x}
+\]
+**Invariant Manifold Equations:**
+Therefore, the invariant manifold is defined by:
+\[
+x_{2} = x_{1}
+\]
+\[
+y_{2} = y_{1} + (\nu_{2} - \nu_{1}) \sin{x_{1}}
+\]
+These equations define a manifold in \( \mathbb{R}^3 \), where the systems are synchronized in the \( x \)-component, and the difference in \( y \) depends on \( \nu \) and \( x \).
+**Answer:**
+An explicit description: on the manifold where x₂ = x₁ and y₂ − y₁ = (ν₂ − ν₁) · sin x₁",x₂ = x₁ and y₂ − y₁ = (ν₂ − ν₁) · sin x₁,"We will show that each system has a unique invariant (or “slaving”) relation between its x– and y–variables. In what follows the index i means either 1 or 2.
+Step 1. Write the Error Equation
+For each system define
+zᵢ = xᵢ – yᵢ.
+Then the given equations can be written as
+ẋᵢ – ẏᵢ = zᵢ – νᵢ (Φ(xᵢ)),
+where
+for system (1): Φ(x₁) = cos x₁ – sin x₁,
+for system (2): Since sin(–x₂) = – sin x₂ and cos(–x₂) = cos x₂, we have
+Φ(x₂) = cos x₂ – sin x₂.
+Also note that we are told ẋ₁ = 1 and ẋ₂ = 1, so in both cases xᵢ increases uniformly. (In what follows we use “dot” to indicate differentiation with respect to time t.)
+Thus, in both cases we have
+ẋᵢ = 1 and ẋᵢ – ẏᵢ = zᵢ – νᵢ (cos xᵢ – sin xᵢ).
+Step 2. Express the Invariant Relation as a Differential Equation
+Since xᵢ is a “time‐clock” (ẋᵢ = 1), we can take xᵢ as the independent variable and write
+dzᵢ/dxᵢ = zᵢ – νᵢ (cos xᵢ – sin xᵢ).
+This is a linear differential equation for zᵢ(xᵢ).
+Step 3. Find the Bounded (Invariant) Solution
+The equation
+dz/dx – z = –νᵢ (cos x – sin x)
+has the integrating factor e^(–x). Multiplying through by e^(–x) gives
+d/dx (e^(–x)z) = –νᵢ e^(–x)(cos x – sin x).
+We now compute the integral
+I = ∫ e^(–x)(cos x – sin x) dx.
+A short calculation shows that
+I = e^(–x) sin x (up to an arbitrary constant).
+Thus, we have
+e^(–x) z = –νᵢ e^(–x) sin x + Constant.
+In order to get the unique invariant (or attracting) solution we choose the constant to be zero so that no exponentially growing homogeneous part is present. (This is the usual “slaving” condition when one looks for a function that everywhere obeys the relation between the fast and slow variables.) Hence,
+z = –νᵢ sin x.
+Recalling that z = x – y, we immediately have the invariant relation for system i:
+xᵢ – yᵢ = –νᵢ sin xᵢ or yᵢ = xᵢ + νᵢ sin xᵢ.
+Step 4. Putting the Two Systems Together
+Now suppose that, by means of the linear coupling f(x₂ – x₁) with coupling strength Ψ in system (2), the x–components are forced to synchronize, so that
+x₁ = x₂ = x.
+Then the invariant manifolds for the two systems become
+System (1): y₁ = x + ν₁ sin x,
+System (2): y₂ = x + ν₂ sin x.
+It is convenient to define the mismatch parameter
+ν = ν₂ – ν₁.
+Then the invariant relation for the systems in the three–dimensional (x, y₁, y₂) space can be written as
+y₁ = x + ν₁ sin x and y₂ = y₁ + ν sin x.
+That is, the three–dimensional invariant manifold is given by
+{ (x, y₁, y₂) ∈ ℝ³ : y₁ = x + ν₁ sin x and y₂ = x + (ν₁ + ν) sin x }.
+Any answer equivalent to the above is correct.
+Summary of the Answer
+• For system (1): y₁ = x₁ + ν₁ sin x₁.
+• For system (2): y₂ = x₂ + ν₂ sin x₂.
+• After synchronization (x₁ = x₂ = x) and writing ν = ν₂ – ν₁, we have
+y₂ = y₁ + ν sin x.
+This set of equations describes the invariant manifold in ℝ³.
+Any answer equivalent to the one above is acceptable.","• For system (1): y₁ = x₁ + ν₁ sin x₁.
+• For system (2): y₂ = x₂ + ν₂ sin x₂.
+• After synchronization (x₁ = x₂ = x) and writing ν = ν₂ – ν₁, we have
+y₂ = y₁ + ν sin x.","To analyze the invariant manifold for systems (1) and (2), we first rewrite the given systems with the provided conditions and coupling term.
+### System (1)
+Given:
+$$ \dot{x_{1}} - \dot{y_{1}} = (x_{1} - y_{1}) - \nu_{1} (\cos{x_{1}} - \sin{x_{1}}), \quad \text{with} \quad \dot{x_{1}} = 1 $$
+Substituting $\dot{x_{1}} = 1$:
+$$ 1 - \dot{y_{1}} = (x_{1} - y_{1}) - \nu_{1} (\cos{x_{1}} - \sin{x_{1}}) $$
+Rearranging for $\dot{y_{1}}$:
+$$ \dot{y_{1}} = 1 - (x_{1} - y_{1}) + \nu_{1} (\cos{x_{1}} - \sin{x_{1}}) $$
+### System (2)
+Given:
+$$ \dot{x_{2}} - \dot{y_{2}} = (x_{2} - y_{2}) - \nu_{2} (\sin{(-x_{2})} + \cos{(-x_{2})}), \quad \text{with} \quad \dot{x_{2}} = 1 $$
+Using trigonometric identities, $\sin{(-x_{2})} = -\sin{x_{2}}$ and $\cos{(-x_{2})} = \cos{x_{2}}$, we simplify:
+$$ \dot{x_{2}} - \dot{y_{2}} = (x_{2} - y_{2}) - \nu_{2} (-\sin{x_{2}} + \cos{x_{2}}) $$
+Substituting $\dot{x_{2}} = 1$:
+$$ 1 - \dot{y_{2}} = (x_{2} - y_{2}) - \nu_{2} (\cos{x_{2}} - \sin{x_{2}}) $$
+Rearranging for $\dot{y_{2}}$:
+$$ \dot{y_{2}} = 1 - (x_{2} - y_{2}) + \nu_{2} (\cos{x_{2}} - \sin{x_{2}}) $$
+### Coupling Term
+System (1) sends signals to system (2) through the linear coupling term:
+$$ f(x_{2} - x_{1}) = \Psi (x_{2} - x_{1}) $$
+Here, $\Psi$ is the coupling strength.
+### Mismatch Parameter
+Let $\nu = \nu_{2} - \nu_{1}$ measure the order of mismatch.
+### Invariant Manifold in $\mathbb{R}^3$
+To find the invariant manifold, we assume synchronization of the $x_{1,2}$-components, i.e., $x_{1} = x_{2} = x$. Substituting this into the equations for $\dot{y_{1}}$ and $\dot{y_{2}}$, we get:
+For $\dot{y_{1}}$:
+$$ \dot{y_{1}} = 1 - (x - y_{1}) + \nu_{1} (\cos{x} - \sin{x}) $$
+For $\dot{y_{2}}$:
+$$ \dot{y_{2}} = 1 - (x - y_{2}) + \nu_{2} (\cos{x} - \sin{x}) $$
+The invariant manifold is defined by the conditions $y_{1} = y_{2} = y$. Substituting this into the above equations and equating them, we get:
+$$ 1 - (x - y) + \nu_{1} (\cos{x} - \sin{x}) = 1 - (x - y) + \nu_{2} (\cos{x} - \sin{x}) $$
+Simplifying:
+$$ \nu_{1} (\cos{x} - \sin{x}) = \nu_{2} (\cos{x} - \sin{x}) $$
+Since $\cos{x} - \sin{x} \neq 0$ in general, we conclude that $\nu_{1} = \nu_{2}$. However, this contradicts the mismatch parameter $\nu = \nu_{2} - \nu_{1} \neq 0$. Thus, the invariant manifold exists only when $\nu = 0$, i.e., when there is no mismatch between the systems.
+When $\nu = 0$, the invariant manifold is given by:
+$$ y_{1} = y_{2} = y $$
+This defines a plane in $\mathbb{R}^3$ where the $y$-components of both systems synchronize.",$\mathbb{R}^3$
+18391,Statistics,"Bayesian Inference, Credible Interval, Chi-Square Distribution, Reliability Analysis","Consider a factory that produces light bulbs whose lifetimes (in hours) follow an exponential distribution with density $$
+f(t \mid \lambda) = \lambda\, e^{-\lambda t}, \quad t \ge 0. $$ A random sample of $n=10$ light bulbs yields the following lifetimes (in hours): $$
+120,\;150,\;180,\;200,\;210,\;220,\;250,\;300,\;320,\;350. $$ Assume an informative prior for the rate parameter given by $$ \lambda \sim \text{Gamma}(\alpha_0, \beta_0) $$ with $\alpha_0 = 2$ and $\beta_0 = 0.01$. Construct a $95\%$ Bayesian credible interval for the mean lifetime $\mu = 1/\lambda$ based on the posterior distribution of $\lambda$.","### Step 1: Data Summary and Likelihood
+The observed lifetimes are:
+$$
+t_1,\dots,t_{10} = 120,\,150,\,180,\,200,\,210,\,220,\,250,\,300,\,320,\,350.
+$$
+Their sum is:
+$$
+T = \sum_{i=1}^{10} t_i = 2300.
+$$
+For the exponential distribution, the likelihood function is:
+$$
+L(\lambda) = \prod_{i=1}^{10} \lambda\, e^{-\lambda t_i} = \lambda^{10} \exp\Bigl(-\lambda \, T\Bigr) = \lambda^{10} e^{-2300\lambda}.
+$$
+### Step 2: Calculation of Posterior Distribution for $\lambda$ The informative prior is given by:
+$$
+p(\lambda) \propto \lambda^{\alpha_0-1} e^{-\beta_0 \lambda}, \quad \text{with} \quad \alpha_0=2,\; \beta_0=0.01.
+$$
+Multiplying the likelihood and the prior:
+$$
+p(\lambda \mid \text{data}) \propto \lambda^{10} e^{-2300\lambda} \cdot \lambda^{2-1} e^{-0.01\lambda} = \lambda^{10+1} e^{-\lambda(2300+0.01)}
+= \lambda^{11} e^{-2300.01\,\lambda}.
+$$
+Thus, the posterior for $\lambda$ is a Gamma distribution:
+$$
+\lambda \mid \text{data} \sim \text{Gamma}(\alpha, \beta),
+$$
+with shape parameter:
+$$
+\alpha = 10 + 2 = 12,
+$$
+and rate parameter:
+$$
+\beta = 2300 + 0.01 \approx 2300.01.
+$$
+### Step 3: Bayesian Credible Interval for the Mean Lifetime $\mu = 1/\lambda$
+To obtain a $95\%$ credible interval for $\lambda$, we use the fact that:
+$$
+2\beta\lambda \sim \chi^2_{2\alpha}.
+$$
+Here, $2\alpha = 24$. Let $q_L$ and $q_U$ be the $2.5^{\text{th}}$ and $97.5^{\text{th}}$ percentiles of $\chi^2_{24}$, approximately:
+$$
+q_L \approx 12.40,\quad q_U \approx 39.36.
+$$
+Then, the credible interval for $\lambda$ is:
+$$
+\lambda \in \left(\frac{q_L}{2\beta},\, \frac{q_U}{2\beta}\right)
+\approx \left(\frac{12.40}{4600.02},\, \frac{39.36}{4600.02}\right).
+$$
+Calculating these:
+$$
+\lambda_L \approx 0.002696, \quad \lambda_U \approx 0.00855.
+$$
+Since $\mu = 1/\lambda$, the $95\%$ Bayesian credible interval for $\mu$ is:
+$$
+\mu \in \left(\frac{1}{\lambda_U},\, \frac{1}{\lambda_L}\right)
+\approx \left(\frac{1}{0.00855},\, \frac{1}{0.002696}\right)
+\approx (116.96,\; 370.95).
+$$","$$
+\mu \in \left(\frac{1}{\lambda_U},\, \frac{1}{\lambda_L}\right)
+\approx \left(\frac{1}{0.00855},\, \frac{1}{0.002696}\right)
+\approx (116.96,\; 370.95).
+$$","The likelihood function is given by
+$$ L(\lambda \mid t) = \prod_{i=1}^n (\lambda e^{-\lambda t_i}) = \lambda^n e^{-\lambda \sum_{i=1}^n t_i} $$
+The prior distribution for $\lambda$ is Gamma$(\alpha_0, \beta_0)$, with density
+$$ p(\lambda) = \frac{\beta_0^{\alpha_0}}{\Gamma(\alpha_0)} \lambda^{\alpha_0-1} e^{-\beta_0 \lambda} $$
+The posterior distribution is proportional to the product of the likelihood and the prior:
+$$ p(\lambda \mid t) \propto L(\lambda \mid t) p(\lambda) \propto \lambda^n e^{-\lambda \sum_{i=1}^n t_i} \lambda^{\alpha_0-1} e^{-\beta_0 \lambda} = \lambda^{n+\alpha_0-1} e^{-\lambda (\sum_{i=1}^n t_i + \beta_0)} $$
+Thus, the posterior distribution of $\lambda$ is Gamma$(\alpha_n, \beta_n)$, where $\alpha_n = n + \alpha_0 = 10 + 2 = 12$ and $\beta_n = \sum_{i=1}^n t_i + \beta_0 = 2100 + 0.01 = 2100.01$.
+We want to find a $95\%$ credible interval for $\mu = 1/\lambda$. Since $\lambda \sim \text{Gamma}(\alpha_n, \beta_n)$, we have $\mu = 1/\lambda \sim \text{Inverse-Gamma}(\alpha_n, \beta_n)$.
+We find the $0.025$ and $0.975$ quantiles of the posterior distribution of $\mu$.
+Using R, we calculate the quantiles of the Gamma distribution for $\lambda$:
+```R
+alpha_n = 12
+beta_n = 2100.01
+l_lambda = qgamma(0.025, shape=alpha_n, rate=beta_n)
+u_lambda = qgamma(0.975, shape=alpha_n, rate=beta_n)
+l_mu = 1/u_lambda
+u_mu = 1/l_lambda
+```
+We get $l_\mu \approx 144.0338$ and $u_\mu \approx 230.0943$.
+Therefore, the $95\%$ Bayesian credible interval for the mean lifetime $\mu = 1/\lambda$ is approximately $[144.03, 230.09]$.
+Final Answer: The final answer is $\boxed{[144.03, 230.09]}$","$\boxed{[144.03, 230.09]}$","Let's analyze the given problem step-by-step, focusing on Bayesian and classical approaches to statistical inference.
+### (a) Posterior Distribution Derivation
+The lifetimes of light bulbs follow an **exponential distribution** characterized by the density function:
+$$ f(t \mid \lambda) = \lambda e^{-\lambda t}, \quad t \ge 0. $$
+Given an **informative prior** for the rate parameter $
+\lambda$ as a Gamma distribution:
+$$
+\lambda \sim \text{Gamma}(\alpha_0, \beta_0)
+$$
+where $\alpha_0 = 2$ and $\beta_0 = 0.01$. The likelihood from the sample of $n = 10$ light bulbs can be expressed as:
+$$
+L(\lambda \mid \mathbf{t}) = \prod_{i=1}^{n} \lambda e^{-\lambda t_i} = \lambda^{n} e^{-\lambda \sum_{i=1}^{n} t_i}
+$$
+where $\mathbf{t} = [120, 150, 180, 200, 210, 220, 250, 300, 320, 350]$.
+**Steps for the Posterior:**
+1. **Prior:** $P(\lambda) \propto \lambda^{\alpha_0 - 1}e^{-\beta_0 \lambda}$.
+2. **Posterior Density:**
+- Using the formula for posterior with the exponential likelihood:
+- Combining, $P(\lambda \mid \mathbf{t}) \propto \lambda^n e^{-\lambda \sum_{i=1}^{n} t_i} \times \lambda^{\alpha_0 - 1} e^{-\beta_0 \lambda}$
+- Simplifies to:
+$$P(\lambda \mid \mathbf{t}) \propto \lambda^{(n+\alpha_0) - 1} e^{-\lambda (\sum_{i=1}^{n} t_i + \beta_0)}$$
+- Which is recognized as a Gamma distribution with parameters $\alpha = n + \alpha_0$ and $\beta = \sum_{i=1}^{n} t_i + \beta_0$.
+3. **Calculating Values:**
+- $\sum_{i=1}^{n} t_i = 2300$.
+- Posterior distribution: $$\lambda \mid \mathbf{t} \sim \text{Gamma}(12, 2300.01)$$
+### (b) Construct a $95\%$ Bayesian Credible Interval for $\mu$
+The **mean lifetime** $\mu = 1/\lambda$ and we need to derive it from the posterior of $\lambda$.
+For a Gamma distribution $\text{Gamma}(\alpha, \beta)$, the credible interval calculation applies often to transformations like $\mu$. Instead, use a simulation approach or apply Bayesian methods like Monte Carlo (MCMC) to get this interval based on the inverse distribution.
+1. Calculate for $\lambda$ via Monte Carlo simulations:
+- Draw samples for $\lambda$ from the Gamma(12, 2300.01) distribution.
+2. Calculate corresponding $1/\lambda$ values.
+3. Obtain percentiles as a credible interval.
+Let's compute it numerically to get an estimate.
+### (c) Classical $95\%$ Confidence Interval
+Using the MLE for the exponential distribution:
+- **MLE for $\lambda$: $\hat{\lambda} = \frac{1}{\bar{t}}$.
+- Mean lifetime by inverse:
+Let's compute $\bar{t}$:
+- $\bar{t} = \frac{1}{10}\times\sum_{i=1}^{10}t_i = 230$.
+- MLE for $\lambda$: $\hat{\lambda} = \frac{1}{230}$.
+**For a $95\%$ confidence interval on $\mu$: Use asymptotic normality of the MLE. **
+- $\hat{\mu} = \frac{1}{\hat{\lambda}} = 230$.
+- SE($\hat{\mu}$) approximated through variance of exponential $\approx \frac{\hat{\mu}}{\sqrt{n}}$ certainly from \(\sqrt{\frac{1}{233^2 \times 2})\):
+This results in:
+- $(\hat{\mu} - 1.96 \times \text{SE}, \hat{\mu} + 1.96 \times \text{SE}
+$
+### Comparing Bayesian and Classical Intervals
+- **Bayesian Interval:** Includes prior belief and integrates sampled parameters.
+- **Classical Interval:** Relies only on data frequencies and asymptotic properties of the estimator.
+Differences can occur primarily when $n$ is small or prior significantly informative. Bayesian allows a more comprehensive understanding by combining prior with sample evidence.
+Both methods are valuable: Bayesian often gives more realistic/universal inferences under varying informative prior knowledge.",-,"To construct a 95% Bayesian credible interval for the mean lifetime \(\mu = 1/\lambda\) based on the posterior distribution of \(\lambda\), we'll follow these steps:
+**1. Determine the Posterior Distribution of \(\lambda\):**
+Given the prior \(\lambda \sim \text{Gamma}(\alpha_0, \beta_0)\) with \(\alpha_0 = 2\) and \(\beta_0 = 0.01\), and the observed data \(t_1, t_2, \ldots, t_{10}\), the posterior distribution of \(\lambda\) is:
+\[
+\lambda \mid \text{data} \sim \text{Gamma}(\alpha_n, \beta_n)
+\]
+where:
+\[
+\alpha_n = \alpha_0 + n = 2 + 10 = 12
+\]
+\[
+\beta_n = \beta_0 + \sum_{i=1}^{n} t_i = 0.01 + 2300 = 2300.01
+\]
+**2. Understand the Relationship Between \(\lambda\) and \(\mu\):**
+Since \(\mu = 1/\lambda\), and \(\lambda \sim \text{Gamma}(\alpha_n, \beta_n)\), it follows that \(\mu\) has an inverse gamma distribution:
+\[
+\mu \sim \text{Inv-Gamma}(\alpha_n, \beta_n)
+\]
+**3. Find the Quantiles of the \(\lambda\) Distribution:**
+We can use the relationship between the gamma and chi-squared distributions to find the quantiles of \(\lambda\):
+- If \(\lambda \sim \text{Gamma}(\alpha, \beta)\), then \(2\beta\lambda \sim \chi^2_{2\alpha}\).
+Thus:
+\[
+2\beta_n\lambda \sim \chi^2_{24}
+\]
+We calculate the critical values for the chi-squared distribution with 24 degrees of freedom:
+- Lower 2.5% quantile (\(p = 0.025\)): \(x_L = 13.848\)
+- Upper 97.5% quantile (\(p = 0.975\)): \(x_U = 37.652\)
+**4. Convert Back to \(\lambda\):**
+Using these critical values:
+\[
+\lambda_L = \frac{x_L}{2\beta_n} = \frac{13.848}{2 \times 2300.01} = 0.0030104
+\]
+\[
+\lambda_U = \frac{x_U}{2\beta_n} = \frac{37.652}{2 \times 2300.01} = 0.0081857
+\]
+**5. Construct the Credible Interval for \(\mu\):**
+Since \(\mu = 1/\lambda\), the credible interval for \(\mu\) is:
+\[
+\mu \in \left[ \frac{1}{\lambda_U}, \frac{1}{\lambda_L} \right]
+\]
+Calculating these values:
+\[
+\mu_L = \frac{1}{\lambda_U} = \frac{1}{0.0081857} \approx 122.17 \text{ hours}
+\]
+\[
+\mu_U = \frac{1}{\lambda_L} = \frac{1}{0.0030104} \approx 332.32 \text{ hours}
+\]
+**6. Conclusion:**
+The 95% Bayesian credible interval for the mean lifetime \(\mu\) is approximately from 122.2 hours to 332.3 hours.
+**Answer:** An approximate 95% Bayesian credible interval for μ is from 122.2 to 332.3 hours—that is,
+μ between 122.2 and 332.3 hours.",122.2 and 332.3 hours.,"We start with the model. The lifetime T of a light bulb is assumed to be exponentially distributed with
+f(t | λ) = λ e^(–λt), t ≥ 0.
+A random sample of n = 10 light bulbs yields
+120, 150, 180, 200, 210, 220, 250, 300, 320, 350.
+Step 1. Compute the Likelihood
+For exponential data, the likelihood given λ is
+L(λ | data) ∝ λ^n exp(–λ Σt_i).
+Here, n = 10 and the sum of the observed lifetimes is
+Σt_i = 120 + 150 + 180 + 200 + 210 + 220 + 250 + 300 + 320 + 350 = 2300.
+Thus,
+L(λ | data) ∝ λ^10 exp(–2300 λ).
+Step 2. Write the Prior and Obtain the Posterior
+We are given an informative Gamma prior for λ:
+λ ~ Gamma(α₀, β₀) with α₀ = 2 and β₀ = 0.01.
+Remember that (using the rate parameterization) the prior density is
+π(λ) ∝ λ^(α₀–1) exp(–β₀ λ).
+Multiplying the likelihood by the prior we have
+π(λ | data) ∝ λ^10 exp(–2300 λ) · λ^(2–1) exp(–0.01 λ)
+∝ λ^(10+1) exp(–(2300 + 0.01) λ)
+∝ λ^(11) exp(–2300.01 λ).
+Thus, the posterior distribution of λ is also a Gamma distribution:
+λ | data ~ Gamma(α_post, β_post)
+where α_post = α₀ + n = 2 + 10 = 12
+β_post = β₀ + Σt_i = 0.01 + 2300 = 2300.01.
+Step 3. Credible Interval for the Mean Lifetime μ = 1/λ
+Our parameter of interest is the mean lifetime
+μ = 1/λ.
+Since the function μ = 1/λ is strictly decreasing, an equal‐tailed credible interval for λ can be inverted to yield a credible interval for μ. That is, if
+P(λ ≤ λ_L) = 0.025 and P(λ ≤ λ_U) = 0.975,
+then
+P(μ ≥ 1/λ_L) = 0.025 and P(μ ≤ 1/λ_U) = 0.975,
+so that an equal‐tailed 95% credible interval for μ is
+[1/λ_U, 1/λ_L].
+Step 4. Finding the Quantiles for the Posterior of λ
+We have
+λ | data ~ Gamma(12, 2300.01).
+It is often useful to “standardize” the Gamma random variable. Define
+X = 2300.01 · λ.
+Then X ~ Gamma(12, 1) (i.e. with shape 12 and rate 1). Moreover, recall the relationship
+2X ~ χ² with 2×12 = 24 degrees of freedom.
+Thus, if we can obtain the 2.5th and 97.5th percentiles for a χ² distribution with 24 d.f., call them χ²₍₂₄₎,0.025 and χ²₍₂₄₎,0.975, then the corresponding quantiles for X are
+X_lower = (1/2)·χ²₍₂₄₎,0.025 and X_upper = (1/2)·χ²₍₂₄₎,0.975.
+Standard statistical tables (or software) give approximately:
+χ²₍₂₄₎,0.025 ≈ 12.40 and χ²₍₂₄₎,0.975 ≈ 39.36.
+Thus,
+X_lower ≈ 12.40/2 = 6.20,
+X_upper ≈ 39.36/2 = 19.68.
+Since X = 2300.01 · λ, the corresponding quantiles for λ are
+λ_L = X_lower / 2300.01 ≈ 6.20/2300.01 ≈ 0.0026957,
+λ_U = X_upper / 2300.01 ≈ 19.68/2300.01 ≈ 0.00856.
+Step 5. Invert to Get the Credible Interval for μ
+Recall that for the transformation μ = 1/λ (a decreasing function), the credible interval for μ is
+μ ∈ [1/λ_U, 1/λ_L].
+Thus,
+Lower bound for μ: 1/(λ_U) ≈ 1/0.00856 ≈ 116.8 hours,
+Upper bound for μ: 1/(λ_L) ≈ 1/0.0026957 ≈ 370.9 hours.
+Therefore, a 95% Bayesian credible interval for the mean lifetime μ is approximately
+[117 hours, 371 hours].
+Final Answer:
+Based on the posterior λ ~ Gamma(12, 2300.01), an equal‐tailed 95% credible interval for the mean lifetime μ = 1/λ is approximately
+(1/0.00856, 1/0.00270) ≈ (117, 371) hours.","(117, 371) hours","### Problem Setup
+We are given a factory producing light bulbs whose lifetimes follow an exponential distribution with density:
+$$ f(t \mid \lambda) = \lambda\, e^{-\lambda t}, \quad t \ge 0 $$
+A random sample of $n=10$ light bulbs yields the following lifetimes (in hours):
+$$ 120,\;150,\;180,\;200,\;210,\;220,\;250,\;300,\;320,\;350 $$
+Assume an informative prior for the rate parameter $\lambda$ given by:
+$$ \lambda \sim \text{Gamma}(\alpha_0, \beta_0) $$
+with $\alpha_0 = 2$ and $\beta_0 = 0.01$.
+---
+### (a) Derive the Posterior Distribution for $\lambda$
+The likelihood function for the sample data is:
+$$ L(\lambda) = \prod_{i=1}^n \lambda\, e^{-\lambda t_i} = \lambda^n e^{-\lambda \sum_{i=1}^n t_i} $$
+The prior distribution is:
+$$ \pi(\lambda) \propto \lambda^{\alpha_0-1} e^{-\beta_0 \lambda} $$
+The posterior distribution is proportional to the product of the likelihood and the prior:
+$$ \pi(\lambda \mid \mathbf{t}) \propto \lambda^n e^{-\lambda \sum_{i=1}^n t_i} \cdot \lambda^{\alpha_0-1} e^{-\beta_0 \lambda} $$
+Simplifying, we get:
+$$ \pi(\lambda \mid \mathbf{t}) \propto \lambda^{\alpha_0 + n - 1} e^{-(\beta_0 + \sum_{i=1}^n t_i) \lambda} $$
+Thus, the posterior distribution is also a Gamma distribution:
+$$ \lambda \mid \mathbf{t} \sim \text{Gamma}(\alpha_n, \beta_n) $$
+where:
+$$ \alpha_n = \alpha_0 + n = 2 + 10 = 12 $$
+and
+$$ \beta_n = \beta_0 + \sum_{i=1}^n t_i = 0.01 + (120 + 150 + 180 + 200 + 210 + 220 + 250 + 300 + 320 + 350) = 0.01 + 2400 = 2400.01 $$
+Thus, the posterior distribution is:
+$$ \lambda \mid \mathbf{t} \sim \text{Gamma}(12, 2400.01) $$
+---
+### (b) Construct a $95\%$ Bayesian Credible Interval for $\mu = 1/\lambda$
+To construct a Bayesian credible interval for $\mu = 1/\lambda$, we use the posterior distribution of $\lambda$. The $95\%$ credible interval for $\lambda$ is the interval $(a, b)$ such that:
+$$ P(a \leq \lambda \leq b) = 0.95 $$
+Using the Gamma distribution $\text{Gamma}(12, 2400.01)$, we find the quantiles of $\lambda$:
+$$ a = \text{Gamma}^{-1}(0.025; 12, 2400.01) $$
+$$ b = \text{Gamma}^{-1}(0.975; 12, 2400.01) $$
+Then, the $95\%$ credible interval for $\mu$ is:
+$$ \left( \frac{1}{b}, \frac{1}{a} \right) $$
+---
+### (c) Construct the Classical $95\%$ Confidence Interval for $\mu$
+The maximum likelihood estimator (MLE) for $\lambda$ is:
+$$ \hat{\lambda} = \frac{n}{\sum_{i=1}^n t_i} = \frac{10}{2400} = 0.00417 $$
+The MLE for $\mu$ is:
+$$ \hat{\mu} = \frac{1}{\hat{\lambda}} = \frac{1}{0.00417} = 240 $$
+The classical $95\%$ confidence interval for $\mu$ is based on the asymptotic normality of the MLE:
+$$ \hat{\mu} \pm z_{0.025} \cdot \text{SE}(\hat{\mu}) $$
+where $z_{0.025} = 1.96$ is the $97.5\%$ quantile of the standard normal distribution, and the standard error $\text{SE}(\hat{\mu})$ is:
+$$ \text{SE}(\hat{\mu}) = \frac{\hat{\mu}}{\sqrt{n}} = \frac{240}{\sqrt{10}} = 75.9 $$
+Thus, the classical $95\%$ confidence interval is:
+$$ 240 \pm 1.96 \cdot 75.9 = (88.6, 391.4) $$
+---
+### Comparison and Discussion
+- **Bayesian Credible Interval:** Incorporates prior knowledge about $\lambda$ through the Gamma prior. The interval is derived directly from the posterior distribution of $\lambda$.
+- **Classical Confidence Interval:** Relies solely on the sample data and the asymptotic properties of the MLE. It does not incorporate any prior information.
+The Bayesian credible interval tends to be narrower when the prior is informative, as in this case, while the classical confidence interval is wider and based purely on the data. The differences arise due to the incorporation of prior beliefs in the Bayesian approach, which can lead to more precise estimates when the prior is well-chosen.","$$ 240 \pm 1.96 \cdot 75.9 = (88.6, 391.4) $$"
+18365,Probability,"Probability Theory,Conditional Probability and Dependent Events.","In a factory producing 1000 units daily, the probability that a unit is defective is $p=0.05$. The factory quality control randomly selects a sample of 50 units for inspection each day. However, due to the random nature of the defect process, there is an additional factor: if the first unit inspected is defective, the probability that the next unit inspected is also defective increases to 0.07. Conversely, if the first unit is non-defective, the probability for the second unit decreases to 0.03. What is the probability that the sample of 50 units contains at least 3 defective units, considering these additional factors?","This problem combines both **conditional probability** and the **binomial distribution** with a twist, the defect probability for subsequent units depends on the outcome of the first inspected unit. We will break down the problem step by step to derive the correct methodology and solution. ### Step 1: Understanding the problem
+- The factory produces $1000$ units daily, with the baseline probability that a unit is defective given by $$ p = 0.05. $$ - A sample of $50$ units is inspected. - There is an additional factor: - If the **first unit is defective**, the probability that each subsequent unit is defective increases to **0.07**. - If the **first unit is non‐defective**, the probability that each subsequent unit is defective decreases to **0.03**. - We need to determine the probability that the sample of $50$ units contains **at least 3 defective units**. ### Step 2: Defining the Events Let: - $D_1$ be the event that the first unit inspected is defective. - $N_1$ be the event that the first unit inspected is non‐defective. Thus: - P($D_1$) = $0.05$ - P($N_1$) = $0.95$ We now consider two cases: 1. **Case 1:** $D_1$ occurs. 2. **Case 2:** $N_1$ occurs. ### Step 3: Calculating Probabilities for Each Case #### Case 1: First Unit is Defective ($D_1$) - Given $D_1$, the probability that each of the remaining 49 units is defective is $(0.07)$. - Since the first unit is defective, we need at least **2 more defective units** among the remaining $49$ to have a total of at least $3$ defective units. - Let $(X)$ denote the number of defectives among the remaining 49 units. Then $(X)$ follows a binomial distribution with: - $(n = 49)$ - $(p = 0.07)$ - We require: $$ P(X \ge 2) = 1 - \Bigl[ P(X = 0) + P(X = 1) \Bigr], $$ where $$ P(X = k) = \binom{49}{k} (0.07)^k (0.93)^{49-k}. $$ #### Case 2: First Unit is Non‐Defective $(N_1)$ - Given $N_1$, the probability that each of the remaining $49$ units is defective is $(0.03)$. - In this case, to have at least $3$ defective units in the entire sample, all defectives must come from the remaining $49$. - Let $(Y)$ denote the number of defectives among these $49$ units. Then $(Y)$ follows a binomial distribution with: - $(n = 49)$ - $(p = 0.03)$ - We require: $$ P(Y \ge 3) = 1 - \Bigl[ P(Y = 0) + P(Y = 1) + P(Y = 2) \Bigr], $$ where $$ P(Y = k) = \binom{49}{k} (0.03)^k (0.97)^{49-k}. $$ ### Step 4: Calculating the Final Probability The overall probability that the sample contains at least $3$ defective units is the weighted sum of the two cases: $$ \begin{aligned} P(\text{at least 3 defectives}) &= P(D_1) \cdot P(X \ge 2 \mid D_1) + P(N_1) \cdot P(Y \ge 3 \mid N_1) \\ &= 0.05 \cdot \Bigl[ 1 - \bigl( P(X = 0) + P(X = 1) \bigr) \Bigr] \\ &\quad + 0.95 \cdot \Bigl[ 1 - \bigl( P(Y = 0) + P(Y = 1) + P(Y = 2) \bigr) \Bigr]. \end{aligned} $$ ### Step 5: Numerical Calculation and Final Answer Using a calculator or statistical software to evaluate the binomial probabilities: - **For Case 1 ($D_1$)**: $$ P(X \ge 2) \approx 0.87. $$ - **For Case 2 ($N_1$)**: $$ P(Y \ge 3) \approx 0.18. $$ Thus, the overall probability is: $$ \begin{aligned} P(\text{at least 3 defectives}) &\approx 0.05 \times 0.87 + 0.95 \times 0.18 \\ &\approx 0.0435 + 0.171 \\ &\approx 0.2145. \end{aligned} $$ So, the probability that the sample of $50$ units contains at least $3$ defective units is approximately: $$ \boxed{0.215}. $$",$$ \boxed{0.215} $$,"Let $D_i$ be the event that the $i$-th unit inspected is defective, and $N_i$ be the event that the $i$-th unit inspected is non-defective. We are given:
+$P(D_1) = 0.05$
+$P(N_1) = 1 - P(D_1) = 0.95$
+$P(D_2 | D_1) = 0.07$
+$P(D_2 | N_1) = 0.03$
+We assume that the probability of being defective for units from the second one onwards depends only on whether the first unit was defective or not. So, for $i \ge 2$:
+$P(D_i | D_1) = 0.07$
+$P(D_i | N_1) = 0.03$
+Let $X$ be the total number of defective units in a sample of 50 units. We want to find $P(X \ge 3)$. We can use the law of total probability by considering two cases based on the first unit inspected:
+Case 1: The first unit is defective ($D_1$). This occurs with probability $P(D_1) = 0.05$. In this case, for the remaining 49 units (units 2 to 50), the probability of each unit being defective is $0.07$. Let $X_1$ be the number of defective units in the remaining 49 units given that the first unit was defective. Then $X_1 \sim \text{Binomial}(n=49, p=0.07)$. The total number of defective units in this case is $1 + X_1$. We want to find $P(1 + X_1 \ge 3 | D_1) = P(X_1 \ge 2)$.
+Case 2: The first unit is non-defective ($N_1$). This occurs with probability $P(N_1) = 0.95$. In this case, for the remaining 49 units (units 2 to 50), the probability of each unit being defective is $0.03$. Let $X_2$ be the number of defective units in the remaining 49 units given that the first unit was non-defective. Then $X_2 \sim \text{Binomial}(n=49, p=0.03)$. The total number of defective units in this case is $0 + X_2 = X_2$. We want to find $P(X_2 \ge 3 | N_1) = P(X_2 \ge 3)$.
+Now we calculate the probabilities for each case:
+Case 1: $P(X_1 \ge 2) = 1 - P(X_1 < 2) = 1 - [P(X_1 = 0) + P(X_1 = 1)]$
+$P(X_1 = 0) = \binom{49}{0} (0.07)^0 (1-0.07)^{49} = (0.93)^{49} \approx 0.0263$
+$P(X_1 = 1) = \binom{49}{1} (0.07)^1 (1-0.07)^{48} = 49 \times 0.07 \times (0.93)^{48} \approx 0.0989$
+$P(X_1 \ge 2) = 1 - (0.0263 + 0.0989) = 1 - 0.1252 = 0.8748$
+Case 2: $P(X_2 \ge 3) = 1 - P(X_2 < 3) = 1 - [P(X_2 = 0) + P(X_2 = 1) + P(X_2 = 2)]$
+$P(X_2 = 0) = \binom{49}{0} (0.03)^0 (1-0.03)^{49} = (0.97)^{49} \approx 0.2594$
+$P(X_2 = 1) = \binom{49}{1} (0.03)^1 (1-0.03)^{48} = 49 \times 0.03 \times (0.97)^{48} \approx 0.3921$
+$P(X_2 = 2) = \binom{49}{2} (0.03)^2 (1-0.03)^{47} = \frac{49 \times 48}{2} \times (0.03)^2 \times (0.97)^{47} \approx 0.2941$
+$P(X_2 \ge 3) = 1 - (0.2594 + 0.3921 + 0.2941) = 1 - 0.9456 = 0.0544$
+Now we use the law of total probability:
+$P(X \ge 3) = P(X \ge 3 | D_1) P(D_1) + P(X \ge 3 | N_1) P(N_1)$
+$P(X \ge 3) = P(X_1 \ge 2) P(D_1) + P(X_2 \ge 3) P(N_1)$
+$P(X \ge 3) = 0.8748 \times 0.05 + 0.0544 \times 0.95$
+$P(X \ge 3) = 0.04374 + 0.05168 = 0.09542$
+Therefore, the probability that the sample of 50 units contains at least 3 defective units is approximately 0.0954.
+Final Answer: The final answer is $\boxed{0.0954}$",$\boxed{0.0954}$,"To solve this problem, we need to understand two key aspects:
+1. **Independent and Dependent Probability:**
+- Initially, the probability of a unit being defective is given as $p = 0.05$.
+- The problem then introduces a dependency for the second unit's probability based on whether the first unit is defective or not.
+- If the first unit is defective, the probability that the second unit is also defective becomes $0.07$.
+- If the first unit is not defective, the probability that the second unit is defective becomes $0.03$.
+2. **Using a Binomial Distribution with Modifications:**
+Since the defect probability changes after the first unit, we can't directly use a simple binomial distribution for all 50 units. However, we can take the following steps to approximate:
+- **Step 1: Consider the probability for the first unit** independent of others, which is $p = 0.05$.
+- **Step 2: For the second unit**, consider the modified probabilities:
+- Probability that the first unit is defective and the second is also defective: $0.05 \times 0.07$.
+- Probability that the first unit is not defective and the second is defective: $0.95 \times 0.03$.
+Thus, the total probability that the second unit is defective, noting dependence on the first unit, is obtained by:
+$$ P(2nd \text{ defective}) = P(1st \text{ defective} \cap 2nd \text{ defective}) + P(1st \text{ not defective} \cap 2nd \text{ defective}) $$
+$$ = (0.05 \times 0.07) + (0.95 \times 0.03) $$
+$$ = 0.0035 + 0.0285 = 0.032 $$
+Subsequent units also depend on the previous unit's status, but given we need probability approximations for at least 3 defective units out of 50, this complexity greatly simplifies our general approach.
+3. **Estimating Probability for At Least 3 Defectives:**
+Due to increased complexity with dependent probabilities, to approach this practically, one could assume an approximate average defect rate and solve using a **binomial distribution**.
+Suppose we take an average defect probability for simplification to start with $p_{avg} = 0.05$ and see adjustments after the first few units if simulations were a choice (often done by Monte Carlo simulations).
+We use the binomial formula for at least 3 defectives:
+$$ P(X \geq 3) = 1 - [P(X = 0) + P(X = 1) + P(X = 2)] $$
+where $X \sim \text{Binomial}(50, p)$
+- Compute using $p = 0.05$ for rough baseline or modify based on dependent trends observed empirically:
+Now for simplicity computation can give us a rough idea:
+$$ P(X = k) = \binom{50}{k} \cdot (0.032)^k \cdot (1-0.032)^{50-k} $$
+Calculate this for $k = 0$, $k = 1$, and $k = 2$, subtract from 1. This approach requires either more complete analytical model build-up or simulation for precise values with dependencies factored in.
+4. **Final Note**: Due to behavior complexity, exact calculation without iterative adjustments through simulation or deeper probability modeling involving sequences is suggested for precise real-world adherence. However, rough estimates can start from assumptions made initially.",-,"To solve this problem, we'll model the inspection process as a Markov chain with two states: Defective (D) and Non-defective (N). The transition probabilities are:
+- From state D: - P(D→D) = 0.07
+- P(D→N) = 0.93
+- From state N:
+- P(N→D) = 0.03
+- P(N→N) = 0.97
+The initial state probabilities are:
+- P(D_1 = D) = 0.05
+- P(D_1 = N) = 0.95
+Our goal is to find the probability that there are at least 3 defective units in the sample of 50 units, which is P(S ≥ 3), where S is the total number of defective units inspected.
+**Step 1: Compute the Expected Number of Defective Units**
+First, we calculate the expected number of defective units (E[S]) in the sample:
+1. The expected value for the first unit is E[D_1] = 0.05.
+2. For i ≥ 2, the expected value E[D_i] depends on E[D_{i-1}] via the recursive formula:
+\[
+E[D_i] = 0.04 \cdot E[D_{i-1}] + 0.03
+\]
+3. Solving this recurrence, we find that the steady-state mean is m = 0.03125.
+4. Using the general solution, we have:
+\[
+E[D_i] = 0.03125 + 0.01875 \cdot (0.04)^{i-1}
+\]
+5. Summing over i from 1 to 50:
+\[
+E[S] = \sum_{i=1}^{50} E[D_i] = 1.5625 + 0.01953125 = 1.58203125
+\]
+So, the expected number of defective units is approximately 1.58.
+**Step 2: Estimate P(S ≥ 3)**
+Given the small expected number of defective units, P(S ≥ 3) will be relatively low. We'll estimate P(S ≤ 2) by calculating P(S = 0), P(S = 1), and P(S = 2), then use it to find P(S ≥ 3):
+1. **Calculate P(S = 0):**
+- The probability that all units are non-defective is:
+\[
+P(S = 0) = P(D_1 = N) \cdot (0.97)^{49} = 0.95 \cdot (0.97)^{49} \approx 0.213
+\]
+2. **Calculate P(S = 1):**
+- We sum the probabilities of having exactly one defective unit at each position.
+- For the first position:
+\[
+P(D_1 = D, \text{ rest } N) = 0.05 \cdot 0.93 \cdot (0.97)^{48} \approx 0.0108
+\]
+- For positions 2 to 50:
+\[
+P(\text{Defect at position } i) \approx 0.00635 \text{ for each } i
+\]
+- Total for positions 2 to 50:
+\[
+(49) \cdot 0.00635 \approx 0.3111
+\]
+- Sum:
+\[
+P(S = 1) \approx 0.0108 + 0.3111 = 0.3219
+\]
+3. **Estimate P(S = 2):**
+- Exact calculation is complex; however, we can estimate that P(S = 2) is significant but less than P(S = 1). We'll assume it to be around 25%.
+4. **Compute P(S ≥ 3):**
+- Summing up:
+\[
+P(S \leq 2) = P(S = 0) + P(S = 1) + P(S = 2) \approx 0.213 + 0.322 + 0.25 = 0.785
+\]
+- Therefore:
+\[
+P(S \geq 3) = 1 - P(S \leq 2) \approx 1 - 0.785 = 0.215
+\]
+**Final Answer:**
+Approximately a 21.5% probability that the sample contains at least 3 defective units.
+Answer: Approximately a 21.5% chance of finding at least 3 defective units in the sample.",21.50%,"We can model the situation as follows. In a “normal” (independent) sampling from a lot with 5% defectives, one would have
+X ~ Binomial(n = 50, p = 0.05)
+so that, for example, the probability of at least 3 defects would be
+P(X ≥ 3) = 1 – [P(0) + P(1) + P(2)].
+However, here the very first two inspections have a twist. We assume that
+(1) The first unit is taken at random so that
+P(unit 1 defective) = 0.05.
+(2) The second unit is inspected under a conditional rule:
+• If the first unit was defective, then P(unit 2 defective) = 0.07.
+• If the first unit was nondefective, then P(unit 2 defective) = 0.03.
+Then the remaining 48 units are (we assume) inspected “normally” with (unconditional) probability 0.05 of being defective. (In other words, we assume that the clustering effect only applies to the first pair; this is one common way to model the statement “if the first unit inspected is defective …”)
+Let
+I₁ = indicator that unit 1 is defective,
+I₂ = indicator that unit 2 is defective,
+Y = total defects among units 3–50 (so Y ~ Binom(48, 0.05)).
+Because of the conditional rule on unit 2 the joint probabilities for I₁ and I₂ are
+• P(I₁ = 0) = 0.95.
+– If I₁ = 0, then P(I₂ = 0) = 1 – 0.03 = 0.97 and P(I₂ = 1)= 0.03.
+• P(I₁ = 1) = 0.05.
+– If I₁ = 1, then P(I₂ = 0) = 1 – 0.07 = 0.93 and P(I₂ = 1)= 0.07.
+Thus the four outcomes for (unit 1, unit 2) are:
+• (0,0): 0.95 × 0.97 = 0.9215
+• (0,1): 0.95 × 0.03 = 0.0285
+• (1,0): 0.05 × 0.93 = 0.0465
+• (1,1): 0.05 × 0.07 = 0.0035
+Define D = I₁ + I₂ + Y, the total number of defectives in the 50‐unit sample. We wish to know
+P(D ≥ 3).
+We can break the event up according to how many defects occur in the first two units.
+That is, if S = I₁ + I₂ then
+Case 1. S = 0 → we need Y ≥ 3.
+Case 2. S = 1 → we need Y ≥ 2.
+Case 3. S = 2 → we need Y ≥ 1.
+Thus by the law of total probability
+P(D ≥ 3) =
+P(S = 0)·P(Y ≥ 3) + P(S = 1)·P(Y ≥ 2) + P(S = 2)·P(Y ≥ 1).
+From above we have
+P(S = 0) = 0.9215 and P(S = 1) = 0.0285 + 0.0465 = 0.075,
+P(S = 2) = 0.0035.
+Now, Y ~ Binom(48, 0.05) so we need to compute
+• P(Y ≥ 1) = 1 – P(Y = 0)
+• P(Y ≥ 2) = 1 – [P(Y = 0) + P(Y = 1)]
+• P(Y ≥ 3) = 1 – [P(Y = 0) + P(Y = 1) + P(Y = 2)].
+A little calculation gives approximate values (you may use a calculator or software for the binomial probabilities):
+1. P(Y = 0) = (0.95)^48 ln(0.95) ≈ –0.0513 so 48·ln(0.95) ≈ –2.462; hence P(Y = 0) ≈ exp(–2.462) ≈ 0.0852.
+2. P(Y = 1) = 48 × 0.05 × (0.95)^47. Since (0.95)^47 ≈ (0.95)^48/0.95 ≈ 0.0852/0.95 ≈ 0.0897, P(Y = 1) ≈ 48 × 0.05 × 0.0897 = 2.4 × 0.0897 ≈ 0.2153.
+3. P(Y = 2) = C(48, 2) × (0.05)^2 × (0.95)^46 C(48,2) = 1128, (0.05)^2 = 0.0025, and (0.95)^46 ≈ (0.95)^48/(0.95)^2 ≈ 0.0852/0.9025 ≈ 0.0944. So P(Y = 2) ≈ 1128 × 0.0025 × 0.0944 ≈ 1128 × 0.000236 ≈ 0.266 (approximately).
+Then:
+P(Y ≥ 1) ≈ 1 – 0.0852 = 0.9148 P(Y ≥ 2) ≈ 1 – (0.0852 + 0.2153) = 1 – 0.3005 = 0.6995 P(Y ≥ 3) ≈ 1 – (0.0852 + 0.2153 + 0.266) = 1 – 0.5665 = 0.4335
+Now we can combine the pieces:
+P(D ≥ 3) ≈ 0.9215·0.4335 + 0.075·0.6995 + 0.0035·0.9148 ≈ 0.399 + 0.0525 + 0.0032 ≈ 0.4547
+That is, there is roughly a 45.5% chance that the 50‐unit sample will contain at least 3 defectives.
+──────────────────────────────
+Summary of our modeling assumptions:
+• Unit 1 is defective with probability 0.05.
+• Unit 2’s chance depends on unit 1: 0.07 if unit 1 is defective or 0.03 if not.
+• The remaining 48 units are independent with defect probability 0.05.
+Then, by conditioning on the first two outcomes and using the Binomial distribution for the rest, we obtain
+P(at least 3 defects) ≈ 45.5%.
+Thus, taking into account these “additional factors,” the final answer is about 0.455 (or 45.5%).",45.50%,"To solve this problem, we need to calculate the probability that the sample of 50 units contains **at least 3 defective units**, considering the additional factors that influence the probability of defects based on the outcome of the first inspection. Here’s the step-by-step process:
+### Step 1: Understanding the Problem
+The factory produces 1000 units daily, with a base probability $p = 0.05$ that a unit is defective. A sample of 50 units is inspected daily. The probability of a unit being defective depends on the outcome of the first inspection:
+- If the **first unit is defective**, the probability that the **next unit is defective** increases to $p_1 = 0.07$.
+- If the **first unit is non-defective**, the probability that the **next unit is defective** decreases to $p_2 = 0.03$.
+We are tasked with finding the probability that **at least 3 defective units** are found in the sample of 50 units.
+### Step 2: Modeling the Problem
+Let’s model the problem using **conditional probability**. The probability of a unit being defective depends on the outcome of the first inspection:
+1. **First Unit:**
+- Probability of being defective: $p = 0.05$.
+- Probability of being non-defective: $1 - p = 0.95$.
+2. **Subsequent Units:**
+- If the first unit is defective, the probability of the next unit being defective is $p_1 = 0.07$.
+- If the first unit is non-defective, the probability of the next unit being defective is $p_2 = 0.03$.
+### Step 3: Calculating the Probability
+The probability of having at least 3 defective units can be calculated using the **complementary probability** approach. That is:
+$$ P(\text{at least 3 defective}) = 1 - P(\text{0 defective}) - P(\text{1 defective}) - P(\text{2 defective}) $$
+We’ll calculate each of these probabilities separately.
+#### 3.1. Probability of 0 Defective Units
+For there to be **0 defective units**, the first unit and all subsequent units must be non-defective. The probability of the first unit being non-defective is $0.95$, and the probability of each subsequent unit being non-defective is $1 - p_2 = 0.97$. Thus:
+$$ P(\text{0 defective}) = 0.95 \times (0.97)^{49} $$
+#### 3.2. Probability of 1 Defective Unit
+For there to be **1 defective unit**, the first unit could be defective, and all subsequent units non-defective, or the first unit could be non-defective, and exactly one of the subsequent units defective. Thus:
+$$ P(\text{1 defective}) = P(\text{first defective}) \times P(\text{0 subsequent defective}) + P(\text{first non-defective}) \times P(\text{1 subsequent defective}) $$
+Calculating each term:
+- $P(\text{first defective}) = 0.05$.
+- $P(\text{0 subsequent defective}) = (1 - p_1)^{49} = (0.93)^{49}$.
+- $P(\text{first non-defective}) = 0.95$.
+- $P(\text{1 subsequent defective}) = 49 \times p_2 \times (1 - p_2)^{48} = 49 \times 0.03 \times (0.97)^{48}$.
+Thus:
+$$ P(\text{1 defective}) = 0.05 \times (0.93)^{49} + 0.95 \times 49 \times 0.03 \times (0.97)^{48} $$
+#### 3.3. Probability of 2 Defective Units
+For there to be **2 defective units**, we need to consider the following cases:
+1. The first unit is defective, and exactly one of the subsequent units is defective.
+2. The first unit is non-defective, and exactly two of the subsequent units are defective.
+Thus:
+$$ P(\text{2 defective}) = P(\text{first defective}) \times P(\text{1 subsequent defective}) + P(\text{first non-defective}) \times P(\text{2 subsequent defective}) $$
+Calculating each term:
+- $P(\text{first defective}) = 0.05$.
+- $P(\text{1 subsequent defective}) = 49 \times p_1 \times (1 - p_1)^{48} = 49 \times 0.07 \times (0.93)^{48}$.
+- $P(\text{first non-defective}) = 0.95$.
+- $P(\text{2 subsequent defective}) = \binom{49}{2} \times p_2^2 \times (1 - p_2)^{47} = \frac{49 \times 48}{2} \times (0.03)^2 \times (0.97)^{47}$.
+Thus:
+$$ P(\text{2 defective}) = 0.05 \times 49 \times 0.07 \times (0.93)^{48} + 0.95 \times \frac{49 \times 48}{2} \times (0.03)^2 \times (0.97)^{47} $$
+#### 3.4. Probability of At Least 3 Defective Units
+Finally, the probability of having **at least 3 defective units** is:
+$$ P(\text{at least 3 defective}) = 1 - P(\text{0 defective}) - P(\text{1 defective}) - P(\text{2 defective}) $$
+### Step 4: Numerical Calculation
+Using the formulas derived above, we can compute the probabilities numerically. However, for brevity, we’ll summarize the final result:
+$$ P(\text{at least 3 defective}) \approx 0.423 $$
+Thus, the probability that the sample of 50 units contains at least 3 defective units, considering the additional factors, is approximately **42.3%**.",**42.3%**
+18636,Statistics,"Probability Theory,
+Stochastic Processes,Gambler’s Ruin, Markov Chains","A gambler starts with an initial capital of $i$ dollars and aims to reach a target of $N$ dollars before going bankrupt (i.e., reaching $0$ dollars). In each round, the gambler wins $1$ dollar with probability $p$ and loses $1$ dollar with probability $q = 1 - p$, where $0 < p < 1$. The classical probability of reaching the target for $p\neq q$ is given by: $$ P(i) = \frac{1 - \left(\frac{q}{p}\right)^i}{1 - \left(\frac{q}{p}\right)^N}. $$ Now, suppose that the true winning probability \( p \) is unknown and is modeled by a Beta prior distribution: $$ p \sim \text{Beta}(\alpha, \beta), $$ with known hyperparameters $\alpha > 0$ and $\beta > 0$. The gambler plays the game once, and the outcome is observed: - Let $Y = 1$ if the gambler reaches the target $N$ dollars. - Let $Y = 0$ if the gambler goes bankrupt $0$ dollars. Assuming that the gambler starts with $i = 5$, the target is $N = 10$, and that the prior parameters are $\alpha = 2$ and $\beta = 2$. Derive the posterior predictive probability that the gambler reaches the target in a future game by integrating over the uncertainty in $p$.","**Step 1: Classical Gambler’s Ruin Formula**
+The probability that a gambler starting with $i$ dollars reaches a target of $N$ dollars (before going bankrupt) is given by:
+$$
+P(i) = \frac{1 - \left(\frac{q}{p}\right)^i}{1 - \left(\frac{q}{p}\right)^N},
+$$
+where $q = 1 - p$. In our case, $i = 5$ and $N = 10$, so
+$$
+P(5) = \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}}.
+$$
+**Step 2: Likelihood Function**
+We observe one game with outcome $Y$. The likelihood function based on the outcome is:
+- If the gambler reaches the target ($Y=1$):
+$$
+L(p \mid Y=1) = \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}}.
+$$
+- If the gambler goes bankrupt ($Y=0$), then the likelihood is the probability of not reaching the target:
+$$
+L(p \mid Y=0) = 1 - \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}}.
+$$
+**Step 3: Prior Distribution for $p$**
+The winning probability $p$ is assumed to have a $\operatorname{Beta}$ prior:
+$$
+p \sim \operatorname{Beta}(\alpha, \beta) \quad \text{with} \quad \alpha = 2,\, \beta = 2.
+$$
+The $\operatorname{Beta}$ density is
+$$
+\pi(p) = \frac{\Gamma(2+2)}{\Gamma(2)\Gamma(2)}\, p^{2-1}(1-p)^{2-1} $$
+$$
+= 6p(1-p)\quad \text{for } 0 < p < 1.
+$$
+**Step 4: Posterior Distribution**
+By Bayes’ rule, the posterior distribution of $p$ given the outcome $Y$ is proportional to the product of the likelihood and the prior:
+$$
+\pi(p \mid Y) \propto L(p \mid Y) \cdot \pi(p).
+$$
+For example, if $Y=1$:
+$$
+\pi(p \mid Y=1) \propto \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}} \cdot 6\, p(1-p).
+$$
+This expression must be normalized (i.e., divided by the integral over $p$ from 0 to 1) to obtain the proper posterior density.
+**Step 5: Posterior Predictive Probability**
+To predict the outcome of a future game, we average the classical success probability over the posterior distribution of $p$. That is, the posterior predictive probability that the gambler reaches the target in a future game is:
+$$
+\boxed{\ P(Y_{\text{new}} = 1 ) = \int_0^1 \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}} \, \pi(p \mid Y) \, dp}
+$$","$$
+\boxed{\ P(Y_{\text{new}} = 1 ) = \int_0^1 \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}} \, \pi(p \mid Y) \, dp}
+$$","The prior probability density for $p$ is given by the Beta distribution with parameters $\alpha = 2$ and $\beta = 2$:
+$$ f(p) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} p^{\alpha-1}(1-p)^{\beta-1} = \frac{\Gamma(4)}{\Gamma(2)\Gamma(2)} p^{2-1}(1-p)^{2-1} = 6p(1-p), \quad 0 < p < 1. $$
+The probability of reaching the target given $p$ is $P(Y=1|p) = P(5|p) = \frac{1 - (\frac{1-p}{p})^5}{1 - (\frac{1-p}{p})^{10}} = \frac{1}{1 + (\frac{1-p}{p})^5} = \frac{p^5}{p^5 + (1-p)^5}$.
+The prior predictive probability of reaching the target is
+$$ P(Y=1) = \int_0^1 P(Y=1|p) f(p) dp = \int_0^1 \frac{p^5}{p^5 + (1-p)^5} 6p(1-p) dp = \frac{1}{2}. $$
+The posterior density of $p$ given $Y=1$ is
+$$ f(p|Y=1) = \frac{P(Y=1|p) f(p)}{P(Y=1)} = \frac{\frac{p^5}{p^5 + (1-p)^5} \cdot 6p(1-p)}{1/2} = \frac{12 p^6(1-p)}{p^5 + (1-p)^5}. $$
+The posterior predictive probability of reaching the target in a future game, given that the gambler reached the target in the first game, is
+$$ P(Y_{future}=1 | Y=1) = \int_0^1 P(Y_{future}=1|p) f(p|Y=1) dp = \int_0^1 \frac{p^5}{p^5 + (1-p)^5} \frac{12 p^6(1-p)}{p^5 + (1-p)^5} dp = 12 \int_0^1 \frac{p^{11}(1-p)}{(p^5 + (1-p)^5)^2} dp. $$
+Using Wolfram Alpha, we found that $\int_0^1 \frac{p^{11}(1-p)}{(p^5 + (1-p)^5)^2} dp = \frac{1}{24}$.
+Therefore, $P(Y_{future}=1 | Y=1) = 12 \cdot \frac{1}{24} = \frac{1}{2} = 0.5$.
+Final Answer: The final answer is $\boxed{0.5}$",$\boxed{0.5}$,"To derive the posterior predictive probability that the gambler reaches the target, given that the winning probability \( p \) is uncertain and follows a Beta distribution, we need to take into account the prior distribution of \( p \) and the structure of the problem.
+### Steps:
+1. **Given Prior Distribution**: The prior distribution of \( p \) is given by:
+\[
+p \sim \text{Beta}(\alpha, \beta) = \text{Beta}(2, 2).
+\]
+The probability density function for a Beta distribution is:
+\[
+f(p \mid \alpha, \beta) = \frac{p^{\alpha - 1} (1 - p)^{\beta - 1}}{B(\alpha, \beta)},
+\]
+where \( B(\alpha, \beta) \) is the Beta function.
+2. **Probability of Reaching the Target**: The probability of reaching the target when the starting capital is \( i \) is:
+\[
+P(i \mid p) = \frac{1 - \left(\frac{1-p}{p}\right)^i}{1 - \left(\frac{1-p}{p}\right)^N}.
+\]
+For \( i = 5 \) and \( N = 10 \), this becomes:
+\[
+P(5 \mid p) = \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}}.
+\]
+3. **Posterior Predictive Probability**: To find the posterior predictive probability of reaching the target, integrate over the Beta distribution:
+\[
+P(Y = 1) = \int_0^1 P(5 \mid p) f(p \mid \alpha, \beta) \, dp.
+\]
+4. **Substituting the Probability and the Beta Prior**: Substituting the formulas, we get:
+\[
+P(Y = 1) = \int_0^1 \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}} \cdot \frac{p^{1} (1-p)^{1}}{B(2, 2)} \, dp.
+\]
+5. **Evaluating the Integral**: Solving this integral analytically is a challenging task due to the form of \( P(i \mid p) \). In practice, this integral can be evaluated numerically using tools such as computational software (e.g., numerical integration techniques such as Monte Carlo integration or quadrature methods).
+### Finalizing the Solution:
+The particular form of \( P(i \mid p) \) along with the Beta prior distribution can result in a complex expression and typically requires numerical methods to obtain a precise posterior predictive probability. Numerical integration would provide a practical estimate for the posterior predictive probability that the gambler reaches the $N$ dollars target when starting with $5$ dollars.","\[
+P(Y = 1) = \int_0^1 \frac{1 - \left(\frac{1-p}{p}\right)^5}{1 - \left(\frac{1-p}{p}\right)^{10}} \cdot \frac{p^{1} (1-p)^{1}}{B(2, 2)} \, dp.
+\]","To compute the posterior predictive probability that the gambler reaches the target, we need to integrate over the uncertainty in the probability \( p \). The classical probability of reaching the target starting from \( i=5 \) is:
+\[
+P_p(5) = \frac{1 - \left( \dfrac{1 - p}{p} \right)^5}{1 - \left( \dfrac{1 - p}{p} \right)^{10}}.
+\]
+But notice that the denominator can be factored using the identity \( 1 - x^{10} = (1 - x^5)(1 + x^5) \), so:
+\[
+P_p(5) = \frac{1 - \left( \dfrac{1 - p}{p} \right)^5}{(1 - \left( \dfrac{1 - p}{p} \right)^5)(1 + \left( \dfrac{1 - p}{p} \right)^5)} = \frac{1}{1 + \left( \dfrac{1 - p}{p} \right)^5}.
+\]
+Simplify further:
+\[
+P_p(5) = \frac{1}{1 + \left( \dfrac{1 - p}{p} \right)^5} = \frac{1}{1 + \left( \dfrac{1 - p}{p} \right)^5} = \frac{p^5}{p^5 + (1 - p)^5}.
+\]
+Given the Beta prior distribution \( p \sim \text{Beta}(2,2) \), the posterior predictive probability is:
+\[
+\begin{align*}
+\mathbb{P}(Y = 1) &= \int_0^1 P_p(5) \cdot f(p) \, dp \\
+&= \int_0^1 \frac{p^5}{p^5 + (1 - p)^5} \cdot 6p(1 - p) \, dp \quad \text{(since Beta(2,2) density is } f(p) = 6p(1 - p)) \\
+&= 6\int_0^1 \frac{p^6(1 - p)}{p^5 + (1 - p)^5} \, dp.
+\end{align*}
+\]
+This integral is symmetric around \( p = \frac{1}{2} \) due to the symmetry in the numerator and denominator when swapping \( p \) and \( 1 - p \). Therefore, the integral evaluates to \( \dfrac{1}{2} \).
+**Answer:** \(\displaystyle \frac{1}{2}\)",(\displaystyle \frac{1}{2}\),"We wish to “average‐out” the uncertainty in the win probability p when predicting the outcome of a future game. In a game with initial capital i dollars and target N dollars, if the win–loss probabilities are p and q = 1 – p then (when p ≠ q) the classical probability that the gambler reaches the target is
+g(p) = [1 – (q/p)^i]⁄[1 – (q/p)^N].
+In our case i = 5 and N = 10 so that
+g(p) = (1 – ((1–p)/p)^5)⁄(1 – ((1–p)/p)^10).
+Now, suppose that before any game is played our uncertainty about p is described by a Beta(α, β) prior. Here we take α = 2 and β = 2, so that the prior density is
+f(p) = (1/B(2,2)) p^(2–1) (1–p)^(2–1) = 6 p (1–p)
+for 0 < p < 1,
+since B(2,2) = 1⁄6.
+A single play of the game is then observed. (We define the outcome Y as Y = 1 if the gambler reaches the target and Y = 0 if the gambler is ruined.) Notice that in our model the “likelihood” of observing Y (given p) is NOT simply p^Y (1–p)^(1–Y); rather it is determined by the probability of ruin. That is, writing
+L(p; Y) = [g(p)]^Y [1 – g(p)]^(1–Y),
+where g(p) = (1 – ((1–p)/p)^5)/(1 – ((1–p)/p)^10).
+Then by Bayes’ rule the posterior density of p, given an observed outcome Y, is proportional to
+π(p|Y) ∝ f(p) L(p; Y) = 6 p (1–p) [g(p)]^Y [1–g(p)]^(1–Y).
+Now we wish to predict the outcome of a future game. (In that future game the true win probability is again p and the probability of success is again g(p).) In a Bayesian analysis the posterior predictive probability of success in a future game (that is, reaching the target) is given by “averaging” the probability of success over the posterior for p. In other words,
+P(Y_new = 1 | data) = ∫₀¹ g(p) · π(p|Y) dp
+= (∫₀¹ g(p) · 6p (1–p) [g(p)]^Y [1–g(p)]^(1–Y) dp)
+/ (∫₀¹ 6p (1–p) [g(p)]^Y [1–g(p)]^(1–Y) dp).
+Thus, writing everything out we obtain
+P(Y_new = 1 | Y) =
+∫₀¹ [1 – ((1–p)/p)^5]⁄[1 – ((1–p)/p)^10] · 6 p (1–p)
+· [ (1 – ((1–p)/p)^5)/(1 – ((1–p)/p)^10] )^Y [1 – (1 – ((1–p)/p)^5)/(1 – ((1–p)/p)^10] )^(1–Y) dp
+/ ∫₀¹ 6 p (1–p)
+· [ (1 – ((1–p)/p)^5)/(1 – ((1–p)/p)^10] )^Y [1 – (1 – ((1–p)/p)^5)/(1 – ((1–p)/p)^10] )^(1–Y) dp.
+This is a completely acceptable answer. (In practice one would evaluate these integrals numerically.) A few remarks:
+1. Notice that if no game had been played yet (or if one wishes to “marginalize” over the unknown p before seeing any outcome) then one would simply have
+P(Y_new = 1) = ∫₀¹ g(p) · 6 p (1–p) dp.
+2. In our situation the single observed outcome (which is either Y = 1 or Y = 0) is used to “update” our belief about p. For example, if the gambler had reached the target (Y = 1) then the likelihood term [g(p)]^Y would favor values of p for which the ruin‐probability g(p) is large. (There is no conjugate family here because the likelihood itself is a non‐linear function of p.) 3. Any answer that expresses the posterior predictive probability as
+P(Y_new = 1 | Y) = ∫₀¹ g(p) π(p|Y) dp
+with
+π(p|Y) ∝ Beta(2,2) × [g(p)]^Y [1–g(p)]^(1–Y)
+and g(p) = (1 – ((1–p)/p)^5)/(1 – ((1–p)/p)^10)
+for p ∈ (0, 1)
+is correct.
+To summarize, one acceptable final answer is:
+────────────────────────────
+Let
+g(p) = (1 – ((1–p)/p)^5)/(1 – ((1–p)/p)^10).
+Then, with a Beta(2,2) prior on p and after observing Y ∈ {0,1} in one game, the posterior predictive probability that the gambler reaches the target in a future game is
+P(Y_new = 1 | Y) =
+[∫₀¹ g(p) · 6p(1–p)[g(p)]^Y [1–g(p)]^(1–Y) dp]
+/ [∫₀¹ 6p(1–p)[g(p)]^Y [1–g(p)]^(1–Y) dp].
+────────────────────────────
+Any answer equivalent to the above is correct.","P(Y_new = 1 | Y) =
+[∫₀¹ g(p) · 6p(1–p)[g(p)]^Y [1–g(p)]^(1–Y) dp]
+/ [∫₀¹ 6p(1–p)[g(p)]^Y [1–g(p)]^(1–Y) dp]","To derive the posterior predictive probability that the gambler reaches the target in a future game, we need to integrate over the uncertainty in \( p \). Given the Beta prior distribution for \( p \) and the observed outcome \( Y \), we will update the prior to obtain the posterior distribution and then use it to compute the predictive probability.
+### Step 1: Define the Prior and Likelihood
+The prior distribution for \( p \) is:
+\[
+p \sim \text{Beta}(\alpha, \beta) = \text{Beta}(2, 2)
+\]
+The likelihood of observing \( Y = 1 \) (the gambler reaches the target) is given by the classical probability of reaching the target:
+\[
+P(Y = 1 \mid p) = \frac{1 - \left(\frac{q}{p}\right)^i}{1 - \left(\frac{q}{p}\right)^N}
+\]
+where \( q = 1 - p \), \( i = 5 \), and \( N = 10 \).
+### Step 2: Update the Prior to Obtain the Posterior
+Given the observed outcome \( Y = 1 \), the posterior distribution of \( p \) is updated using Bayes' theorem. The posterior distribution is:
+\[
+p \mid Y = 1 \sim \text{Beta}(\alpha + 1, \beta)
+\]
+since observing \( Y = 1 \) corresponds to a success in the Beta-Binomial model.
+Thus, the posterior distribution is:
+\[
+p \mid Y = 1 \sim \text{Beta}(3, 2)
+\]
+### Step 3: Compute the Posterior Predictive Probability
+The posterior predictive probability that the gambler reaches the target in a future game is the expected value of the classical probability \( P(Y = 1 \mid p) \) under the posterior distribution of \( p \):
+\[
+P(Y_{\text{future}} = 1 \mid Y = 1) = \int_0^1 P(Y = 1 \mid p) \cdot \text{Beta}(p \mid 3, 2) \, dp
+\]
+where \( \text{Beta}(p \mid 3, 2) \) is the posterior density of \( p \).
+The classical probability \( P(Y = 1 \mid p) \) is:
+\[
+P(Y = 1 \mid p) = \frac{1 - \left(\frac{1 - p}{p}\right)^5}{1 - \left(\frac{1 - p}{p}\right)^{10}}
+\]
+The posterior density \( \text{Beta}(p \mid 3, 2) \) is:
+\[
+\text{Beta}(p \mid 3, 2) = \frac{p^{2} (1 - p)^{1}}{B(3, 2)}
+\]
+where \( B(3, 2) \) is the Beta function:
+\[
+B(3, 2) = \frac{\Gamma(3) \Gamma(2)}{\Gamma(5)} = \frac{2! \cdot 1!}{4!} = \frac{2}{24} = \frac{1}{12}
+\]
+Thus, the posterior density is:
+\[
+\text{Beta}(p \mid 3, 2) = 12 p^{2} (1 - p)
+\]
+### Step 4: Integrate Over \( p \)
+The posterior predictive probability is:
+\[
+P(Y_{\text{future}} = 1 \mid Y = 1) = \int_0^1 \frac{1 - \left(\frac{1 - p}{p}\right)^5}{1 - \left(\frac{1 - p}{p}\right)^{10}} \cdot 12 p^{2} (1 - p) \, dp
+\]
+This integral is complex and typically requires numerical methods to evaluate. However, we can simplify the problem by recognizing that the integral represents the expected value of \( P(Y = 1 \mid p) \) under the posterior distribution.
+### Step 5: Numerical Integration
+To compute the integral numerically, we can use numerical integration techniques such as the trapezoidal rule or Simpson's rule. For simplicity, we will use a numerical approximation.
+Using numerical integration, we find:
+\[
+P(Y_{\text{future}} = 1 \mid Y = 1) \approx 0.625
+\]
+### Final Answer
+The posterior predictive probability that the gambler reaches the target in a future game is approximately:
+\[
+\boxed{0.625}
+\]","\[
+\boxed{0.625}
+\]"
+18664,Probability,"Probability Theory,Piecewise Function Analysis,Statistics & Random Variables","Let $X$ be a continuous random variable that follows a uniform distribution over the interval $(-4,3)$, which can be denoted as $X \sim U(-4,3)$. Find the density of a random variable defined as
+$$
+Y = \begin{cases}
+x + 7, & x \leq -3, \\
+x^2 - 2|x| + 1, & -3 < x < 0, \\
+1 - |x|, & 0 \leq x < 1, \\
+x - 1, & x \geq 1.
+\end{cases}
+$$","We are given that $X \sim U(-4,3)$, meaning $X$ has a uniform distribution over the interval $(-4,3)$, with a probability density function : $$ f_X(x) = \frac{1}{3-(-4)} = \frac{1}{7} \quad -4 \le x \le 3. $$ The random variable $Y$ is defined piecewise as: $$ Y = \begin{cases} x + 7, & x \leq -3, \\ x^2 - 2|x| + 1, & -3 < x < 0, \\ 1 - |x|, & 0 \leq x < 1, \\ x - 1, & x \geq 1. \end{cases} $$ **Step 1: Determining the Support of $Y$** To find the density of $Y$, we first determine the range of values that $Y$ can take based on $X$'s support: For $x \leq -3$: $$ Y = x + 7. $$ Since $x \in [-4,-3]$, this gives: $$ Y \in [-4+7,\, -3+7] = [3,4]. $$ For $-3 < x < 0$: $$ Y = x^2 - 2|x| + 1. $$ Evaluating the endpoints: - At $x = -3$: $$ Y = (-3)^2 - 2(3) + 1 = 9 - 6 + 1 = 4. $$ - At $x = 0$: $$ Y = 0^2 - 2(0) + 1 = 1. $$ Since $x^2 - 2|x| + 1$ is a quadratic function, it takes values in $(1,4)$ for $-3 < x < 0$. For $0 \leq x < 1$: $$ Y = 1 - |x| = 1 - x. $$ Since $x \in [0,1)$, this gives $Y \in (0,1]$. For $x \geq 1$: $$ Y = x - 1. $$ Since $x \in [1,3]$, this gives $Y \in [0,2]$. Combining all these cases, we conclude that $Y$ takes values in $[0,4]$. **Step 2: Finding the Density $f_Y(y)$** The density of $Y$, $f_Y(y)$, is computed using the transformation rule: $$ f_Y(y) = \sum_{x: Y(x) = y} \frac{f_X(x)}{\left|g'(x)\right|} $$ for differentiable segments. We have contributions from different parts of the transformation. Contributions to $Y$: Case 1. $$Y = 1 - x$$ $$x = 1 - y$$ $$g'(x) = -1$$ $$|g'(x)| = 1$$ $$f_X(x) = \frac{1}{7}$$ Case 2. $$Y = x - 1$$ $$x = y + 1$$ $$g'(x) = 1$$ $$|g'(x)| = 1$$ $$f_X(x) = \frac{1}{7}$$ Summing contributions: $$ f_Y(y) = \frac{1}{7} + \frac{1}{7} = \frac{2}{7}, \quad 0 \leq y \leq 1 $$ For $Y = (x+1)^2$, solving for $x$: $$ y = (x+1)^2 \Rightarrow x = -1 + \sqrt{y}. $$ Derivative: $$ g'(x) = 2(x+1) = 2\sqrt{y}. $$ Density transformation: $$ f_Y(y) = \frac{\frac{1}{7}}{2\sqrt{y}} = \frac{1}{14\sqrt{y}}, \quad 1 < y < 4 $$ For $Y = x + 7$, $x = y - 7$, $g'(x) = 1$: $$ f_Y(y) = \frac{1}{7}\quad 3 \leq y \leq 4 $$ Since both transformations contribute to $Y$ in the range $3 \leq y \leq 4$, we sum the contributions: $$ f_Y(y) = \frac{1}{7} + \frac{1}{14\sqrt{y}}, \quad 3 \leq y \leq 4. $$ Thus, the final form of the PDF is: $$ f_Y(y) = \begin{cases} \frac{2}{7}, & 0 \leq y \leq 1\\ \frac{1}{14\sqrt{y}}, & 1 < y < 3 \\ \frac{1}{7} + \frac{1}{14\sqrt{y}}, & 3 \leq y \leq 4 \\ 0, & \text{otherwise} \end{cases} $$","$$ f_Y(y) = \begin{cases} \frac{2}{7}, & 0 \leq y \leq 1\\ \frac{1}{14\sqrt{y}}, & 1 < y < 3 \\ \frac{1}{7} + \frac{1}{14\sqrt{y}}, & 3 \leq y \leq 4 \\ 0, & \text{otherwise} \end{cases} $$",Response wasn't generated. Model went to infinte loop in thinking mode.,-,"To find the density of the random variable $Y$ defined by different cases, we first recognize that $X$ follows a uniform distribution, $U(-4, 3)$. The probability density function (pdf) of $X$ is given by:
+$$ f_X(x) = \begin{cases} \frac{1}{7}, & -4 \leq x \leq 3, \\
+0, & \text{otherwise}. \end{cases} $$
+We define $Y$ using the given piecewise function:
+$$ Y = \begin{cases} x + 7, & x \leq -3, \\
+x^2 - 2|x| + 1, & -3 < x < 0, \\
+1 - |x|, & 0 \leq x < 1, \\
+x - 1, & x \geq 1. \end{cases} $$
+To find the density of $Y$, we'll examine each interval separately:
+1. **Interval $x \leq -3$:** - Here, $Y = x + 7$.
+- So if $x = -3$, then $Y = -3 + 7 = 4$. If $x = -4$, then $Y = -4 + 7 = 3$. Thus, $Y \in [3, 4]$.
+The transformation from $X$ to $Y$ is linear, and the pdf changes according to:
+$$ f_Y(y) = f_X(x) \cdot \left|\frac{dx}{dy}\right| = \frac{1}{7} \cdot 1 = \frac{1}{7}, \quad 3 \leq y \leq 4. $$
+2. **Interval $-3 < x < 0$:** - Here, $Y = x^2 - 2|x| + 1 = x^2 + 2x + 1 = (x+1)^2$ (since $x < 0$ and $|x| = -x$).
+- Now, $Y \in [0, 1]$ as $x$ changes from $-3$ to $0$.
+The relationship $y = (x+1)^2$ implies that $x = \sqrt{y} - 1$.
+The pdf is derived using:
+$$ f_Y(y) = f_X(x) \cdot \left|\frac{dx}{dy}\right| = \frac{1}{7} \cdot \left| \frac{1}{2\sqrt{y}} \right| = \frac{1}{14\sqrt{y}}, \quad 0 < y < 1. $$
+3. **Interval $0 \leq x < 1$:** - Here, $Y = 1 - |x| = 1 - x$ since $x \geq 0$.
+- Thus, $Y \in [0, 1)$.
+The transformation $y = 1 - x$ implies $x = 1 - y$.
+The pdf changes as:
+$$ f_Y(y) = f_X(x) \cdot \left| \frac{dx}{dy} \right| = \frac{1}{7} \cdot 1 = \frac{1}{7}, \quad 0 \leq y < 1. $$
+4. **Interval $x \geq 1$:** - Here, $Y = x - 1$.
+- Thus, $Y \in [0, 2]$ as $x$ changes from $1$ to $3$.
+The transformation $y = x - 1$ gives $x = y + 1$.
+The pdf is:
+$$ f_Y(y) = f_X(x) \cdot \left| \frac{dx}{dy} \right| = \frac{1}{7} \cdot 1 = \frac{1}{7}, \quad 0 \leq y < 2. $$
+Collectively, the density of $Y$ is given by combining all intervals:
+$$ f_Y(y) = \begin{cases} \frac{1}{7}, & 3 \leq y \leq 4, \\
+\frac{1}{14\sqrt{y}}, & 0 < y < 1, \\
+\frac{1}{7}, & 0 \leq y < 2. \end{cases} $$
+This density $f_Y(y)$ describes how the uniformly distributed random variable $X$ is transformed into $Y$ according to the given piecewise linear and quadratic functions.","$$ f_Y(y) = \begin{cases} \frac{1}{7}, & 3 \leq y \leq 4, \\
+\frac{1}{14\sqrt{y}}, & 0 < y < 1, \\
+\frac{1}{7}, & 0 \leq y < 2. \end{cases} $$","To find the density of the random variable \( Y \) defined in the problem, we'll consider how the function \( Y \) maps from the domain of the uniform random variable \( X \) and compute the cumulative distribution function (CDF) \( F_Y(y) \), and then differentiate to find the probability density function (PDF) \( f_Y(y) \).
+Firstly, since \( X \) is uniformly distributed over \( (-4, 3) \), its PDF is:
+\[
+f_X(x) = \frac{1}{7}, \quad \text{for } x \in (-4, 3).
+\]
+Next, we examine how \( Y \) varies with \( x \) over different intervals:
+1. **For \( x \leq -3 \):**
+\[
+Y = x + 7, \quad x \in (-4, -3].
+\]
+Since \( x \in (-4, -3] \), \( Y \in (3, 4] \).
+2. **For \( -3 < x < 0 \):**
+\[
+Y = (x + 1)^2, \quad x \in (-3, 0).
+\]
+Since \( x \in (-3, 0) \), \( x + 1 \in (-2, 1) \), and thus \( Y \in [1, 4) \).
+3. **For \( 0 \leq x < 1 \):**
+\[
+Y = 1 - x, \quad x \in [0, 1).
+\]
+Hence \( Y \in (0, 1] \).
+4. **For \( x \geq 1 \):**
+\[
+Y = x - 1, \quad x \in [1, 3).
+\]
+So \( Y \in [0, 2) \).
+Now, we construct the CDF \( F_Y(y) = P(Y \leq y) \) and calculate it piecewise.
+**For \( y \in (0, 1) \):**
+- \( Y \) can take values less than or equal to \( y \) in the intervals \( x \in [0, 1) \) and \( x \in [1, y + 1) \).
+- Also, for \( x \in (-3, 0) \), \( Y = (x + 1)^2 \leq y \) when \( x \in [-1 - \sqrt{y}, -1 + \sqrt{y}]\).
+Thus, \( F_Y(y) \) is:
+\[
+F_Y(y) = \frac{y}{7} + \frac{y}{7} + \frac{2\sqrt{y}}{7} = \frac{2y + 2\sqrt{y}}{7}.
+\]
+Differentiating \( F_Y(y) \) gives:
+\[
+f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{2 + \frac{1}{\sqrt{y}}}{7}.
+\]
+**For \( y \in [1, 2) \):**
+- \( Y \) can take values less than or equal to \( y \) in \( x \in (-3, 0) \), \( x \in [0, 1) \), and \( x \in [1, y + 1) \).
+So,
+\[
+F_Y(y) = \frac{1}{7} + \frac{y}{7} + \frac{2\sqrt{y}}{7} = \frac{1 + y + 2\sqrt{y}}{7}.
+\]
+Differentiating yields:
+\[
+f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{1 + \frac{1}{\sqrt{y}}}{7}.
+\]
+**For \( y \in [2, 3) \):**
+- Only \( x \in (-3, 0) \) contributes.
+Thus,
+\[
+F_Y(y) = \frac{1}{7} + \frac{2}{7} + \frac{2\sqrt{y}}{7} = \frac{3 + 2\sqrt{y}}{7},
+\]
+and
+\[
+f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{\frac{1}{\sqrt{y}}}{7}.
+\]
+**For \( y \in [3, 4] \):**
+- \( x \in (-3, 0) \) and \( x \in (-4, -3] \) contribute.
+We have,
+\[
+F_Y(y) = \frac{1}{7} + \frac{2}{7} + \frac{2\sqrt{y}}{7} + \frac{y - 3}{7} = \frac{y + 2\sqrt{y}}{7},
+\]
+and
+\[
+f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{1 + \frac{1}{\sqrt{y}}}{7}.
+\]
+Therefore, the density \( f_Y(y) \) is:
+\[
+f_Y(y) = \begin{cases}
+\displaystyle \frac{2 + \frac{1}{\sqrt{y}}}{7}, & \text{for } y \in (0, 1), \\[2ex]
+\displaystyle \frac{1 + \frac{1}{\sqrt{y}}}{7}, & \text{for } y \in [1, 2), \\[2ex]
+\displaystyle \frac{\frac{1}{\sqrt{y}}}{7}, & \text{for } y \in [2, 3), \\[2ex]
+\displaystyle \frac{1 + \frac{1}{\sqrt{y}}}{7}, & \text{for } y \in [3, 4].
+\end{cases}
+\]
+**Answer:**
+An explicit expression:
+For y ∈ (0, 1): f_Y(y) = [2 + 1 ⁄ √y] ÷ 7
+For y ∈ [1, 2): f_Y(y) = [1 + 1 ⁄ √y] ÷ 7
+For y ∈ [2, 3): f_Y(y) = (1 ⁄ √y) ÷ 7
+For y ∈ [3, 4]: f_Y(y) = [1 + 1 ⁄ √y] ÷ 7","For y ∈ (0, 1): f_Y(y) = [2 + 1 ⁄ √y] ÷ 7
+For y ∈ [1, 2): f_Y(y) = [1 + 1 ⁄ √y] ÷ 7
+For y ∈ [2, 3): f_Y(y) = (1 ⁄ √y) ÷ 7
+For y ∈ [3, 4]: f_Y(y) = [1 + 1 ⁄ √y] ÷ 7","We wish to find the probability density function (pdf) of Y = { x + 7 for x ≤ –3, x² – 2|x| + 1 for –3 < x < 0, 1 – |x| for 0 ≤ x < 1, x – 1 for x ≥ 1 }
+when X is uniformly distributed on (–4, 3) (in other words, X ~ U(–4,3) with density fX(x)= 1/7 for –4 < x < 3). (For simplicity we assume that the “boundary‐points” are allocated in the obvious way so that the pieces do not “overlap” in probability; it does not affect the answer if one reassigns a probability–zero set.)
+Because the transformation f(x) that sends x → y is defined by different formulas on different parts of the support of X, the easiest method is to “work backwards” – for each piece, determine
+• the set of x–values which yield a given y,
+• the change‐of‐variables (or “Jacobian”) factor, and finally
+• add up the contributions from every branch that leads to the same y.
+In what follows we will simplify the formulas when possible. (One acceptable answer is to give the answer piecewise in y. Any answer equivalent to the one below is correct.)
+──────────────────────────────
+Step 1. Rewrite the pieces when possible
+Notice that for –3 < x < 0 the formula is
+y = x² – 2|x| + 1.
+Since x is negative in this range, |x| = –x so that
+y = x² + 2x + 1 = (x + 1)².
+Also, for 0 ≤ x < 1 we have |x| = x so that
+y = 1 – x.
+Thus we may view the transformation as follows:
+A. For x in [–4, –3]: y = x + 7.
+– When x = –4, y = 3; when x = –3, y = 4.
+B. For x in (–3, 0): y = (x + 1)².
+– Note that (x + 1)² is a quadratic with a minimum at x = –1 (where y = 0) and a maximum (approached at x = –3 or x → 0) equal to 4 or 1, respectively. In fact, one may show that:
+• For 0 < y < 1 the equation (x + 1)² = y has two distinct solutions:
+x₁ = –1 – √y (which lies in (–3, –1)) x₂ = –1 + √y (which lies in (–1, 0)).
+• For 1 ≤ y < 4 the “right–branch” (x = –1 + √y) would give a nonnegative value; therefore, the only valid inverse is
+x = –1 – √y.
+C. For x in [0, 1): y = 1 – x.
+– When x = 0, y = 1; when x → 1, y → 0.
+D. For x in [1, 3): y = x – 1.
+– When x = 1, y = 0; when x → 3, y → 2.
+Thus the possible y–values (the “support” of Y) are:
+• From piece A: y ∈ [3, 4].
+• From piece B: y ∈ (0,4) (with two inverses for y < 1 and one inverse for y in [1,4)).
+• From piece C: y ∈ (0,1] (note y = 1 occurs when x = 0).
+• From piece D: y ∈ [0,2).
+In consequence the overall support of Y is [0, 4] (with some overlaps).
+──────────────────────────────
+Step 2. Find the contribution of each piece
+Because X is uniform with fX(x)= 1/7 and the change–of–variables formula (when the transformation is smooth and (locally) invertible) tells us that if y = g(x) then
+fY(y)= ∑ (over all solutions x of g(x)=y) fX(x) / |g′(x)|,
+we treat each piece separately. (In the quadratic piece B the usual formula must be applied with care at the unique point x = –1 where g′ vanishes; an easier method is to compute the cumulative probability and differentiate.)
+──────────────────────────────
+Piece A. (x in [–4, –3], y = x + 7)
+Here the transformation is one–to–one. Inverting,
+x = y – 7 and dx/dy = 1.
+Also, as x varies from –4 to –3, y varies from 3 to 4. Therefore, for y ∈ [3,4] the contribution is
+fY,₍A₎(y) = fX(y – 7) · 1 = 1/7.
+──────────────────────────────
+Piece B. (x in (–3, 0), y = (x + 1)²)
+Because the function y = (x+1)² has a “turning point” at x = –1 (where the derivative is zero), it is best to obtain the contribution using the CDF method. The set of x in (–3,0) such that (x+1)² ≤ y is
+{x: (x+1)² ≤ y} = { x : –√y ≤ x + 1 ≤ √y }.
+But we must intersect this with (–3,0). Two cases occur:
+• Case 1. 0 ≤ y < 1.
+For y in this range √y < 1 so that
+x ∈ [ –1 – √y , –1 + √y ] ⊂ (–3,0).
+Thus the probability from piece B is
+P{Y ≤ y} = (length of [–1 – √y, –1 + √y])⁄7 = (2√y)/7.
+Differentiating with respect to y yields
+fY,₍B₎(y) = d/dy (2√y/7) = 1/(7√y).
+• Case 2. 1 ≤ y < 4.
+Now √y ≥ 1 so that the “upper–end” of the interval [–1–√y, –1+√y] would be ≥ 0; but recall that x must be < 0. Hence the valid x’s are
+x ∈ [ –1 – √y, 0 ).
+The length of this interval is
+L(y)= 0 – (–1–√y) = 1 + √y.
+Thus for y in [1,4) one has
+P{Y ≤ y} = (1 + √y)/7 (with the fact that at y = 1 the two cases match).
+Differentiating gives
+fY,₍B₎(y) = d/dy[(1+√y)/7] = 1/(14√y).
+To summarize, the contribution from piece B is:
+for 0 < y < 1: fY,₍B₎(y)= 1/(7√y),
+for 1 ≤ y < 4: fY,₍B₎(y)= 1/(14√y).
+──────────────────────────────
+Piece C. (x in [0, 1), y = 1 – x)
+This transformation is one–to–one.
+Inverting gives x = 1 – y with dx/dy = –1 (whose absolute value is 1). As x runs from 0 to 1 (with x = 0 giving y = 1 and x → 1 giving y → 0), we obtain y ∈ (0,1].
+Thus, for y ∈ (0,1] the contribution is
+fY,₍C₎(y)= fX(1 – y) · 1 = 1/7.
+──────────────────────────────
+Piece D. (x in [1, 3), y = x – 1)
+Again the mapping is one–to–one. Inverting, x = y + 1 with dx/dy = 1.
+As x runs from 1 to 3, y runs from 0 to 2. Thus for y ∈ [0,2) the contribution is
+fY,₍D₎(y)= fX(y + 1)= 1/7.
+──────────────────────────────
+Step 3. Combine the contributions (by values of y)
+Because different pieces of X may produce the same y–value, we must add their densities when their ranges overlap.
+Let us “partition” the y–axis into several regions:
+1. For 0 < y < 1:
+– From piece B: fY,₍B₎(y)= 1/(7√y).
+– From piece C: fY,₍C₎(y)= 1/7.
+– From piece D: fY,₍D₎(y)= 1/7 (since D gives y ∈ [0,2)).
+Thus, for 0 < y < 1 fY(y)= 1/(7√y) + 1/7 + 1/7 = 1/(7√y) + 2/7.
+2. For 1 ≤ y < 2:
+– Piece B (now only the “left–branch” is valid): fY,₍B₎(y)= 1/(14√y).
+– Piece C does not contribute for y > 1 (its range is y ∈ (0,1]).
+– Piece D continues to contribute: fY,₍D₎(y)= 1/7.
+Thus, for 1 ≤ y < 2
+fY(y)= 1/(14√y) + 1/7.
+3. For 2 ≤ y < 3:
+– Only piece B gives a contribution (since D only covers y < 2 and C stops at y = 1):
+fY(y)= 1/(14√y).
+4. For 3 ≤ y < 4:
+– From piece A: fY,₍A₎(y)= 1/7 (since A gives y ∈ [3,4]).
+– From piece B: fY,₍B₎(y)= 1/(14√y).
+Thus, for 3 ≤ y < 4 fY(y)= 1/7 + 1/(14√y).
+(At y = 0 and y = 4 the density is defined only up to sets of measure zero so one may define fY(0) and fY(4) arbitrarily; note that in a transformation the value at isolated points does not affect the probability.)
+──────────────────────────────
+Step 4. Write the Final Answer
+One acceptable answer is to state that the pdf of Y is
+fY(y) = • 0, for y ∉ [0,4],
+• [1/(7√y) + 2/7], for 0 < y < 1,
+• [1/(14√y) + 1/7], for 1 ≤ y < 2,
+• [1/(14√y)], for 2 ≤ y < 3,
+• [1/7 + 1/(14√y)], for 3 ≤ y < 4.
+Any answer equivalent to the one above is correct.
+──────────────────────────────
+A Few Comments
+• In Piece B the “usual” formula (which sums fX(x)/|g′(x)| over the inverse images) must be handled with care at the unique point x = –1 (where g′(x)= 2(x+1)= 0). One way to get around that difficulty is to compute the cumulative probability on the piece and then differentiate, as we did.
+• Note that the same y–value (for example, y = 0.5, 0.8, etc.) may be produced by more than one value of x (coming from piece B, and possibly from pieces C and D) – so when writing the pdf one must sum the contributions.
+──────────────────────────────
+Final Answer
+An acceptable answer is:
+For y ∉ [0,4], fY(y) = 0.
+For y in (0,1):
+fY(y) = 1/(7√y) + 2/7.
+For y in [1,2):
+fY(y) = 1/(14√y) + 1/7.
+For y in [2,3):
+fY(y) = 1/(14√y).
+For y in [3,4):
+fY(y) = 1/(14√y) + 1/7.
+Any answer equivalent to the one above is correct.","For y ∉ [0,4], fY(y) = 0.
+For y in (0,1):
+fY(y) = 1/(7√y) + 2/7.
+For y in [1,2):
+fY(y) = 1/(14√y) + 1/7.
+For y in [2,3):
+fY(y) = 1/(14√y).
+For y in [3,4):
+fY(y) = 1/(14√y) + 1/7.","To find the density of the random variable $Y$ defined as:
+$$
+Y = \begin{cases} x + 7, & x \leq -3, \cr x^2 - 2|x| + 1, & -3 < x < 0, \cr 1 - |x|, & 0 \leq x < 1, \cr x - 1, & x \geq 1. \end{cases}
+$$
+we proceed as follows:
+### Step 1: Define the Uniform Distribution
+$X$ follows a uniform distribution on the interval $(-4, 3)$. The probability density function of $X$ is:
+$$
+f_X(x) = \begin{cases} \frac{1}{7}, & -4 \leq x \leq 3, \cr 0, & \text{otherwise}. \end{cases}
+$$
+### Step 2: Analyze Each Case for $Y$
+#### Case 1: $x \leq -3$
+For $x \leq -3$, $Y = x + 7$. Since $x$ ranges from $-4$ to $-3$, $Y$ ranges from $3$ to $4$.
+#### Case 2: $-3 < x < 0$
+For $-3 < x < 0$, $Y = x^2 - 2|x| + 1$. Since $x$ is negative, $|x| = -x$, so:
+$$
+Y = x^2 - 2(-x) + 1 = x^2 + 2x + 1 = (x + 1)^2
+$$
+The range of $Y$ for this case is from $0$ to $1$.
+#### Case 3: $0 \leq x < 1$
+For $0 \leq x < 1$, $Y = 1 - |x| = 1 - x$. The range of $Y$ is from $0$ to $1$.
+#### Case 4: $x \geq 1$
+For $x \geq 1$, $Y = x - 1$. Since $x$ ranges from $1$ to $3$, $Y$ ranges from $0$ to $2$.
+### Step 3: Find the Density of $Y$
+The density of $Y$ can be found by considering the transformation of $X$ in each case. Since $X$ is uniformly distributed, the density of $Y$ will be proportional to the density of $X$ in each interval.
+#### Case 1: $Y = x + 7$
+The inverse transformation is $x = Y - 7$. The density of $Y$ is:
+$$
+f_Y(y) = f_X(x) \cdot \left| \frac{dx}{dy} \right| = \frac{1}{7} \cdot 1 = \frac{1}{7}
+$$
+for $3 \leq y \leq 4$.
+#### Case 2: $Y = (x + 1)^2$
+The inverse transformation is $x = \sqrt{Y} - 1$. The density of $Y$ is:
+$$
+f_Y(y) = f_X(x) \cdot \left| \frac{dx}{dy} \right| = \frac{1}{7} \cdot \frac{1}{2\sqrt{y}}
+$$
+for $0 < y < 1$.
+#### Case 3: $Y = 1 - x$
+The inverse transformation is $x = 1 - Y$. The density of $Y$ is:
+$$
+f_Y(y) = f_X(x) \cdot \left| \frac{dx}{dy} \right| = \frac{1}{7} \cdot 1 = \frac{1}{7}
+$$
+for $0 < y < 1$.
+#### Case 4: $Y = x - 1$
+The inverse transformation is $x = Y + 1$. The density of $Y$ is:
+$$
+f_Y(y) = f_X(x) \cdot \left| \frac{dx}{dy} \right| = \frac{1}{7} \cdot 1 = \frac{1}{7}
+$$
+for $0 \leq y \leq 2$.
+### Step 4: Combine the Results
+The density of $Y$ is piecewise defined as:
+$$
+f_Y(y) = \begin{cases} \frac{1}{7}, & 3 \leq y \leq 4, \cr \frac{1}{14\sqrt{y}}, & 0 < y < 1, \cr \frac{1}{7}, & 0 < y < 1, \cr \frac{1}{7}, & 0 \leq y \leq 2. \end{cases}
+$$
+Note that for $0 < y < 1$, the density is the sum of the contributions from Case 2 and Case 3.
+Thus, the final density of $Y$ is:
+$$
+f_Y(y) = \begin{cases} \frac{1}{7}, & 3 \leq y \leq 4, \cr \frac{1}{14\sqrt{y}} + \frac{1}{7}, & 0 < y < 1, \cr \frac{1}{7}, & 0 \leq y \leq 2. \end{cases}
+$$
+This is the density of the random variable $Y$.","$$
+f_Y(y) = \begin{cases} \frac{1}{7}, & 3 \leq y \leq 4, \cr \frac{1}{14\sqrt{y}} + \frac{1}{7}, & 0 < y < 1, \cr \frac{1}{7}, & 0 \leq y \leq 2. \end{cases}
+$$"
+18532,Calculus,"Residue Theorem, Improper Integrals,Asymptotic Analysis","Consider the improper integral:
+$$
+I(a) = \int_0^\infty \frac{x^a \sin(x)}{1 + x^2} \, dx
+$$
+where $a$ is a real parameter.
+Use the residue theorem to evaluate $I(a)$ for values of $a$ where the integral converges. Find the asymptotic expansion of $I(a)$ as $a \to \infty$.","We analyze the improper integral:
+$$
+I(a) = \int_0^\infty \frac{x^a \sin(x)}{1 + x^2} \, dx,
+$$
+where $a$ is a real parameter.
+**Step 1. Convergence of $I(a)$**
+To determine the values of \(a\) for which the integral converges, we examine its behavior as $x \to 0$ and $x \to \infty$.
+**Behavior near $x = 0$:** As $x \to 0$, we approximate $sin x \approx x$ and obtain:
+$$
+\frac{x^a \sin(x)}{1 + x^2} \approx \frac{x^a \cdot x}{1} = x^{a+1}.
+$$
+The integral $$
+\int_0^\epsilon x^{a+1}\,dx
+$$
+converges provided that $a+1 > -1$ that is, $a > -2$. However, when extending $x^a$ to the complex plane (by defining the principal branch), it is common to restrict to $a > -1$ to avoid branch-cut complications. Thus, for our purposes we assume:
+$$
+-1 < a < 1.
+$$
+**Behavior as $x \to \infty$ :** For large $x$, since $1+x^2 \sim x^2$ and $sin x$ is oscillatory, we have:
+$$
+\frac{x^a \sin x}{1 + x^2} \approx x^{a-2}\sin x.
+$$
+The integral
+$$
+\int_{1}^{\infty} x^{a-2}\sin x\,dx
+$$
+converges absolutely if $a-2 < -1$; that is, if $a < 1$.
+Thus, the overall convergence (under our analytic continuation assumptions) is ensured for:
+$$
+-1 < a < 1.
+$$
+**Step 2. Evaluating $I(a)$ Using the Residue Theorem**
+We extend the function to the complex plane by considering:
+$$
+f(z) = \frac{z^a e^{iz}}{1 + z^2},
+$$
+where $z^a$ is defined via the principal branch (with $a > -1$. The function $f(z)$ has poles where $(1+z^2=0)$; that is, at
+$$
+z = \pm i.
+$$ We close the contour in the upper half-plane (since $a > 0$ ensures convergence there) so that only the pole at $z=i$ is enclosed.
+**Step 3. Residues at the Poles**
+Factor the denominator:
+$$
+1 + z^2 = (z - i)(z + i).
+$$ The residue at the simple pole $z = i$ is given by:
+$$
+\text{Res}(f, i) = \lim_{z \to i} (z - i) \frac{z^a e^{iz}}{(z - i)(z + i)}
+= \lim_{z \to i} \frac{z^a e^{iz}}{z + i}.
+$$ Setting $z = i$ yields:
+$$
+\text{Res}(f, i) = \frac{i^a e^{i\cdot i}}{i + i}
+= \frac{i^a e^{-1}}{2i}.
+$$
+**Step 4. Application of the Residue Theorem**
+By the residue theorem, the contour integral is:
+$$
+\oint f(z)\,dz = 2\pi i \cdot \text{Res}(f, i)
+= 2\pi i \cdot \frac{i^a e^{-1}}{2i}
+= \pi e^{-1} i^{a-1}.
+$$ Since the integral over the real axis is given by
+$$
+\int_{-\infty}^{\infty} \frac{x^a e^{ix}}{1+x^2}\,dx = \pi e^{-1} i^{a-1},
+$$ and recalling that
+$$
+\frac{x^a e^{ix}}{1+x^2} = \frac{x^a \cos(x)}{1+x^2} + i\frac{x^a \sin(x)}{1+x^2},
+$$ the imaginary part corresponds to the integral involving $sin(x)$.
+Because the original integral $I(a)$ is defined over $[0,\infty)$ (and by symmetry the integral from $0 \to \infty$ is half the integral over $(-\infty,\infty))$ we have:
+$$
+I(a) = \frac{1}{2}\,\text{Im}\left(\pi e^{-1} i^{a-1}\right).
+$$
+Express $i^{a-1}$ in exponential form:
+$$
+i^{a-1} = e^{i(a-1)\pi/2}.$$ Thus,
+$$
+I(a) = \frac{\pi}{2} e^{-1}\,\text{Im}\left(e^{i(a-1)\pi/2}\right)
+= \frac{\pi}{2} e^{-1}\sin\left(\frac{(a-1)\pi}{2}\right).
+$$
+**Step 5. Asymptotic Expansion as $a \to \infty$**
+For large $a$, we use the expansion:
+$$
+e^{i(a-1)\pi/2} = \cos\left(\frac{(a-1)\pi}{2}\right) + i\sin\left(\frac{(a-1)\pi}{2}\right).
+$$ Thus, the asymptotic form for the imaginary part is:
+$$
+I(a) \sim \frac{\pi}{2} e^{-1}\sin\left(\frac{(a-1)\pi}{2}\right).
+$$ This shows an oscillatory behavior as $a \to \infty$, which is expected due to the sine function in the integrand.","$$
+I(a) \sim \frac{\pi}{2} e^{-1}\sin\left(\frac{(a-1)\pi}{2}\right).
+$$","Final Answer:
+To evaluate the integral $I(a) = \int_0^\infty \frac{x^a \sin(x)}{1 + x^2} \, dx$ using the residue theorem, we consider the complex integral
+$$
+\oint_C \frac{z^a e^{iz}}{1 + z^2} \, dz,
+$$
+where $C$ is the contour consisting of the positive real axis from $\epsilon$ to $R$, the arc $C_R$ of radius $R$ in the upper half-plane, the negative real axis from $-R$ to $-\epsilon$, and the arc $C_\epsilon$ of radius $\epsilon$ in the upper half-plane. We choose the branch of $z^a = e^{a \log z}$ with $0 < \arg z < 2\pi$. The residue at the pole $z = i$ in the upper half-plane is
+$$
+\text{Res}_{z = i} \frac{z^a e^{iz}}{1 + z^2} = \lim_{z \to i} (z - i) \frac{z^a e^{iz}}{(z - i)(z + i)} = \frac{i^a e^{i(i)}}{i + i} = \frac{i^a e^{-1}}{2i} = \frac{e^{-1}}{2i} e^{a \log i} = \frac{e^{-1}}{2i} e^{i a \pi / 2}.
+$$
+By the residue theorem,
+$$
+\oint_C \frac{z^a e^{iz}}{1 + z^2} \, dz = 2 \pi i \text{Res}_{z = i} \frac{z^a e^{iz}}{1 + z^2} = 2 \pi i \frac{e^{-1}}{2i} e^{i a \pi / 2} = \frac{\pi}{e} e^{i a \pi / 2} = \frac{\pi}{e} \left( \cos\left(\frac{a\pi}{2}\right) + i \sin\left(\frac{a\pi}{2}\right) \right).
+$$
+The integral along $C$ is the sum of integrals along $L_1 = [\epsilon, R]$, $C_R$, $L_2 = [-R, -\epsilon]$, $C_\epsilon$. As $R \to \infty$ and $\epsilon \to 0$, integrals along $C_R$ and $C_\epsilon$ vanish for $-2 < a < 1$.
+The integral along $L_1$ approaches $\int_0^\infty \frac{x^a e^{ix}}{1 + x^2} \, dx$.
+The integral along $L_2$ is
+$$
+\int_{-R}^{-\epsilon} \frac{z^a e^{iz}}{1 + z^2} \, dz = \int_R^\epsilon \frac{(-x)^a e^{-ix}}{1 + (-x)^2} (-dx) = e^{i a \pi} \int_\epsilon^R \frac{x^a e^{-ix}}{1 + x^2} \, dx.
+$$
+Thus,
+$$
+\int_0^\infty \frac{x^a e^{ix}}{1 + x^2} \, dx + e^{i a \pi} \int_0^\infty \frac{x^a e^{-ix}}{1 + x^2} \, dx = \frac{\pi}{e} e^{i a \pi / 2}.
+$$
+Taking the imaginary part of both sides, we have
+$$
+\int_0^\infty \frac{x^a \sin x}{1 + x^2} \, dx + \text{Im} \left( e^{i a \pi} \int_0^\infty \frac{x^a e^{-ix}}{1 + x^2} \, dx \right) = \frac{\pi}{e} \sin\left(\frac{a\pi}{2}\right).
+$$
+We have $\int_0^\infty \frac{x^a e^{-ix}}{1 + x^2} \, dx = \int_0^\infty \frac{x^a (\cos x - i \sin x)}{1 + x^2} \, dx$.
+$\text{Im} \left( e^{i a \pi} \int_0^\infty \frac{x^a e^{-ix}}{1 + x^2} \, dx \right) = \sin(a \pi) \int_0^\infty \frac{x^a \cos x}{1 + x^2} \, dx - \cos(a \pi) \int_0^\infty \frac{x^a \sin x}{1 + x^2} \, dx$.
+So, $I(a) + \sin(a \pi) \int_0^\infty \frac{x^a \cos x}{1 + x^2} \, dx - \cos(a \pi) I(a) = \frac{\pi}{e} \sin\left(\frac{a\pi}{2}\right)$.
+However, as shown in the scratchpad, using $\int_0^\infty \frac{x^a e^{ix}}{1 + x^2} \, dx = \frac{\pi}{2e \cos(\frac{a \pi}{2})}$, the imaginary part is 0, which is incorrect.
+There might be an issue in setting up the integrals using different paths. Without resolving the inconsistency, we state the evaluated integral using residue theorem as potentially flawed but derived result:
+$$
+I(a) = \frac{\pi}{2e} \tan\left(\frac{a\pi}{2}\right), \quad -2 < a < 1.
+$$
+Due to the issues identified and potential inconsistencies, finding a reliable asymptotic expansion is not feasible based on the current analysis.
+Final Answer: The final answer is $\boxed{I(a) = \frac{\pi}{2e} \tan\left(\frac{a\pi}{2}\right)}$",$\boxed{I(a) = \frac{\pi}{2e} \tan\left(\frac{a\pi}{2}\right)}$,"To evaluate the improper integral
+\[
+I(a) = \int_0^\infty \frac{x^a \sin(x)}{1 + x^2} \, dx
+\]
+using the residue theorem, we first consider an extension of the problem to the complex plane. We start by replacing \(\sin(x)\) with \(\frac{e^{ix} - e^{-ix}}{2i}\). This allows us to consider the complex function:
+\[
+f(z) = \frac{z^a e^{iz}}{1 + z^2}
+\]
+We will integrate \( f(z) \) over a contour in the upper half-plane. Consider the contour \( C_R \), which consists of the real line segment from \( 0 \) to \( R \) and a semicircular arc of radius \( R \) in the upper half-plane. According to the residue theorem, the integral over this closed contour is given by:
+\[
+\oint_{C_R} f(z) \, dz = 2\pi i \sum \operatorname{Res}(f, z_k)
+\]
+where \( z_k \) are the poles of \( f(z) \) inside the contour. The function \( f(z) \) has singularities at \( z = \pm i \).
+We consider the simple pole at \( z = i \). The residue of \( f(z) \) at \( z = i \) is calculated as:
+\[
+\operatorname{Res}(f, i) = \lim_{z \to i} (z-i) f(z) = \lim_{z \to i} \frac{z^a e^{iz}}{z+i}
+\]
+The direct substitution gives:
+\[
+\operatorname{Res}(f, i) = \frac{i^a e^{-1}}{2i} = \frac{i^a e^{-1}}{2i}
+\]
+Thus:
+\[
+\oint_{C_R} f(z) \, dz = 2\pi i \cdot \frac{i^a e^{-1}}{2i} = \pi i^{a+1} e^{-1}
+\]
+For the contour integral, the integral over the real axis is
+\[
+\int_0^R \frac{x^a e^{ix}}{1 + x^2} \, dx + \int_0^R \frac{x^a e^{-ix}}{1 + x^2} \, dx
+\]
+which simplifies to:
+\[
+\int_0^R \frac{x^a \cos(x)}{1+x^2} \, dx + i \int_0^R \frac{x^a \sin(x)}{1+x^2} \, dx
+\]
+The integral over the semicircle, as \( R \to \infty \), vanishes if \( a < 1 \). Therefore,
+\[
+I(a) = \lim_{R \to \infty} \frac{1}{2i} \left( \int_0^R \frac{x^a e^{ix}}{1+x^2} \, dx - \int_0^R \frac{x^a e^{-ix}}{1+x^2} \, dx \right) = \frac{\pi i^{a+1} e^{-1}}{2i} = \frac{\pi i^a e^{-1}}{2}
+\]
+This gives us:
+\[
+I(a) = \frac{\pi i^a e^{-1}}{2}
+\]
+As \( a \to \infty \) with \( a < 1 \) to ensure convergence, the asymptotic expansion can be expanded in terms of:
+- \( i^a = e^{i \frac{\pi a}{2}} \)
+- Hence \( I(a) \approx \frac{\pi e^{-1}}{2} e^{i \frac{\pi a}{2}} \) as \( a \to \infty \).
+Thus for \( a < 1 \), we find
+\[
+I(a) \sim \frac{\pi e^{-1}}{2} \left(\cos\left(\frac{\pi a}{2}\right) + i \sin\left(\frac{\pi a}{2}\right)\right) \]
+This is the asymptotic behavior of \( I(a) \) as \( a \) approaches its convergence boundary from below while \( a \) grows large but remains finite satisfying \( a < 1 \).","\[
+I(a) \sim \frac{\pi e^{-1}}{2} \left(\cos\left(\frac{\pi a}{2}\right) + i \sin\left(\frac{\pi a}{2}\right)\right) \]","To evaluate the integral
+\[ I(a) = \int_0^\infty \frac{x^a \sin(x)}{1 + x^2} \, dx, \]
+we can use contour integration and the residue theorem. Our plan is to consider the complex integral of
+\[ f(z) = \frac{z^a e^{iz}}{1 + z^2} \]
+over a suitable contour and relate it to \( I(a) \).
+First, note that the integral converges for \( -2 < a < 1 \): near 0, the integrand behaves like \( x^{a+1} \), which is integrable if \( a > -2 \), and at infinity, it behaves like \( x^{a - 2} \sin x \), and the oscillatory integral converges if \( a - 2 < -1 \), i.e., \( a < 1 \).
+We consider a keyhole contour along the positive real axis from \( R \) to \( \epsilon \), around a small circle around the origin, back along the positive real axis (but below it, ensuring we change the branch of the multivalued \( z^a \)), and then back to \( R \) along a large arc at infinity. The integral over the closed contour \( C \) is
+\[ \int_C f(z) \, dz = 2\pi i \sum_{\text{residues inside } C} \operatorname{Res}_{z=z_k} f(z), \]
+where the residues are at the pole \( z = i \) inside \( C \).
+The integral along the real axis picks up our original integral and an additional factor due to the branch cut:
+\[ \int_{\epsilon}^R \frac{x^a e^{ix}}{1 + x^2} \, dx - e^{2\pi i a} \int_{\epsilon}^R \frac{x^a e^{ix}}{1 + x^2} \, dx = (1 - e^{2\pi i a}) \int_{0}^\infty \frac{x^a e^{ix}}{1 + x^2} \, dx. \]
+The integral over the large arc at infinity tends to zero, and the integral over the small circle around 0 also tends to zero under appropriate conditions on \( a \).
+We compute the residue at \( z = i \):
+\[ \operatorname{Res}_{z=i} f(z) = \lim_{z \to i} (z - i) \frac{z^a e^{iz}}{1 + z^2} = \frac{(i)^a e^{i \cdot i}}{2i} = \frac{e^{i a \frac{\pi}{2}} e^{-1}}{2i}. \]
+Plugging back, we find:
+\[ (1 - e^{2\pi i a}) \int_{0}^\infty \frac{x^a e^{ix}}{1 + x^2} \, dx = 2\pi i \operatorname{Res}_{z=i} f(z). \]
+Simplifying and taking imaginary parts, we get:
+\[ I(a) = -\frac{\pi}{2e} \cdot \frac{\cos\left( \frac{\pi a}{2} \right)}{\sin(\pi a)}. \]
+Regarding the asymptotic behavior as \( a \to \infty \), since both \( \cos\left( \frac{\pi a}{2} \right) \) and \( \sin(\pi a) \) are bounded and oscillatory functions, \( I(a) \) remains bounded and oscillates as \( a \) increases. Therefore, the asymptotic expansion implies that \( I(a) \) does not grow indefinitely but continues to oscillate between finite values as \( a \to \infty \).
+Answer:
+An explicit formula: I(a) = – [π ⁄ (2e)] × [cos(½ πa) ⁄ sin πa]; and as a → ∞, I(a) remains bounded and oscillates according to this formula.",I(a) = – [π ⁄ (2e)] × [cos(½ πa) ⁄ sin πa,"One acceptable answer was to show that if
+I(a) = ∫₀∞ [xᵃ sin x/(1+x²)] dx (1)
+then for those real a for which the integral (or its analytic‐continuation) converges one may prove that
+I(a) = [π·2^(a–1)/√π] · [Γ((a+1)/2)/Γ(a/2)]. (2)
+In other words,
+I(a) = (π 2^(a–1)/√π) · (Γ((a+1)/2)⁄Γ(a/2)) .
+Moreover, using Stirling’s formula one may show that as a → ∞
+I(a) ~ (√π/(2√2))·a^(1/2)·2ᵃ ·[1 – 1/(4a) + O(1/a²)]. (3)
+The details are as follows.
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+An Outline of One Derivation via the Residue Theorem
+(1) Write the integral (1) as the imaginary part of
+J(a) = ∫₀∞ [xᵃ e^(ix)/(1+x²)] dx,
+so that I(a) = Im J(a).
+(2) One may show that if one defines the branch of zᵃ (for real a) by taking arg z ∈ [0,2π)
+and then “opens a key‐hole” contour along the positive real‐axis, the discontinuity there gives
+[1 – e^(2πi a)] J(a) = 2πi · (Res of zᵃe^(iz)/(1+z²) at z=i).
+A short calculation shows that the only pole in the upper‐half–plane is at z = i and that
+Res₍z=i₎ = iᵃ e^(–1)/(2i).
+(3) Hence one obtains
+J(a) = [π iᵃ e^(–1)]/[1 – e^(2πi a)].
+After a little algebra (writing 1 – e^(2πi a) = –2i e^(πi a) sin(πa)) one may show that
+I(a) = Im J(a)
+can be written in closed‐form (after a little further algebra and then “analytically continuing” to all a for which the answer makes sense) in the form (2) above.
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+Asymptotics
+One may then use the well–known Stirling formulas
+Γ(a+1) ~ √(2πa)·(a/e)ᵃ (as a → ∞)
+and also
+Γ(z+1/2)/Γ(z) ~ z^(1/2) (as z → ∞),
+together with the Legendre duplication formula to show that an equivalent form of (2) is
+I(a) = (π 2^(a–1)/√π)·[Γ((a+1)/2)/Γ(a/2)] .
+Then one may show that
+Γ((a+1)/2)/Γ(a/2) ~ (a/2)^(1/2) (as a → ∞).
+Thus one finds
+I(a) ~ (π 2^(a–1)/√π)·(a/2)^(1/2)
+= (π/(2))·2^(a)/√π · √(a/2)
+= (√π/(2√2))·√a·2ᵃ.
+A further (routine) expansion shows that in fact
+I(a) ~ (√π/(2√2))·√a·2ᵃ · [1 – 1/(4a) + O(1/a²)] (as a → ∞).
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+Final Answer
+Any answer equivalent to
+I(a) = (π 2^(a–1)/√π) · (Γ((a+1)/2)/Γ(a/2))
+with
+I(a) ~ (√π/(2√2))·√a·2ᵃ [1 – 1/(4a) + ···] (as a → ∞)
+is correct.
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+A Note on Convergence
+One may show by looking at the behavior of the integrand near 0 (where xᵃ sin x ~ x^(a+1)) and as x → ∞ (where xᵃ/(1+x²) ~ x^(a–2) with an oscillatory sine factor) that the integral converges (absolutely or by oscillatory cancellation) for a in a suitable interval (for example, one may start with –1 < a < 1 and then define the answer by analytic continuation). Any answer equivalent (after routine algebra) to the answer above is correct.",I(a) = (π 2^(a–1)/√π) · (Γ((a+1)/2)/Γ(a/2)),"To evaluate the improper integral
+\[
+I(a) = \int_0^\infty \frac{x^a \sin(x)}{1 + x^2} \, dx
+\]
+using the residue theorem and to find its asymptotic expansion as \( a \to \infty \), we proceed as follows:
+
+---
+
+### Step 1: Convergence of the Integral
+The integral converges for \( -1 < a < 1 \). This is because:
+- Near \( x = 0 \), the integrand behaves like \( x^a \), so convergence requires \( a > -1 \).
+- Near \( x = \infty \), the integrand behaves like \( x^{a-2} \), so convergence requires \( a < 1 \).
+
+For \( a \geq 1 \), the integral diverges due to the rapid growth of \( x^a \) as \( x \to \infty \).
+
+---
+
+### Step 2: Use the Residue Theorem
+To evaluate \( I(a) \), we consider the complex integral:
+\[
+J(a) = \int_C \frac{z^a e^{iz}}{1 + z^2} \, dz,
+\]
+where \( C \) is a contour in the complex plane consisting of:
+1. The real axis from \( 0 \) to \( R \),
+2. A semicircular arc in the upper half-plane from \( R \) to \( -R \),
+3. The real axis from \( -R \) to \( 0 \).
+
+The integrand has simple poles at \( z = i \) and \( z = -i \). Only the pole at \( z = i \) lies inside the contour \( C \). The residue at \( z = i \) is:
+\[
+\text{Res}(f, i) = \lim_{z \to i} (z - i) \frac{z^a e^{iz}}{1 + z^2} = \frac{i^a e^{-1}}{2i}.
+\]
+
+By the residue theorem:
+\[
+J(a) = 2\pi i \cdot \text{Res}(f, i) = \pi i^a e^{-1}.
+\]
+
+As \( R \to \infty \), the contribution from the semicircular arc vanishes (by Jordan's lemma), and we are left with:
+\[
+J(a) = \int_0^\infty \frac{x^a e^{ix}}{1 + x^2} \, dx + \int_{-\infty}^0 \frac{x^a e^{ix}}{1 + x^2} \, dx.
+\]
+
+The second integral can be rewritten using \( x = -t \):
+\[
+\int_{-\infty}^0 \frac{x^a e^{ix}}{1 + x^2} \, dx = \int_0^\infty \frac{(-t)^a e^{-it}}{1 + t^2} \, dt.
+\]
+
+Thus:
+\[
+J(a) = \int_0^\infty \frac{x^a e^{ix}}{1 + x^2} \, dx + \int_0^\infty \frac{(-t)^a e^{-it}}{1 + t^2} \, dt.
+\]
+
+Taking the imaginary part of \( J(a) \), we get:
+\[
+I(a) = \text{Im}(J(a)) = \pi \cdot \text{Re}(i^a) e^{-1}.
+\]
+
+Since \( i^a = e^{i\pi a/2} \), we have:
+\[
+\text{Re}(i^a) = \cos\left(\frac{\pi a}{2}\right).
+\]
+
+Thus:
+\[
+I(a) = \pi \cos\left(\frac{\pi a}{2}\right) e^{-1}.
+\]
+
+---
+
+### Step 3: Asymptotic Expansion as \( a \to \infty \)
+For large \( a \), the dominant contribution to the integral comes from the region near \( x = 1 \), where \( x^a \) is maximized. We use Laplace's method to approximate the integral.
+
+Let \( x = e^t \), so \( dx = e^t dt \), and the integral becomes:
+\[
+I(a) = \int_{-\infty}^\infty \frac{e^{(a+1)t} \sin(e^t)}{1 + e^{2t}} \, dt.
+\]
+
+The exponent \( (a+1)t \) is maximized at \( t = 0 \). Expanding the integrand around \( t = 0 \), we get:
+\[
+\sin(e^t) \approx \sin(1) + t \cos(1),
+\]
+\[
+\frac{1}{1 + e^{2t}} \approx \frac{1}{2} - \frac{t}{2}.
+\]
+
+Thus:
+\[
+I(a) \approx \int_{-\infty}^\infty e^{(a+1)t} \left(\frac{\sin(1)}{2} + \frac{t \cos(1) - t \sin(1)}{2}\right) \, dt.
+\]
+
+Evaluating the Gaussian integrals, we find:
+\[
+I(a) \approx \frac{\sin(1)}{2} \sqrt{\frac{2\pi}{a+1}}.
+\]
+
+For large \( a \), this simplifies to:
+\[
+I(a) \sim \frac{\sin(1)}{2} \sqrt{\frac{2\pi}{a}}.
+\]
+
+---
+
+### Final Answer:
+For \( -1 < a < 1 \), the integral evaluates to:
+\[
+I(a) = \pi \cos\left(\frac{\pi a}{2}\right) e^{-1}.
+\]
+
+For large \( a \), the asymptotic expansion is:
+\[
+I(a) \sim \frac{\sin(1)}{2} \sqrt{\frac{2\pi}{a}}.
+\]","\[
+I(a) \sim \frac{\sin(1)}{2} \sqrt{\frac{2\pi}{a}}.
+\]"
+18670,Probability,"Stochastic Processes, Markov Chains and First Passage Time Problems","Derive a recurrence relation for the probability that a prisoner, starting in cell 1 of a circular dungeon with $N$ cells, finds a randomly placed exit within $T$ steps, given that each hour they move to an adjacent cell (clockwise or counterclockwise) with equal probability $\frac{1}{2}$.","We define $P(T, x)$ as the probability that the prisoner finds the exit within $T$ steps, starting from cell $x$. The prisoner moves randomly to one of the two adjacent cells (clockwise or counterclockwise) with equal probability $\frac{1}{2}$.
+**Case 1 :** If the prisoner is already at the exit at any time $t$, the probability of finding the exit is 1
+$$
+P(T, \text{exit}) = 1,\quad \forall \ T \geq 0
+$$
+**Case 2 :** If the prisoner has not reached the exit and has no steps remaining, the probability is 0
+$$
+P(0, x) = 0, \quad \text{for } x \neq \text{exit}
+$$
+For $x \neq \text{exit}$, the prisoner moves to either of the two adjacent cells with equal probability. Thus, the probability of reaching the exit within $T$ steps satisfies the recurrence relation:
+$$
+P(T, x) = \frac{1}{2} P(T-1, x+1) + \frac{1}{2} P(T-1, x-1)
+$$
+Since the dungeon is circular with $N$ cells, the positions wrap around modulo $N$:
+$$
+P(T, N+1) = P(T, 1), \quad P(T, 0) = P(T, N)
+$$
+Initially, the exit is randomly placed in one of the $N$ cells. Therefore, the probability distribution at $T=0$ is:
+$$
+P(0, x) =
+\begin{cases}
+1, & \text{if } x = \text{exit}, \\
+0, & \text{otherwise}.
+\end{cases}
+$$
+Thus, the recurrence relation governing the probability of finding the exit within $T$ steps is:
+$$
+P(T, x) =
+\begin{cases}
+1, & \text{if } x = \text{exit},\\
+\frac{1}{2} P(T-1, x+1) + \frac{1}{2} P(T-1, x-1), & \text{otherwise}.
+\end{cases}
+$$","$$
+P(T, x) =
+\begin{cases}
+1, & \text{if } x = \text{exit},\\
+\frac{1}{2} P(T-1, x+1) + \frac{1}{2} P(T-1, x-1), & \text{otherwise}.
+\end{cases}
+$$","Let $Q(T)$ be the probability that the prisoner finds a randomly placed exit within $T$ steps. Let $Q(T, e)$ be the probability that the prisoner finds the exit at cell $e$ within $T$ steps, given the exit is at cell $e$. Since the exit is placed randomly at one of the $N$ cells with equal probability $\frac{1}{N}$, we have
+$$ Q(T) = \frac{1}{N} \sum_{e=1}^N Q(T, e). $$
+Let $P_t(x)$ be the probability that the prisoner is at cell $x$ at time $t$, starting from cell 1 at time $t=0$. The transition probabilities are such that from cell $x$, the prisoner moves to cell $\text{prev}(x)$ or $\text{next}(x)$ with probability $\frac{1}{2}$ each. Thus, the probability distribution of the prisoner's position at time $t+1$ is given by
+$$ P_{t+1}(x) = \frac{1}{2} P_t(\text{prev}(x)) + \frac{1}{2} P_t(\text{next}(x)), \quad x = 1, 2, ..., N, \quad t \ge 0 $$
+with initial condition $P_0(1) = 1$ and $P_0(x) = 0$ for $x \neq 1$.
+Let $F_{t}(e)$ be the probability that the prisoner reaches the exit cell $e$ for the first time at step $t$. The probability of reaching the exit $e$ at step $t+1$ for the first time is the probability that at step $t$ the prisoner was at a cell adjacent to $e$ (i.e., $\text{prev}(e)$ or $\text{next}(e)$) and at step $t+1$ moved to cell $e$, given that the exit was not reached before step $t+1$. We can express $F_{t+1}(e)$ as
+$$ F_{t+1}(e) = \frac{1}{2} P_t(\text{prev}(e)) + \frac{1}{2} P_t(\text{next}(e)), \quad t \ge 0. $$
+The probability of finding the exit at cell $e$ within $T$ steps is the cumulative probability of reaching it for the first time at step $t'=1, 2, ..., T$:
+$$ Q(T, e) = \sum_{t'=1}^T F_{t'}(e). $$
+We can derive a recurrence for $Q(T, e)$. We have $Q(0, e) = 0$ and
+$$ Q(T+1, e) = Q(T, e) + F_{T+1}(e) = Q(T, e) + \frac{1}{2} P_T(\text{prev}(e)) + \frac{1}{2} P_T(\text{next}(e)). $$
+To find the probability of finding a randomly placed exit within $T$ steps, we average $Q(T, e)$ over all possible exit locations $e$:
+$$ Q(T+1) = \frac{1}{N} \sum_{e=1}^N Q(T+1, e) = \frac{1}{N} \sum_{e=1}^N \left[ Q(T, e) + \frac{1}{2} P_T(\text{prev}(e)) + \frac{1}{2} P_T(\text{next}(e)) \right] $$
+$$ Q(T+1) = \frac{1}{N} \sum_{e=1}^N Q(T, e) + \frac{1}{N} \sum_{e=1}^N \left[ \frac{1}{2} P_T(\text{prev}(e)) + \frac{1}{2} P_T(\text{next}(e)) \right] = Q(T) + \frac{1}{N} \sum_{e=1}^N \left[ \frac{1}{2} P_T(\text{prev}(e)) + \frac{1}{2} P_T(\text{next}(e)) \right]. $$
+We know that $\sum_{e=1}^N \frac{1}{2} P_T(\text{prev}(e)) + \frac{1}{2} P_T(\text{next}(e)) = \sum_{e=1}^N P_{T+1}(e)$ due to the definition of $P_{T+1}(e)$. Also, $\sum_{x=1}^N P_{T+1}(x) = \sum_{x=1}^N P_T(x)$. Since $P_0(1) = 1$ and $P_0(x) = 0$ for $x \neq 1$, we have $\sum_{x=1}^N P_0(x) = 1$. Thus, $\sum_{x=1}^N P_t(x) = 1$ for all $t \ge 0$.
+Therefore, $\sum_{e=1}^N \left[ \frac{1}{2} P_T(\text{prev}(e)) + \frac{1}{2} P_T(\text{next}(e)) \right] = \sum_{e=1}^N P_{T+1}(e) = 1$.
+So, $Q(T+1) = Q(T) + \frac{1}{N}$. With initial condition $Q(0) = 0$. This leads to $Q(T) = \frac{T}{N}$. However, probability cannot exceed 1. Therefore, the recurrence relation is
+$$ Q(T+1) = \min\left\{ Q(T) + \frac{1}{N}, 1 \right\}, \quad \text{with } Q(0) = 0. $$
+Final Answer: The final answer is $\boxed{Q(T+1) = \min\left(Q(T) + \frac{1}{N}, 1\right), \quad Q(0) = 0}$","$\boxed{Q(T+1) = \min\left(Q(T) + \frac{1}{N}, 1\right), \quad Q(0) = 0}$","To derive a recurrence relation for the probability \( P_i(t) \) that a prisoner, starting in cell \( i \) of a circular dungeon with \( N \) cells, finds the exit within \( t \) steps (where \( 0 \leq t \leq T \)), we consider the random walk on the circular structure.
+Let's start by examining the possible ways in which the prisoner can move:
+1. At each step, the prisoner can move either clockwise (to \( i+1 \)) or counterclockwise (to \( i-1 \)) with equal probability \( \frac{1}{2} \).
+2. The cells are numbered from \( 1 \) to \( N \) and form a circle, so moving from cell \( 1 \) counterclockwise will take the prisoner to cell \( N \), and moving from cell \( N \) clockwise will take the prisoner to cell \( 1 \).
+Given these considerations, the probability relation can be set up as follows:
+### Recurrence Setup:
+- The base case is:
+\[
+P_i(0) = 0 \quad \text{for all } i \quad \text{(since no moves can be made in 0 steps)}
+\]
+- The prisoner starts from cell 1, so we are initially interested in \( P_1(t) \).
+- For \( t \geq 1 \), the probability \( P_i(t) \) can be calculated as:
+\[
+P_i(t) = \frac{1}{2} P_{i-1}(t-1) + \frac{1}{2} P_{i+1}(t-1)
+\]
+where \( P_{0}(t) = P_N(t) \) and \( P_{N+1}(t) = P_1(t) \) due to the circular arrangement.
+### Accounting for the Exit:
+Assume the exit is placed randomly and is equally likely to be in any of the \( N \) cells. Let \( q_i \) be the probability that cell \( i \) is the exit, with \( q_i = \frac{1}{N} \) for all \( i \).
+1. If the exit is in cell \( i \), and the prisoner is at cell \( i \) with remaining time \( t \), the probability of success \( P_i(t) = 1 \) since the prisoner has found the exit.
+Therefore, the recurrence relation becomes:
+### Updated Recurrence with Exit Consideration:
+\[
+P_i(t) = q_i + (1 - q_i) \left[\frac{1}{2} P_{i-1}(t-1) + \frac{1}{2} P_{i+1}(t-1)\right]
+\]
+### Boundary Conditions:
+- \( P_i(0) = 0 \) for all \( i \) (no exit can be found with 0 steps).
+- If \( i = 1 \) and the possibly randomly placed exit turns out to be in cell 1 itself, then \( P_1(t) = 1 \).
+### Solving the Recurrence:
+The recurrence should be iterated starting from known values and incrementing time \( t \) up to \( T \), with possible initial distributions of exits and initial conditions applied.
+This recurrence allows one to compute the probability of finding the exit, given the time step constraints, the circular configuration of cells, and the random location of the exit.","\[
+P_i(t) = q_i + (1 - q_i) \left[\frac{1}{2} P_{i-1}(t-1) + \frac{1}{2} P_{i+1}(t-1)\right]
+\]","To derive the recurrence relation for the probability \( P(T) \) that the prisoner finds the exit within \( T \) steps, we can model the problem using a Markov process and consider the cumulative probability over time.
+**Assumptions and Definitions:**
+- Let \( N \) be the total number of cells in the circular dungeon.
+- The exit is randomly placed in one of the \( N \) cells, with equal probability \( \frac{1}{N} \).
+- The prisoner starts in cell 1 and moves to an adjacent cell (clockwise or counterclockwise) with equal probability \( \frac{1}{2} \) each.
+- \( P(T) \) is the probability that the prisoner has found the exit within \( T \) steps.
+- \( q(T) = 1 - P(T) \) is the probability that the prisoner has not found the exit after \( T \) steps.
+**Derivation:**
+At each time step \( t \), the probability that the prisoner is at any specific cell \( k \) is part of the distribution \( P(k, t) \), which depends on the prisoner's random walk.
+However, because the exit is equally likely to be in any cell and the prisoner's position is independent of the exit's position, the probability that the prisoner finds the exit at any given time \( t \) (given that the exit hasn't been found yet) is:
+\[
+p(t) = \frac{1}{N}
+\]
+This is because:
+- The prisoner is at some cell (any cell) at time \( t \).
+- The probability that the exit is at that cell is \( \frac{1}{N} \).
+Since at each step the probability that the prisoner hasn't found the exit yet is \( q(t-1) \), the chance that they find it at time \( t \) is:
+\[
+\text{Incremental probability at time } t: \quad \Delta P(t) = q(t-1) \cdot p(t) = q(t-1) \cdot \frac{1}{N}
+\]
+Therefore, the cumulative probability \( P(T) \) satisfies the recurrence relation:
+\[
+P(T) = P(T - 1) + \left(1 - P(T - 1)\right) \cdot \frac{1}{N}
+\]
+**Simplifying the Recurrence Relation:**
+- \( P(T - 1) \) is the probability that the prisoner has found the exit by time \( T - 1 \).
+- \( \left(1 - P(T - 1)\right) \) is the probability that the prisoner hasn't found the exit by time \( T - 1 \).
+- Multiplying \( \left(1 - P(T - 1)\right) \) by \( \frac{1}{N} \) gives the probability that the prisoner finds the exit at time \( T \), given they haven't found it before.
+**Final Answer:**
+\[
+P(T) = P(T - 1) + \left(1 - P(T - 1)\right) \times \frac{1}{N}
+\]
+An explicit recurrence: P(T) = P(T − 1)  +  [1 − P(T − 1)] × (1⁄N); that is,
+P(T) = P(T − 1) + [1 − P(T − 1)]·(1⁄N)",P(T) = P(T − 1) + [1 − P(T − 1)]·(1⁄N),"One acceptable answer was to “reduce” the problem to one of first‐hitting on the circle. In what follows we describe one way to arrive at a recurrence.
+Suppose the dungeon has cells numbered 1,…,N arranged around a circle. The prisoner starts in cell 1 and at the start of the game an “exit” is placed uniformly at random in one of the N cells. (Thus, with probability 1/N the prisoner is already at the exit.) Every hour the prisoner moves one cell either clockwise or counterclockwise, each with probability ½. We wish to know the probability that the prisoner will visit the exit cell within T steps.
+Because the exit is placed uniformly at random, and because the circle is “homogeneous,” a useful idea is to “fix” the exit and to measure distances from it. (That is, instead of thinking of “starting at cell 1” and “the exit is random,” we may, by symmetry, define the distance d from cell 1 to the exit along the circle.) In a circle the (minimum) distance d between two cells runs between 0 and M where M = ⎣(N–1)/2⎦ (if N is odd; if N is even one needs a minor adjustment, so that the cell “directly opposite” has two equally good representatives).
+Define
+P(T,d) = probability that a prisoner starting at distance d from the exit will hit the exit within T steps.
+Notice that if the prisoner is at the exit (i.e. d = 0) then we have already “escaped.” Hence the initial condition is
+P(0,0) = 1 and P(0,d) = 0 for d > 0.
+Now, if d > 0 then on the next step the prisoner moves either closer to or farther from the exit. (There is one slight twist: if d happens to be maximal—that is, if d = M—then a step “away” from the exit actually wraps around and brings you closer—but we can “encode” this by using the following recurrence.)
+For T ≥ 1 and 0 < d ≤ M (with the understanding that when d = M a move “away” uses the symmetry of the circle) we may write
+P(T,d) = ½ · P(T–1, |d–1|) + ½ · P(T–1, d+1*).
+Here the notation d+1* means “the new effective distance after a move that (naively) increases d by 1.” In practice, on the circle when d reaches values larger than M one must “reflect” the distance; that is, one should replace d+1 by min(d+1, N-d–1). (For example, if N is odd then the distance can only take values 0,1,…,M and one always sets d+1 := min(d+1, N-d–1).)
+Thus one acceptable answer is to define for 0 ≤ d ≤ M
+P(0,d) = { 1 if d = 0, 0 otherwise, }
+P(T,d) = ½ P(T–1, |d–1|) + ½ P(T–1, min(d+1, N-d–1) ), for T ≥ 1.
+Now, since the exit was chosen uniformly at random among the N cells and the prisoner starts in cell 1, the (minimum) distance between the start and the exit is d = 0 with probability 1/N and, for d ≥ 1, the number of cells at that distance is (typically) 2 (with the only possible exception when N is even and d = N/2 where there is only one cell). Thus one may write the overall probability a(T) that the prisoner finds the exit within T steps as
+a(T) = (1/N)·P(T,0) + (1/N)·{2·∑[d=1 to M] P(T,d)} (if N is odd)
+and with a similar formula if N is even. (In other words, we average over the distance d of the exit from cell 1.)
+Let us summarise this answer:
+──────────────────────────────
+One acceptable answer:
+Define P(T,d), for d = 0,1,…,M (with M = ⎣(N–1)/2⎦), by
+P(0,0) = 1 , P(0,d) = 0 for d > 0,
+P(T,d) = ½ · P(T–1, |d–1|) + ½ · P(T–1, min{d+1, N-d–1}), for T ≥ 1.
+Then the probability that the prisoner escapes in T steps is
+a(T) = [1/N] · P(T,0) + [2/N] · ∑₍d=1₎^(M) P(T,d)
+(with a slight modification if N is even, since in that case the maximum distance occurs only once).
+──────────────────────────────
+Any answer equivalent to the answer above is correct. (One may also “unfold” the problem slightly differently by defining the hitting probability for each cell visited by the random walk; the answer above is simply a matter of taste.)
+For example, note that if one “conditions” on the first step when starting at distance d > 0 one obtains
+P(T,d) = ½ · P(T–1, d–1) + ½ · P(T–1, d+1)
+(for those d for which d–1 and d+1 are still valid distances, after using the natural identification d+1 = min(d+1, N-d–1) when necessary).
+And when d = 0 the prisoner is already at the exit so that P(T,0) = 1 for all T.
+A disadvantage of “pasting” together conditions for general d is that one must “remember” the circular structure; however, the answer above is entirely acceptable. Any answer along these lines is correct.","P(T,d) = ½ · P(T–1, d–1) + ½ · P(T–1, d+1)","To derive a recurrence relation for the probability that a prisoner, starting in cell 1 of a circular dungeon with \( N \) cells, finds a randomly placed exit within \( T \) steps, we can model the problem as a Markov process. Here's a step-by-step breakdown:
+---
+### Step 1: Define the Problem
+- The dungeon has \( N \) cells arranged in a circle.
+- The prisoner starts in cell 1.
+- Each hour, the prisoner moves to an adjacent cell (clockwise or counterclockwise) with equal probability \( \frac{1}{2} \).
+- The exit is placed uniformly at random in one of the \( N \) cells.
+- We want to find the probability that the prisoner finds the exit within \( T \) steps.
+---
+### Step 2: Define the States
+Let \( P(i, t) \) be the probability that the prisoner, starting in cell \( i \), finds the exit within \( t \) steps.
+- The exit is equally likely to be in any of the \( N \) cells, so the probability that the exit is in cell \( j \) is \( \frac{1}{N} \).
+- If the prisoner is in the same cell as the exit, they find it immediately.
+---
+### Step 3: Base Cases
+1. If \( t = 0 \), the prisoner has no steps left, so:
+\[
+P(i, 0) = 0 \quad \text{for all } i.
+\]
+2. If the prisoner is in the same cell as the exit, they find it immediately:
+\[
+P(i, t) = 1 \quad \text{if the exit is in cell } i.
+\]
+---
+### Step 4: Recurrence Relation
+For \( t > 0 \), the prisoner can move to an adjacent cell (clockwise or counterclockwise) with equal probability \( \frac{1}{2} \). The probability \( P(i, t) \) satisfies the recurrence:
+\[
+P(i, t) = \frac{1}{N} + \frac{1}{2} P(i-1, t-1) + \frac{1}{2} P(i+1, t-1),
+\]
+where:
+- \( \frac{1}{N} \) is the probability that the exit is in cell \( i \).
+- \( \frac{1}{2} P(i-1, t-1) \) is the probability of moving to cell \( i-1 \) and finding the exit in the remaining \( t-1 \) steps.
+- \( \frac{1}{2} P(i+1, t-1) \) is the probability of moving to cell \( i+1 \) and finding the exit in the remaining \( t-1 \) steps.
+---
+### Step 5: Boundary Conditions
+Since the dungeon is circular, the cells are arranged in a ring. Therefore:
+- \( P(0, t) = P(N, t) \),
+- \( P(N+1, t) = P(1, t) \).
+---
+### Step 6: Final Recurrence Relation
+The recurrence relation for \( P(i, t) \) is:
+\[
+P(i, t) = \frac{1}{N} + \frac{1}{2} P(i-1, t-1) + \frac{1}{2} P(i+1, t-1),
+\]
+with boundary conditions:
+\[
+P(0, t) = P(N, t), \quad P(N+1, t) = P(1, t).
+\]
+---
+### Step 7: Solve for \( P(1, T) \)
+To find the probability that the prisoner, starting in cell 1, finds the exit within \( T \) steps, we solve the recurrence relation for \( P(1, T) \). This can be done using dynamic programming or matrix methods, depending on the size of \( N \) and \( T \).
+---
+### Final Answer
+The recurrence relation for the probability \( P(i, t) \) is:
+\[
+P(i, t) = \frac{1}{N} + \frac{1}{2} P(i-1, t-1) + \frac{1}{2} P(i+1, t-1),
+\]
+with boundary conditions:
+\[
+P(0, t) = P(N, t), \quad P(N+1, t) = P(1, t).
+\]
+The probability that the prisoner, starting in cell 1, finds the exit within \( T \) steps is \( P(1, T) \).","\[
+P(0, t) = P(N, t), \quad P(N+1, t) = P(1, t).
+\]"
+18479,Algebra,"Complex numbers, polar form, quadratic equations,",Find the possible values of $|z|$ if $z$ is a nonzero complex number such that both the real and imaginary parts of $(\bar{z})^2 + \frac{1}{z^2}$ are integers.,"We start by writing $z = re^{i\theta}$ so that $\overline{z} = re^{-i\theta}$. Then
+$$
+(\overline{z})^2 + \frac{1}{z^2} = r^2 e^{-2i\theta} + \frac{1}{r^2} e^{-2i\theta} = \Bigl(r^2 + \frac{1}{r^2}\Bigr)e^{-2i\theta}.
+$$
+This shows that the whole expression is
+$$
+\Bigl(r^2 + \frac{1}{r^2}\Bigr)(\cos2\theta - i\sin2\theta).
+$$
+Since both the real and imaginary parts must be integers, it is natural to require that the common factor
+$$
+k = r^2 + \frac{1}{r^2}
+$$
+be an integer. (Any noninteger multiple of $\cos2\theta$ and $\sin2\theta$ would typically spoil the integrality unless $2\theta$ takes very special values.) Let’s denote that integer by $n$ (with $n\ge2$, since by AM–GM, $r^2+\frac{1}{r^2}\ge2$). In other words,
+$$
+r^2+\frac{1}{r^2}=n.
+$$
+Now, if we set $x=r^2$, the equation becomes
+$$
+x+\frac{1}{x}=n.
+$$
+Multiplying both sides by $x$ yields
+$$
+x^2 - nx + 1 = 0.
+$$
+Solving this quadratic, we find
+$$
+x=\frac{n\pm\sqrt{n^2-4}}{2}.
+$$
+Taking positive square roots (since $r>0$) gives
+$$
+|z|=r=\sqrt{x}=\sqrt{\frac{n\pm\sqrt{n^2-4}}{2}}.
+$$
+Note that the two solutions are reciprocals of each other. Thus, for each integer $n\ge2$ we obtain exactly two possible magnitudes:
+$$
+\sqrt{\frac{n+\sqrt{n^2-4}}{2}} \quad \text{and} \quad \sqrt{\frac{n-\sqrt{n^2-4}}{2}}.
+$$
+In summary, the possible values of $|z|$ are exactly those numbers of the form
+$$
+\Biggl\{\,\sqrt{\frac{n\pm\sqrt{n^2-4}}{2}} : n\in\mathbb{Z},\; n\ge2\,\Biggr\}.
+$$","$$
+\Biggl\{\,\sqrt{\frac{n\pm\sqrt{n^2-4}}{2}} : n\in\mathbb{Z},\; n\ge2\,\Biggr\}.
+$$","Let $z = re^{i\theta}$. Then $\bar{z} = re^{-i\theta}$.
+$(\bar{z})^2 = r^2 e^{-2i\theta} = r^2 (\cos(2\theta) - i \sin(2\theta))$.
+$z^2 = r^2 e^{2i\theta} = r^2 (\cos(2\theta) + i \sin(2\theta))$.
+$\frac{1}{z^2} = \frac{1}{r^2 e^{2i\theta}} = \frac{1}{r^2} e^{-2i\theta} = \frac{1}{r^2} (\cos(2\theta) - i \sin(2\theta))$.
+$(\bar{z})^2 + \frac{1}{z^2} = r^2 (\cos(2\theta) - i \sin(2\theta)) + \frac{1}{r^2} (\cos(2\theta) - i \sin(2\theta)) = (\cos(2\theta) - i \sin(2\theta)) (r^2 + \frac{1}{r^2}) = (\cos(2\theta) (r^2 + \frac{1}{r^2})) - i (\sin(2\theta) (r^2 + \frac{1}{r^2}))$.
+Real part: $Re = \cos(2\theta) (r^2 + \frac{1}{r^2})$. Imaginary part: $Im = -\sin(2\theta) (r^2 + \frac{1}{r^2})$.
+We require $Re \in \mathbb{Z}$ and $Im \in \mathbb{Z}$. Let $C = r^2 + \frac{1}{r^2} = |z|^2 + \frac{1}{|z|^2}$.
+$Re = C \cos(2\theta) \in \mathbb{Z}$. $Im = -C \sin(2\theta) \in \mathbb{Z}$.
+Let $Re = m \in \mathbb{Z}$ and $Im = n \in \mathbb{Z}$. $m = C \cos(2\theta)$, $n = -C \sin(2\theta)$.
+$m^2 + n^2 = (C \cos(2\theta))^2 + (-C \sin(2\theta))^2 = C^2 (\cos^2(2\theta) + \sin^2(2\theta)) = C^2$.
+$C^2 = m^2 + n^2$. $C = \sqrt{m^2 + n^2}$.
+$C = r^2 + \frac{1}{r^2} = \sqrt{m^2 + n^2}$.
+$(r^2 + \frac{1}{r^2})^2 = m^2 + n^2$. $r^4 + 2 + \frac{1}{r^4} = m^2 + n^2$.
+$r^4 + 2 + \frac{1}{r^4} = k$ for some integer $k = m^2 + n^2$.
+Let $R = r^4 = |z|^4$. $R + 2 + \frac{1}{R} = k$. $R^2 + 2R + 1 = kR$. $R^2 + (2 - k) R + 1 = 0$.
+$R = \frac{-(2 - k) \pm \sqrt{(2 - k)^2 - 4}}{2} = \frac{k - 2 \pm \sqrt{k^2 - 4k + 4 - 4}}{2} = \frac{k - 2 \pm \sqrt{k^2 - 4k}}{2} = \frac{k - 2 \pm \sqrt{k(k - 4)}}{2}$.
+We need $R = |z|^4 > 0$ to be real. We need $k(k - 4) \ge 0$. $k \le 0$ or $k \ge 4$.
+Since $C = r^2 + \frac{1}{r^2} \ge 2$ for $r > 0$. $C = \sqrt{m^2 + n^2} \ge 2$. $m^2 + n^2 = C^2 \ge 4$. $k = m^2 + n^2 \ge 4$.
+If $k = 4$. $R = \frac{4 - 2 \pm \sqrt{4(4 - 4)}}{2} = \frac{2}{2} = 1$. $r^4 = 1$. $r = 1$. $|z| = 1$.
+If $k = 5$. $R = \frac{5 - 2 \pm \sqrt{5(5 - 4)}}{2} = \frac{3 \pm \sqrt{5}}{2} > 0$. $r = \sqrt{\frac{3 \pm \sqrt{5}}{2}}$.
+If $k = 6$. $R = \frac{6 - 2 \pm \sqrt{6(6 - 4)}}{2} = \frac{4 \pm \sqrt{12}}{2} = 2 \pm \sqrt{3} > 0$. $r = \sqrt{\sqrt{2 \pm \sqrt{3}}}$.
+Possible values are $|z| = 1$ and $|z| = \sqrt{\sqrt{\frac{k \pm \sqrt{k^2 - 4k}}{2}}}$ for integer $k \ge 4$.
+When $|z|=1$, $r=1, r^2 + \frac{1}{r^2} = 2$. $C = 2$. $m^2 + n^2 = C^2 = 4$. Possible values for $(m, n)$ are $(\pm 2, 0), (0, \pm 2)$.
+Possible values for $|z|$ are values of the form $|z| = \sqrt{\frac{k \pm \sqrt{k^2 - 4}}{2}}$ for integer $k \ge 2$. When $k=2$, $|z| = 1$.
+Let's check possible values for $|z|=1$.
+Final Answer: The final answer is $\boxed{1}$",$\boxed{1}$,"Given a nonzero complex number \( z \), we need to determine the possible values of \( |z| \) such that both the real and imaginary parts of \(\left(\overline{z}\right)^2 + \frac{1}{z^2}\) are integers.
+Let \( z = a + bi \) where \( a, b \in \mathbb{R} \) and \( z \neq 0 \). Then the complex conjugate is \(\overline{z} = a - bi\). Let's examine the expression \(\left(\overline{z}\right)^2 + \frac{1}{z^2}\):
+\[
+\left(\overline{z}\right)^2 = (a - bi)^2 = a^2 - 2abi - b^2i^2 = a^2 - 2abi + b^2.
+\]
+\[
+z^2 = (a + bi)^2 = a^2 + 2abi - b^2i^2 = a^2 + 2abi - b^2.
+\]
+Then, \(\frac{1}{z^2} = \frac{1}{a^2 + 2abi - b^2}\). To express this in standard complex form, multiply the numerator and the denominator by the complex conjugate of the denominator:
+\[
+\frac{1}{z^2} = \frac{1}{a^2 + 2abi - b^2} \cdot \frac{a^2 - 2abi - b^2}{a^2 - 2abi - b^2}.
+\]
+\[
+= \frac{a^2 - 2abi - b^2}{(a^2 - b^2)^2 + (2ab)^2}.
+\]
+By simplifying,
+\[
+|z|^2 = a^2 + b^2.
+\]
+The denominator becomes:
+\[
+(a^2 - b^2)^2 + (2ab)^2 = (a^2 + b^2)^2 = |z|^4.
+\]
+So we write:
+\[
+\frac{1}{z^2} = \frac{a^2 - b^2 - 2abi}{|z|^4}.
+\]
+Thus, the sum is:
+\[
+\left(\overline{z}\right)^2 + \frac{1}{z^2} = (a^2 - b^2) - 2abi + \frac{a^2 - b^2}{|z|^4} - \frac{2abi}{|z|^4}.
+\]
+This simplifies to:
+\[
+\text{Real part: } (a^2 - b^2) + \frac{a^2 - b^2}{|z|^4},
+\]
+\[
+\text{Imaginary part: } -2ab \left(1 + \frac{1}{|z|^4}\right).
+\]
+The real and imaginary parts must be integers. Let us consider the imaginary part condition:
+-2ab \left(1 + \frac{1}{|z|^4}\right) is an integer, which suggests that \frac{1}{|z|^4}\) must result in a term that allows integer addition. If \( |z| = 1 \), denominator complications resolve, specifically:
+\[
+\frac{1}{1^4} = 1,
+\]
+\[
+-2ab(2) = -4ab.
+\]
+The requirement for integer values will hold. Analysis of other modulus values would expand complex algebra terms beyond this solution scope. Thus, solving similarly for other modulus values considering additional evaluation properties, we could establish continued satisfaction arises primarily for \( |z| = 1 \). Hence:
+\[
+|z| = 1.
+\]
+Given conditions lead us to conclude:
+Thus, the possible values of \( |z| \) are just:
+\[
+\boxed{1}
+\]","\[
+\boxed{1}
+\]","To solve this problem, we need to find all possible values of \(|z|\) (the modulus of \(z\)) for which the expression \((\bar{z})^2 + \frac{1}{z^2}\) has both real and imaginary parts that are integers.
+**Step 1: Express the given expression in terms of \(|z|\) and \(\theta\).**
+Let \(z = r e^{i\theta}\), where \(r = |z| > 0\) is the modulus of \(z\), and \(\theta\) is the argument of \(z\).
+The conjugate of \(z\) is \(\bar{z} = r e^{-i\theta}\).
+Compute \((\bar{z})^2\) and \(\frac{1}{z^2}\):
+\[
+(\bar{z})^2 = r^2 e^{-2i\theta}, \quad \frac{1}{z^2} = \frac{1}{r^2 e^{2i\theta}} = \frac{1}{r^2} e^{-2i\theta}.
+\]
+So,
+\[
+(\bar{z})^2 + \frac{1}{z^2} = e^{-2i\theta} \left( r^2 + \frac{1}{r^2} \right).
+\]
+**Step 2: Find the conditions under which the real and imaginary parts are integers.**
+Let \(S = r^2 + \frac{1}{r^2} \geq 2\). Then:
+\[
+(\bar{z})^2 + \frac{1}{z^2} = S e^{-2i\theta} = S [\cos(2\theta) - i \sin(2\theta)].
+\]
+Therefore, the real and imaginary parts are:
+\[
+\text{Re} = S \cos(2\theta), \quad \text{Im} = - S \sin(2\theta).
+\]
+Since both \(\text{Re}\) and \(\text{Im}\) are integers, it follows that \(S \cos(2\theta)\) and \(S \sin(2\theta)\) are integers.
+**Step 3: Use number theoretic considerations to find possible values of \(S\).**
+Let \(m = S \cos(2\theta)\) and \(n = S \sin(2\theta)\), where \(m\) and \(n\) are integers. Then:
+\[
+\left( \frac{m}{S} \right)^2 + \left( \frac{n}{S} \right)^2 = \cos^2(2\theta) + \sin^2(2\theta) = 1.
+\]
+This simplifies to:
+\[
+m^2 + n^2 = S^2.
+\]
+So, \(m\), \(n\), and \(S\) form a Pythagorean triple.
+**Step 4: Find integer solutions where \(S = r^2 + \frac{1}{r^2}\).**
+We need to find integers \(S \geq 2\), \(m\), and \(n\) satisfying \(m^2 + n^2 = S^2\) and such that \(S\) can be expressed as \(S = r^2 + \frac{1}{r^2}\) for some real number \(r > 0\).
+Let's consider the equation \(r^2 + \frac{1}{r^2} = S\). Multiplying both sides by \(r^2\):
+\[
+r^4 - S r^2 + 1 = 0.
+\]
+This is a quadratic in \(r^2\), and to have real solutions, the discriminant must be non-negative:
+\[
+\Delta = S^2 - 4 \geq 0 \implies S \geq 2.
+\]
+Moreover, \(S^2 - 4\) must be a perfect square so that \(r^2\) is rational. Setting \(S^2 - 4 = k^2\) for some integer \(k\), we get:
+\[
+S^2 - k^2 = 4 \implies (S - k)(S + k) = 4.
+\]
+The only integer solutions to this equation are \(S = 2\) and \(k = 0\).
+When \(S = 2\):
+\[
+r^2 + \frac{1}{r^2} = 2 \implies r^2 = 1 \implies r = 1.
+\]
+This gives \(|z| = 1\).
+**Conclusion:**
+The only possible value of \(|z|\) is \(1\). This is the only value that satisfies all the conditions of the problem.
+Answer:
+**Exactly all complex numbers z with |z| = 1; that is, |z| = 1 is the only possible value.**",|z| = 1,"We will show that if z is a nonzero complex number satisfying
+(1) (z̄)² + 1/z² ∈ ℤ + i ℤ
+then writing z in polar form z = r·e^(iθ) (with r = |z| > 0) forces
+r² + (1/r²) = √(m² + n²)
+for some integers m and n. In other words, if
+(z̄)² + 1/z² = m + i n (with m, n ∈ ℤ)
+then necessarily
+r² + (1/r²) = √(m²+n²) (2)
+Once one has (2) the possible moduli can be found by solving for r.
+Let’s explain this in detail.
+────────────────────────────
+Step 1. Rewrite the expression in polar form
+Write z = r·e^(iθ). Then its complex conjugate is z̄ = r·e^(–iθ) and
+(z̄)² = r²·e^(–2iθ)
+Also,
+1/z² = 1/(r²·e^(2iθ)) = (1/r²)·e^(–2iθ).
+Thus
+(z̄)² + 1/z² = [r² + (1/r²)] · e^(–2iθ).
+Define
+A = r² + (1/r²) (note that A ≥ 2, with equality only when r = 1).
+Then (z̄)² + 1/z² = A · e^(–2iθ). In rectangular form this is
+A cos(2θ) – i·A sin(2θ).
+The hypothesis is that both the real and imaginary parts are integers. That is, there exist integers m and n such that
+A cos(2θ) = m and –A sin(2θ) = n.
+────────────────────────────
+Step 2. A necessary relation
+From the two equations we deduce that
+m² + n² = A² (cos²2θ + sin²2θ) = A².
+Thus
+A = √(m²+n²). (3)
+But A was defined as r² + 1/r², so (3) tells us that
+r² + 1/r² = √(m²+n²).
+Since r² + 1/r² is at least 2, we must have
+√(m²+n²) ≥ 2 ⟹ m² + n² ≥ 4.
+────────────────────────────
+Step 3. Solving for r
+The equation
+r² + 1/r² = T (with T = √(m²+n²) and T ≥ 2)
+is equivalent to
+r⁴ – T·r² + 1 = 0.
+This is a quadratic in u = r². Its solutions are
+u = [T ± √(T² – 4)]/2.
+Since r > 0, we have
+r² = (T + √(T²–4))⁄2 or r² = (T – √(T²–4))⁄2.
+Taking positive square roots, the two possible values for |z| are
+|z| = √[(T + √(T²–4))/2] or |z| = √[(T – √(T²–4))/2].
+Moreover, if you compute the product of these two values (that is, if you multiply their squares) you will see that they are reciprocals.
+Since T = √(m²+n²) for some integers m and n (with m²+n² ≥ 4), we have characterized the possible moduli.
+────────────────────────────
+Step 4. Stating the answer
+An acceptable answer is:
+If (z̄)² + 1/z² = m + i n for some m, n ∈ ℤ (so that m²+n² ≥ 4), then
+r² + 1/r² = √(m²+n²).
+Thus, writing T = √(m²+n²), the two possible values of |z| are
+|z| = √[(T + √(T²–4))/2] or |z| = √[(T – √(T²–4))/2].
+In particular, when m²+n² = 4 (for example, if m = ±2 and n = 0, or m = 0 and n = ±2), we have T = 2 and then
+|z| = √[(2 ± √(4–4))/2] = √(2/2) = 1.
+Any answer equivalent to the answer above is correct.
+────────────────────────────
+A few examples
+1. If m = 2 and n = 0, then T = 2 and |z| = 1.
+2. If m = 2 and n = –1 (so that m²+n² = 5), then T = √5 and
+|z| = √[((√5) + √(5–4))/2] = √[((√5) + 1)/2] or |z| = √[((√5) – 1)/2].
+3. If m = 2 and n = –2 (so m²+n² = 8), then T = 2√2 and
+|z| = √[(2√2 + √(8–4))/2] = √[(2√2 + 2)/2] = √(√2+1)
+or |z| = √[(2√2 – 2)/2] = √(√2–1).
+────────────────────────────
+Final Answer
+Thus, the possible values of |z| are exactly the positive numbers that satisfy
+|z| = √[(√(m²+n²) + √(m²+n² – 4))/2] or |z| = √[(√(m²+n²) – √(m²+n² – 4))/2],
+with m,n ∈ ℤ and m²+n² ≥ 4.
+Any answer equivalent to the one above is correct.",|z| = √[(√(m²+n²) + √(m²+n² – 4))/2] or |z| = √[(√(m²+n²) – √(m²+n² – 4))/2],"Alright, I have this problem about complex numbers, and I need to find all possible values of \( |z| \) where \( z \) is a nonzero complex number. The condition is that both the real and imaginary parts of \( \left(\overline{z}\right)^2 + \frac{1}{z^2} \) are integers. Okay, that's a bit abstract, so I'll try to break it down step by step.
+### Understanding the Problem
+First, let's make sure I understand all the parts:
+- \( z \) is a nonzero complex number, so I can write \( z = a + bi \), where \( a \) and \( b \) are real numbers, and \( |z| = \sqrt{a^2 + b^2} \).
+- \( \overline{z} \) is the complex conjugate of \( z \), so \( \overline{z} = a - bi \).
+- The expression \( \left(\overline{z}\right)^2 + \frac{1}{z^2} \) has both its real and imaginary parts as integers.
+I need to find all possible values of \( |z| \) that satisfy this condition.
+### Breaking Down the Expression
+Let's start by simplifying \( \left(\overline{z}\right)^2 + \frac{1}{z^2} \).
+First, compute \( \left(\overline{z}\right)^2 \):
+\[
+\left(\overline{z}\right)^2 = (a - bi)^2 = a^2 - 2abi + (bi)^2 = a^2 - 2abi - b^2 = (a^2 - b^2) - 2abi
+\]
+Next, compute \( \frac{1}{z^2} \). To do this, I'll first find \( z^2 \):
+\[
+z^2 = (a + bi)^2 = a^2 + 2abi + (bi)^2 = a^2 + 2abi - b^2 = (a^2 - b^2) + 2abi
+\]
+Then, \( \frac{1}{z^2} \) is the reciprocal of \( z^2 \), which can be found by multiplying the numerator and denominator by the complex conjugate of the denominator:
+\[
+\frac{1}{z^2} = \frac{1}{(a^2 - b^2) + 2abi} \cdot \frac{(a^2 - b^2) - 2abi}{(a^2 - b^2) - 2abi} = \frac{(a^2 - b^2) - 2abi}{(a^2 - b^2)^2 + (2ab)^2}
+\]
+Simplify the denominator:
+\[
+(a^2 - b^2)^2 + (2ab)^2 = a^4 - 2a^2b^2 + b^4 + 4a^2b^2 = a^4 + 2a^2b^2 + b^4 = (a^2 + b^2)^2
+\]
+So,
+\[
+\frac{1}{z^2} = \frac{(a^2 - b^2) - 2abi}{(a^2 + b^2)^2} = \frac{a^2 - b^2}{(a^2 + b^2)^2} - \frac{2ab}{(a^2 + b^2)^2}i
+\]
+Now, combine \( \left(\overline{z}\right)^2 \) and \( \frac{1}{z^2} \):
+\[
+\left(\overline{z}\right)^2 + \frac{1}{z^2} = \left[(a^2 - b^2) - 2abi\right] + \left[\frac{a^2 - b^2}{(a^2 + b^2)^2} - \frac{2ab}{(a^2 + b^2)^2}i\right]
+\]
+\[
+= \left(a^2 - b^2 + \frac{a^2 - b^2}{(a^2 + b^2)^2}\right) + \left(-2ab - \frac{2ab}{(a^2 + b^2)^2}\right)i
+\]
+### Setting Real and Imaginary Parts to Integers
+The problem states that both the real and imaginary parts of this expression are integers. Let's denote the real part as \( R \) and the imaginary part as \( I \):
+\[
+R = a^2 - b^2 + \frac{a^2 - b^2}{(a^2 + b^2)^2}
+\]
+\[
+I = -2ab - \frac{2ab}{(a^2 + b^2)^2}
+\]
+Both \( R \) and \( I \) must be integers.
+This seems a bit complicated, so maybe there's a simpler way to approach this. Perhaps I can express everything in terms of \( |z| \), since the final answer is in terms of \( |z| \).
+### Expressing in Terms of \( |z| \)
+Let \( |z| = r \), so \( a^2 + b^2 = r^2 \). Then, \( a^2 - b^2 = r^2 - 2b^2 \), and \( ab = \frac{r^2 \sin(2\theta)}{2} \) if I represent \( z \) in polar form, but perhaps that's not necessary yet.
+Wait, let's see:
+Given \( a^2 + b^2 = r^2 \), then \( a^2 - b^2 = r^2 - 2b^2 \), and \( ab = \frac{r^2 \sin(2\theta)}{2} \), but maybe it's better to keep it in terms of \( a \) and \( b \) for now.
+Alternatively, perhaps I can set \( z = re^{i\theta} \), where \( r = |z| \) and \( \theta \) is the argument. Then \( \overline{z} = re^{-i\theta} \), and \( z^2 = r^2 e^{i2\theta} \), so \( \frac{1}{z^2} = \frac{1}{r^2} e^{-i2\theta} \).
+Then,
+\[
+\left(\overline{z}\right)^2 + \frac{1}{z^2} = r^2 e^{-i2\theta} + \frac{1}{r^2} e^{-i2\theta} = \left(r^2 + \frac{1}{r^2}\right) e^{-i2\theta}
+\]
+Now, \( e^{-i2\theta} = \cos(2\theta) - i\sin(2\theta) \), so:
+\[
+\left(\overline{z}\right)^2 + \frac{1}{z^2} = \left(r^2 + \frac{1}{r^2}\right) \cos(2\theta) - i \left(r^2 + \frac{1}{r^2}\right) \sin(2\theta)
+\]
+For both the real and imaginary parts to be integers, we must have:
+\[
+\left(r^2 + \frac{1}{r^2}\right) \cos(2\theta) \in \mathbb{Z}
+\]
+\[
+\left(r^2 + \frac{1}{r^2}\right) \sin(2\theta) \in \mathbb{Z}
+\]
+Since \( \cos(2\theta) \) and \( \sin(2\theta) \) are bounded by 1 and -1, and \( r^2 + \frac{1}{r^2} \) is a positive real number, the only way for both products to be integers is if \( r^2 + \frac{1}{r^2} \) is an integer, and \( \cos(2\theta) \) and \( \sin(2\theta) \) are rational numbers such that their product with \( r^2 + \frac{1}{r^2} \) results in integers.
+But perhaps there's a simpler approach. Let's consider \( r^2 + \frac{1}{r^2} = k \), where \( k \) is a positive integer.
+### Solving for \( r \)
+Let \( x = r^2 \), then:
+\[
+x + \frac{1}{x} = k
+\]
+Multiply both sides by \( x \):
+\[
+x^2 + 1 = kx
+\]
+Rearrange:
+\[
+x^2 - kx + 1 = 0
+\]
+This is a quadratic equation in \( x \). The solutions are:
+\[
+x = \frac{k \pm \sqrt{k^2 - 4}}{2}
+\]
+Since \( x = r^2 \) must be positive, the discriminant \( k^2 - 4 \) must be non-negative, so \( k^2 \geq 4 \), which implies \( k \geq 2 \).
+Thus, for each integer \( k \geq 2 \), we have two possible values for \( x \):
+\[
+x = \frac{k + \sqrt{k^2 - 4}}{2} \quad \text{and} \quad x = \frac{k - \sqrt{k^2 - 4}}{2}
+\]
+Since \( x = r^2 \), \( r = \sqrt{x} \), so the possible values of \( |z| = r \) are:
+\[
+r = \sqrt{\frac{k + \sqrt{k^2 - 4}}{2}} \quad \text{and} \quad r = \sqrt{\frac{k - \sqrt{k^2 - 4}}{2}}
+\]
+for each integer \( k \geq 2 \).
+But the problem asks for all possible values of \( |z| \), so these are the solutions for \( r \).
+### Verifying the Solutions
+Let's check for small values of \( k \):
+1. **When \( k = 2 \):**
+\[
+x = \frac{2 \pm \sqrt{4 - 4}}{2} = \frac{2 \pm 0}{2} = 1
+\]
+So \( r = \sqrt{1} = 1 \).
+2. **When \( k = 3 \):**
+\[
+x = \frac{3 \pm \sqrt{9 - 4}}{2} = \frac{3 \pm \sqrt{5}}{2}
+\]
+So \( r = \sqrt{\frac{3 + \sqrt{5}}{2}} \) and \( r = \sqrt{\frac{3 - \sqrt{5}}{2}} \).
+3. **When \( k = 4 \):**
+\[
+x = \frac{4 \pm \sqrt{16 - 4}}{2} = \frac{4 \pm \sqrt{12}}{2} = 2 \pm \sqrt{3}
+\]
+So \( r = \sqrt{2 + \sqrt{3}} \) and \( r = \sqrt{2 - \sqrt{3}} \).
+And so on for higher values of \( k \).
+### Conclusion
+The possible values of \( |z| \) are all positive real numbers of the form:
+\[
+r = \sqrt{\frac{k + \sqrt{k^2 - 4}}{2}} \quad \text{and} \quad r = \sqrt{\frac{k - \sqrt{k^2 - 4}}{2}}
+\]
+for each integer \( k \geq 2 \).
+In boxed form, the possible values of \( |z| \) are:
+\[
+\boxed{ \left\{ \sqrt{\frac{k \pm \sqrt{k^2 - 4}}{2}} \mid k \in \mathbb{Z}, k \geq 2 \right\} }
+\]","\[
+\boxed{ \left\{ \sqrt{\frac{k \pm \sqrt{k^2 - 4}}{2}} \mid k \in \mathbb{Z}, k \geq 2 \right\} }
+\]"
+18482,Algebra,"Combinatorial Game Strategy,","**Mr. Fat** is going to pick three nonzero real numbers, and **Mr. Taf** is going to arrange the three numbers as the coefficients of a quadratic equation: $x^2 + bx + c = 0$. **Mr. Fat** wins the game if and only if the resulting equation has two distinct rational solutions. Who has a winning strategy?","The key to Mr. Fat’s winning strategy lies in ensuring that the quadratic equation, regardless of how its coefficients are arranged, always has two distinct rational roots. This is achieved by choosing three distinct nonzero rational numbers $a$, $b$, and $c$ such that
+$$
+a + b + c = 0.
+$$
+When these numbers are used as coefficients in any order, say as
+$$
+Ax^2 + Bx + C = 0 \quad \text{with} \quad \{A, B, C\} = \{a, b, c\},
+$$
+the sum of the coefficients is
+$$
+A + B + C = a + b + c = 0.
+$$
+Evaluating the quadratic at $x = 1$ gives:
+$$
+f(1) = A(1)^2 + B(1) + C = A + B + C = 0.
+$$
+Thus, $x = 1$ is a root of the quadratic equation. This is the crucial effect of the condition $a + b + c = 0$.
+### Finding the Other Root Using Vieta’s Formulas
+Let the roots of the quadratic be $r$ and $s$. Since $x = 1$ is a root, set $r = 1$. According to Vieta’s formulas, the product of the roots is given by:
+$$rs = \frac{C}{A}.$$
+Substituting $r = 1$ yields:
+$$
+1 \cdot s = \frac{C}{A} \quad \Longrightarrow \quad s = \frac{C}{A}.
+$$
+Since $A$ and $C$ are two of the distinct rational numbers $a$, $b$, and $c$, their quotient $\frac{C}{A}$ is a rational number. Moreover, because the numbers are distinct, $A$ and $C$ cannot be equal; hence,
+$$
+1 \neq \frac{C}{A},
+$$
+ensuring that the two roots are distinct.
+### Conclusion
+By choosing three distinct nonzero rational numbers $a$, $b$, and $c$ such that $a + b + c = 0$, Mr. Fat guarantees that for any arrangement of these numbers as the coefficients of the quadratic
+$$
+Ax^2 + Bx + C = 0,
+$$
+the sum $A + B + C = 0$ forces $x = 1$ to be a solution. Vieta’s formulas then ensure that the other solution, $s = \frac{C}{A}$, is also rational and distinct from 1. Thus, **Mr. Fat has a winning strategy**, since the resulting quadratic will always have two distinct rational solutions regardless of how Mr. Taf arranges the coefficients.
+$$
+\boxed{\text{Mr. Fat wins.}}
+$$","$$
+\boxed{\text{Mr. Fat wins.}}
+$$","Final Answer: Mr. Fat has a winning strategy. Mr. Fat can choose the numbers $a=3, b=2, c=1$. When Mr. Taf arranges $B=3$ and $C=2$, the quadratic equation is $x^2 + 3x + 2 = 0$. The discriminant is $D = B^2 - 4C = 3^2 - 4(2) = 9 - 8 = 1 = 1^2 > 0$. Since $D=1$ is a perfect square of a rational number and $B=3$ is rational, $C=2$ is rational, the solutions are $x = \frac{-B \pm \sqrt{D}}{2} = \frac{-3 \pm \sqrt{1}}{2} = \frac{-3 \pm 1}{2}$. Thus, the solutions are $x_1 = \frac{-3-1}{2} = -2$ and $x_2 = \frac{-3+1}{2} = -1$. Both $x_1 = -2$ and $x_2 = -1$ are distinct rational numbers. Therefore, with the choice $a=3, b=2, c=1$, Mr. Fat wins.
+Final Answer: The final answer is $\boxed{Mr. Fat}$",Mr. Fat,"To determine if Mr. Fat has a winning strategy, let's analyze the conditions needed for a quadratic equation to have two distinct rational solutions.
+A quadratic equation of the form:
+$$ ax^2 + bx + c = 0 $$
+has rational solutions if and only if the **discriminant** $\Delta = b^2 - 4ac$ is a perfect square (of a rational number) and non-zero. The solutions are distinct if the discriminant is positive.
+Therefore, Mr. Fat needs to ensure that:
+1. $\Delta = b^2 - 4ac > 0$ (the roots are distinct)
+2. $\Delta$ is a perfect square (so the roots are rational)
+3. The numbers $a$, $b$, and $c$ are non-zero real numbers.
+### Strategy Analysis:
+- **Mr. Fat**'s Objective: Choose $a$, $b$, and $c$ such that $b^2 - 4ac > 0$ and is a perfect square.
+- **Mr. Taf** can arrange $a$, $b$, and $c$ in any order to form a valid quadratic equation.
+### Considerations:
+1. **Choice Flexibility**: Regardless of what numbers Mr. Fat picks, the possibility of Mr. Taf arranging them such that either $a$, $b$, or $c$ equates to zero (since they need to be the coefficients) jeopardizes Mr. Fat's chance, as having a coefficient equal to zero does not satisfy the form of a quadratic equation.
+2. **Ensuring a Perfect Square**: For Mr. Fat to ensure a perfect square for any arrangement, the differences created by $b^2 - 4ac$ when rearranged must still form a perfect square. This is complex with three freely chosen numbers.
+### Conclusion:
+Mr. Taf appears to have the advantage. Due to his ability to rearrange the given numbers, he can potentially ensure that one of the coefficients is zero or that the discriminant is not a perfect square/
+Therefore, Mr. Taf possesses the winning strategy as he can negate the conditions required for distinct rational solutions to exist regardless of the specific numbers chosen by Mr. Fat.",Mr. Taf,"To determine who has a winning strategy in this game, let's analyze the options and strategies available to both Mr. Fat and Mr. Taf.
+**Understanding the Game:**
+- **Mr. Fat** picks three nonzero real numbers. Let's call them \( a \), \( b \), and \( c \).
+- **Mr. Taf** arranges any two of these numbers as \( b \) and \( c \) in the quadratic equation \( x^2 + bx + c = 0 \). The remaining number is discarded.
+- **Mr. Fat** wins if the resulting quadratic equation has two distinct rational solutions.
+**Objective Analysis:**
+For the quadratic equation \( x^2 + bx + c = 0 \) to have two distinct rational solutions:
+1. The discriminant \( D = b^2 - 4c \) must be positive (for real roots) and a perfect square of a rational number (for roots to be rational).
+2. Both \( b \) and \( c \) must be rational numbers since irrational coefficients can lead to irrational discriminants and roots.
+However, since Mr. Fat can pick any nonzero real numbers (not necessarily rational), we need to consider all real numbers.
+**Strategies for Mr. Taf:**
+Mr. Taf aims to prevent \( D = b^2 - 4c \) from being a perfect square of a rational number. He can do this by choosing the arrangement of \( b \) and \( c \) that yields:
+- A negative discriminant (no real roots).
+- A discriminant that is positive but not a perfect square (roots are irrational).
+- A discriminant that is zero (repeated rational root, but the game requires two distinct roots).
+**Why Mr. Taf Has a Winning Strategy:**
+1. **Fat's Limitation:** No matter what numbers Mr. Fat picks, Mr. Taf has control over the placement of \( b \) and \( c \), giving him the ability to manipulate the discriminant.
+2. **Preventing Perfect Squares:** Mr. Taf can always choose \( b \) and \( c \) such that the discriminant is not a perfect square. For example:
+- If Mr. Fat picks numbers that could lead to a perfect square discriminant, Mr. Taf can swap \( b \) and \( c \) to disrupt this.
+- If Mr. Fat picks numbers aiming for \( D = k^2 \), Mr. Taf can select \( b \) and \( c \) to make \( D \) equal to an irrational number or negative.
+3. **Example Scenario:**
+- Suppose Mr. Fat picks numbers \( 2 \), \( 3 \), and \( 6 \).
+- If Mr. Taf chooses \( b = 2 \), \( c = 3 \), then \( D = 2^2 - 4 \times 3 = 4 -12 = -8 \) (negative discriminant).
+- If Mr. Taf chooses \( b = 6 \), \( c = 2 \), then \( D = 6^2 - 4 \times 2 = 36 - 8 = 28 \) (not a perfect square).
+4. **Conclusion:** Since Mr. Taf can always choose \( b \) and \( c \) in a way that the discriminant is not a perfect square of a rational number (or is negative), he can prevent Mr. Fat from winning.
+**Final Answer:**
+**Answer:** **Mr. Taf** has a winning strategy; he can always arrange the numbers to prevent two rational roots.",Mr. Taf,"We will show that no matter what three nonzero real numbers Mr. Fat chooses, Mr. Taf (the “arranger”) can always pick two of them as the linear‐ and constant‐coefficients so that the quadratic
+x² + b·x + c = 0
+does not have two distinct rational roots. (That is, Mr. Taf can prevent the equation from having two distinct rational solutions.) In other words, Mr. Taf has a winning strategy.
+Before explaining the idea behind the answer, note that the “game” is played in two moves:
+• First, Mr. Fat picks three nonzero real numbers (they might be chosen arbitrarily and even with repetition).
+• Then, Mr. Taf “arranges” these three numbers by selecting two of them and designating one as b and one as c, thus forming the quadratic x² + bx + c = 0.
+Mr. Fat wins if and only if the quadratic (as determined by Mr. Taf’s choice) has two distinct rational roots. (Recall that for a quadratic with leading coefficient 1 the roots are given by
+(–b ± √(b²–4c))/2,
+so these roots will be rational exactly when the discriminant D = b² – 4c is positive and a perfect square of a rational number.)
+Since Mr. Taf is allowed to choose the ordering (that is, he may choose any ordered pair (b, c) from the three numbers), if even one such ordering yields a discriminant that is either nonpositive or not the square of a rational number, then Mr. Taf can arrange the coefficients that way and cause Mr. Fat to lose.
+Thus, for Mr. Fat to “force” a win his three chosen numbers would have to have the very special property that no matter which two of them are used as b and c (with b ≠ c), the discriminant b² – 4c is always positive and is the square of a rational number. (There are six possible ordered pairs using two out of the three numbers.) One may show—after one attempts to write down the six conditions for a general set S = {p, q, r}—
+p² – 4q, p² – 4r, q² – 4p, q² – 4r, r² – 4p, r² – 4q
+all being positive perfect squares in the rationals—that they impose extremely rigid conditions; in fact one may prove that no such triple of numbers exists.
+For example, if one tries a “nice” triple (say, three equal numbers, or an arithmetic or geometric progression), one quickly finds that at least one of the six possible choices gives either a zero (or negative) discriminant (so the equation has a repeated or no real roots) or (if positive) a number that is not a perfect square in Q (so the roots are irrational). Since Mr. Taf is free to choose the ordering, he may always “spoil” Mr. Fat’s choice.
+Thus, no matter what Mr. Fat does, Mr. Taf can examine the three numbers (there are only finitely many pairs to consider) and choose an ordering (a particular choice for b and c) for which x² + bx + c = 0 does not have two distinct rational roots.
+Hence, Mr. Taf has a winning strategy.
+Final answer: Mr. Taf can always force a loss for Mr. Fat, so Mr. Taf is the one with the winning strategy.",Mr. Taf,"To determine who has a winning strategy in this game, we need to analyze the conditions under which a quadratic equation has two distinct rational solutions. Let's break this down step by step:
+### Step 1: Understanding the Quadratic Equation
+Suppose Mr. Fat picks three non-zero real numbers $a$, $b$, and $c$. Mr. Taf arranges these numbers as the coefficients of a quadratic equation:
+$$ x^2 + b x + c = 0 $$
+### Step 2: Conditions for Two Distinct Rational Solutions
+For a quadratic equation of the form $x^2 + b x + c = 0$ to have two distinct rational solutions, the following conditions must be satisfied:
+1. The discriminant $D$ must be positive:
+$$ D = b^2 - 4ac > 0 $$
+2. The discriminant must be a perfect square, so that the solutions are rational.
+### Step 3: Mr. Fat's Strategy
+Mr. Fat wants to ensure that the quadratic equation has two distinct rational solutions. To do this, he can choose $a$, $b$, and $c$ such that the discriminant is both positive and a perfect square. For example, he could choose:
+- $a = 1$
+- $b = 3$
+- $c = 2$
+Substituting these values into the discriminant:
+$$ D = 3^2 - 4 \cdot 1 \cdot 2 = 9 - 8 = 1 $$
+Since $D = 1$ is positive and a perfect square, the quadratic equation $x^2 + 3x + 2 = 0$ has two distinct rational solutions: $x = -1$ and $x = -2$.
+### Step 4: Mr. Taf's Strategy
+Mr. Taf's role is to arrange the coefficients in the quadratic equation. However, since Mr. Fat has already chosen the coefficients in such a way that the discriminant is positive and a perfect square, Mr. Taf cannot alter the discriminant by rearranging the coefficients. Therefore, Mr. Fat can always ensure that the quadratic equation has two distinct rational solutions by carefully choosing the coefficients.
+### Conclusion
+Mr. Fat has the winning strategy. By choosing three non-zero real numbers that make the discriminant of the quadratic equation positive and a perfect square, he can guarantee that the equation has two distinct rational solutions, regardless of how Mr. Taf arranges the coefficients.",Mr. Fat
